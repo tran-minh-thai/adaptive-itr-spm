@@ -1,0 +1,31 @@
+# ========================================================================
+# GENERAL EXPERIMENT CONFIGURATION
+# Note: no spaces around the "=" sign
+# ========================================================================
+# --- 1. INPUT DATA ---
+# Input dataset filename (relative to datasets/ or an absolute path)
+dataset_path=D48K-C10-T1-N5K.txt
+# Batch split ratio (default: 10 batches of 10% each)
+data_chunks=0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1
+# --- 2. CORE MINING PARAMETERS ---
+# Relative minimum support threshold (e.g. 0.005 = 0.5% of the current sequence count)
+min_sup_rate=0.0005
+# Maximum gap between consecutive occurrences for a pattern to remain "regular"
+max_per=6000
+# List of target items (must be real item ids from the dataset)
+target_items=4999999,3312329,4411672,2508874,3667146
+# Pre-large buffer ratio used by the incremental baselines (IncTaSPM_Li, IncStaticTaSPM)
+buffer_ratio=0.1
+# --- 3. ADA-INC ADAPTIVE-PRUNING WEIGHTS ---
+# Support-relaxation amplitude (eta) - max allowed reduction, e.g. 0.05 = up to 5% off
+eta=0.9
+# Time-decay coefficient (lambda) used by the Recency component
+lambda=0.1
+# Full weights (V+TBR+R+S)
+w1=0.25
+w2=0.25
+w3=0.25
+w4=0.25
+# --- 4. BENCHMARK ---
+total_runs=7
+warmup_runs=2

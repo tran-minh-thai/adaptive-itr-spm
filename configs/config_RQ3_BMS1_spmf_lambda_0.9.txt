@@ -1,0 +1,12 @@
+# --- RQ3 configuration: BMS1_spmf | LAMBDA = 0.1 ---
+dataset_path=BMS1_spmf.txt
+data_chunks=0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1
+min_sup_rate=0.001
+max_per=3000
+target_items=33449,12895
+buffer_ratio=0.1
+W1=0.25
+W2=0.25
+W3=0.25
+W4=0.25
+lambda=0.9

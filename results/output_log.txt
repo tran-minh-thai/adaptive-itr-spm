@@ -1,0 +1,388 @@
+=========================================================
+ 🔬 BẮT ĐẦU RQ4: NGHIÊN CỨU CẮT BỎ TRỌNG SỐ (ABLATION)
+ Thời gian: 28/03/2026 16:54:30
+=========================================================
+
+#########################################################
+ >>> ĐANG CHẠY KỊCH BẢN [1/4]: 1_Full_Proposed
+ >>> File cấu hình: config_RQ4_1_Full.txt
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: D48K-C10-T1-N5K.txt
+
+--- WARM-UP RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 1920.72 ms | Tích lũy: 1920.72 ms | RAM: 1799.06 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2824.80 ms | Tích lũy: 4745.52 ms | RAM: 2926.68 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3530.10 ms | Tích lũy: 8275.62 ms | RAM: 3310.76 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 314.82 ms | Tích lũy: 8590.44 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 324.27 ms | Tích lũy: 8914.70 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.79 ms | Tích lũy: 9120.49 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 184.75 ms | Tích lũy: 9305.24 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 209.66 ms | Tích lũy: 9514.90 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.87 ms | Tích lũy: 9750.77 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 252.67 ms | Tích lũy: 10003.44 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- WARM-UP RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2241.21 ms | Tích lũy: 2241.21 ms | RAM: 663.03 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2881.08 ms | Tích lũy: 5122.29 ms | RAM: 995.34 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3745.92 ms | Tích lũy: 8868.21 ms | RAM: 1347.58 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 276.99 ms | Tích lũy: 9145.20 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 300.79 ms | Tích lũy: 9446.00 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.04 ms | Tích lũy: 9650.04 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 187.04 ms | Tích lũy: 9837.08 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.77 ms | Tích lũy: 10052.85 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 238.00 ms | Tích lũy: 10290.85 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 259.62 ms | Tích lũy: 10550.47 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- ACTUAL RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2558.94 ms | Tích lũy: 2558.94 ms | RAM: 573.06 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3008.97 ms | Tích lũy: 5567.90 ms | RAM: 815.35 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3741.28 ms | Tích lũy: 9309.18 ms | RAM: 1119.56 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 286.97 ms | Tích lũy: 9596.15 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 301.62 ms | Tích lũy: 9897.78 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.12 ms | Tích lũy: 10101.89 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 190.86 ms | Tích lũy: 10292.76 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 214.88 ms | Tích lũy: 10507.64 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.17 ms | Tích lũy: 10742.81 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 255.21 ms | Tích lũy: 10998.02 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- ACTUAL RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2492.65 ms | Tích lũy: 2492.65 ms | RAM: 303.08 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2909.60 ms | Tích lũy: 5402.24 ms | RAM: 551.36 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3756.09 ms | Tích lũy: 9158.34 ms | RAM: 867.59 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 276.57 ms | Tích lũy: 9434.91 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 303.60 ms | Tích lũy: 9738.51 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.18 ms | Tích lũy: 9943.69 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.50 ms | Tích lũy: 10133.19 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 214.56 ms | Tích lũy: 10347.75 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.54 ms | Tích lũy: 10583.29 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 257.19 ms | Tích lũy: 10840.48 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- ACTUAL RUN 3 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2403.87 ms | Tích lũy: 2403.87 ms | RAM: 2570.59 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3031.77 ms | Tích lũy: 5435.64 ms | RAM: 419.37 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3865.43 ms | Tích lũy: 9301.07 ms | RAM: 723.58 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 281.10 ms | Tích lũy: 9582.18 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 293.52 ms | Tích lũy: 9875.70 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.64 ms | Tích lũy: 10081.33 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 190.15 ms | Tích lũy: 10271.48 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.46 ms | Tích lũy: 10484.94 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 236.25 ms | Tích lũy: 10721.19 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 255.06 ms | Tích lũy: 10976.24 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- ACTUAL RUN 4 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2339.86 ms | Tích lũy: 2339.86 ms | RAM: 2570.59 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3025.57 ms | Tích lũy: 5365.44 ms | RAM: 2926.68 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3881.99 ms | Tích lũy: 9247.43 ms | RAM: 655.57 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 281.77 ms | Tích lũy: 9529.20 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 300.79 ms | Tích lũy: 9829.99 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.70 ms | Tích lũy: 10032.69 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 187.64 ms | Tích lũy: 10220.33 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 214.54 ms | Tích lũy: 10434.87 ms | RAM: 383.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 236.37 ms | Tích lũy: 10671.24 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 257.80 ms | Tích lũy: 10929.04 ms | RAM: 397.33 MB | Mẫu: 49316
+
+--- ACTUAL RUN 5 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2319.62 ms | Tích lũy: 2319.62 ms | RAM: 2570.59 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2972.26 ms | Tích lũy: 5291.88 ms | RAM: 2926.68 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3848.67 ms | Tích lũy: 9140.54 ms | RAM: 587.60 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 281.84 ms | Tích lũy: 9422.38 ms | RAM: 432.84 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 303.87 ms | Tích lũy: 9726.26 ms | RAM: 444.93 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.48 ms | Tích lũy: 9931.74 ms | RAM: 387.00 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.77 ms | Tích lũy: 10121.50 ms | RAM: 375.08 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.44 ms | Tích lũy: 10336.95 ms | RAM: 385.16 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 240.07 ms | Tích lũy: 10577.02 ms | RAM: 391.25 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 383.69 ms | Tích lũy: 10960.71 ms | RAM: 413.33 MB | Mẫu: 49316
+      Thời gian xử lý: 84.288 s
+✅ Đã tạo file báo cáo tổng hợp: Summary_Report_RQ4_20260328_165554_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10.txt
+      ✅ Đã xuất báo cáo: Summary_Report_RQ4_20260328_165554_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10_[1_Full_Proposed].txt
+
+#########################################################
+ >>> ĐANG CHẠY KỊCH BẢN [2/4]: 2_TBR
+ >>> File cấu hình: config_RQ4_2_TBR.txt
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: D48K-C10-T1-N5K.txt
+
+--- WARM-UP RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2365.34 ms | Tích lũy: 2365.34 ms | RAM: 2450.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3045.50 ms | Tích lũy: 5410.84 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3931.90 ms | Tích lũy: 9342.74 ms | RAM: 511.74 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 284.16 ms | Tích lũy: 9626.90 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 301.51 ms | Tích lũy: 9928.41 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.21 ms | Tích lũy: 10132.63 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.47 ms | Tích lũy: 10322.10 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 214.91 ms | Tích lũy: 10537.01 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.65 ms | Tích lũy: 10772.66 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 256.74 ms | Tích lũy: 11029.40 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- WARM-UP RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2310.18 ms | Tích lũy: 2310.18 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2952.06 ms | Tích lũy: 5262.24 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3900.35 ms | Tích lũy: 9162.59 ms | RAM: 443.72 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 293.73 ms | Tích lũy: 9456.32 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 302.00 ms | Tích lũy: 9758.32 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.40 ms | Tích lũy: 9960.72 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 190.39 ms | Tích lũy: 10151.11 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.10 ms | Tích lũy: 10366.21 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 234.75 ms | Tích lũy: 10600.96 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 257.36 ms | Tích lũy: 10858.32 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2254.85 ms | Tích lũy: 2254.85 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2952.10 ms | Tích lũy: 5206.95 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3866.29 ms | Tích lũy: 9073.24 ms | RAM: 371.74 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 292.89 ms | Tích lũy: 9366.13 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 310.96 ms | Tích lũy: 9677.09 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.52 ms | Tích lũy: 9882.61 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.16 ms | Tích lũy: 10071.77 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.78 ms | Tích lũy: 10287.54 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.97 ms | Tích lũy: 10523.52 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 255.66 ms | Tích lũy: 10779.18 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2343.70 ms | Tích lũy: 2343.70 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3056.67 ms | Tích lũy: 5400.36 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3848.34 ms | Tích lũy: 9248.70 ms | RAM: 295.76 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 312.78 ms | Tích lũy: 9561.48 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 306.92 ms | Tích lũy: 9868.39 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.27 ms | Tích lũy: 10070.66 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 188.63 ms | Tích lũy: 10259.30 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 217.50 ms | Tích lũy: 10476.79 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 224.01 ms | Tích lũy: 10700.80 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 256.59 ms | Tích lũy: 10957.39 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 3 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2339.86 ms | Tích lũy: 2339.86 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2959.82 ms | Tích lũy: 5299.68 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3903.28 ms | Tích lũy: 9202.96 ms | RAM: 3312.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 314.58 ms | Tích lũy: 9517.54 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 311.72 ms | Tích lũy: 9829.25 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 203.79 ms | Tích lũy: 10033.04 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.44 ms | Tích lũy: 10222.49 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 212.83 ms | Tích lũy: 10435.31 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.16 ms | Tích lũy: 10670.47 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 257.15 ms | Tích lũy: 10927.62 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 4 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2351.97 ms | Tích lũy: 2351.97 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3047.08 ms | Tích lũy: 5399.05 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3901.46 ms | Tích lũy: 9300.51 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 358.09 ms | Tích lũy: 9658.60 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 313.30 ms | Tích lũy: 9971.90 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 206.11 ms | Tích lũy: 10178.01 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.94 ms | Tích lũy: 10367.95 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.84 ms | Tích lũy: 10581.79 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 239.36 ms | Tích lũy: 10821.15 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 253.56 ms | Tích lũy: 11074.71 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 5 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2330.45 ms | Tích lũy: 2330.45 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2984.60 ms | Tích lũy: 5315.05 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3865.68 ms | Tích lũy: 9180.73 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 332.32 ms | Tích lũy: 9513.05 ms | RAM: 434.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 306.90 ms | Tích lũy: 9819.95 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.84 ms | Tích lũy: 10024.79 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.16 ms | Tích lũy: 10213.95 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 200.80 ms | Tích lũy: 10414.76 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 222.59 ms | Tích lũy: 10637.35 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 260.88 ms | Tích lũy: 10898.22 ms | RAM: 413.47 MB | Mẫu: 49316
+      Thời gian xử lý: 85.621 s
+✅ Đã tạo file báo cáo tổng hợp: Summary_Report_RQ4_20260328_165722_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10.txt
+      ✅ Đã xuất báo cáo: Summary_Report_RQ4_20260328_165722_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10_[2_TBR].txt
+
+#########################################################
+ >>> ĐANG CHẠY KỊCH BẢN [3/4]: 3_V_and_R
+ >>> File cấu hình: config_RQ4_3_V_R.txt
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: D48K-C10-T1-N5K.txt
+
+--- WARM-UP RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2306.14 ms | Tích lũy: 2306.14 ms | RAM: 2450.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3051.31 ms | Tích lũy: 5357.45 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3827.54 ms | Tích lũy: 9184.99 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 322.04 ms | Tích lũy: 9507.03 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 308.49 ms | Tích lũy: 9815.52 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.66 ms | Tích lũy: 10020.18 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.16 ms | Tích lũy: 10209.34 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.25 ms | Tích lũy: 10422.59 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.58 ms | Tích lũy: 10658.17 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 254.18 ms | Tích lũy: 10912.35 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- WARM-UP RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2326.51 ms | Tích lũy: 2326.51 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2994.26 ms | Tích lũy: 5320.76 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3847.77 ms | Tích lũy: 9168.53 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 325.66 ms | Tích lũy: 9494.20 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 304.98 ms | Tích lũy: 9799.17 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.94 ms | Tích lũy: 10004.11 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 187.78 ms | Tích lũy: 10191.89 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.56 ms | Tích lũy: 10407.45 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.07 ms | Tích lũy: 10642.51 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 257.79 ms | Tích lũy: 10900.31 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2275.22 ms | Tích lũy: 2275.22 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2981.80 ms | Tích lũy: 5257.02 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3920.61 ms | Tích lũy: 9177.63 ms | RAM: 3312.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 344.68 ms | Tích lũy: 9522.31 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 305.87 ms | Tích lũy: 9828.18 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 203.33 ms | Tích lũy: 10031.52 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 187.62 ms | Tích lũy: 10219.13 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.14 ms | Tích lũy: 10434.27 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 234.76 ms | Tích lũy: 10669.04 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 253.61 ms | Tích lũy: 10922.64 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2291.54 ms | Tích lũy: 2291.54 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2989.42 ms | Tích lũy: 5280.97 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3860.35 ms | Tích lũy: 9141.32 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 339.26 ms | Tích lũy: 9480.57 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 306.33 ms | Tích lũy: 9786.90 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 206.07 ms | Tích lũy: 9992.97 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 189.87 ms | Tích lũy: 10182.84 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.43 ms | Tích lũy: 10396.27 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 236.07 ms | Tích lũy: 10632.34 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 254.08 ms | Tích lũy: 10886.41 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 3 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2323.97 ms | Tích lũy: 2323.97 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2941.13 ms | Tích lũy: 5265.10 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3882.26 ms | Tích lũy: 9147.36 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 325.23 ms | Tích lũy: 9472.59 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 301.14 ms | Tích lũy: 9773.73 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.24 ms | Tích lũy: 9978.97 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 188.27 ms | Tích lũy: 10167.24 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.37 ms | Tích lũy: 10382.61 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.72 ms | Tích lũy: 10618.34 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 256.53 ms | Tích lũy: 10874.87 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 4 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2288.52 ms | Tích lũy: 2288.52 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3034.46 ms | Tích lũy: 5322.98 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3909.91 ms | Tích lũy: 9232.89 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 332.00 ms | Tích lũy: 9564.89 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 301.65 ms | Tích lũy: 9866.54 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.99 ms | Tích lũy: 10069.53 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 187.67 ms | Tích lũy: 10257.20 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 212.45 ms | Tích lũy: 10469.65 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.67 ms | Tích lũy: 10705.32 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 253.72 ms | Tích lũy: 10959.04 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 5 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2273.66 ms | Tích lũy: 2273.66 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3051.74 ms | Tích lũy: 5325.39 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3871.75 ms | Tích lũy: 9197.15 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 329.73 ms | Tích lũy: 9526.87 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 303.57 ms | Tích lũy: 9830.45 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.73 ms | Tích lũy: 10033.17 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 188.14 ms | Tích lũy: 10221.31 ms | RAM: 375.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.18 ms | Tích lũy: 10434.49 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.54 ms | Tích lũy: 10670.03 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 260.25 ms | Tích lũy: 10930.28 ms | RAM: 413.47 MB | Mẫu: 49316
+      Thời gian xử lý: 85.546 s
+✅ Đã tạo file báo cáo tổng hợp: Summary_Report_RQ4_20260328_165849_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10.txt
+      ✅ Đã xuất báo cáo: Summary_Report_RQ4_20260328_165849_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10_[3_V_and_R].txt
+
+#########################################################
+ >>> ĐANG CHẠY KỊCH BẢN [4/4]: 4_S
+ >>> File cấu hình: config_RQ4_4_S.txt
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: D48K-C10-T1-N5K.txt
+
+--- WARM-UP RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2291.43 ms | Tích lũy: 2291.43 ms | RAM: 2450.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3049.40 ms | Tích lũy: 5340.83 ms | RAM: 2928.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3937.19 ms | Tích lũy: 9278.02 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 330.90 ms | Tích lũy: 9608.92 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 314.03 ms | Tích lũy: 9922.95 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 202.59 ms | Tích lũy: 10125.54 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 188.38 ms | Tích lũy: 10313.92 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 215.09 ms | Tích lũy: 10529.02 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 237.79 ms | Tích lũy: 10766.80 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 254.97 ms | Tích lũy: 11021.77 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- WARM-UP RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2329.04 ms | Tích lũy: 2329.04 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3041.37 ms | Tích lũy: 5370.42 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3895.65 ms | Tích lũy: 9266.07 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 330.76 ms | Tích lũy: 9596.83 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 314.20 ms | Tích lũy: 9911.02 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 205.67 ms | Tích lũy: 10116.70 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 186.78 ms | Tích lũy: 10303.48 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 201.18 ms | Tích lũy: 10504.66 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 223.40 ms | Tích lũy: 10728.06 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 247.90 ms | Tích lũy: 10975.96 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 1 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2353.70 ms | Tích lũy: 2353.70 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3019.43 ms | Tích lũy: 5373.13 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3843.00 ms | Tích lũy: 9216.13 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 325.72 ms | Tích lũy: 9541.85 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 302.70 ms | Tích lũy: 9844.55 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 207.78 ms | Tích lũy: 10052.33 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 174.76 ms | Tích lũy: 10227.09 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 198.62 ms | Tích lũy: 10425.72 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 234.04 ms | Tích lũy: 10659.75 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 252.86 ms | Tích lũy: 10912.62 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 2 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2360.25 ms | Tích lũy: 2360.25 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3022.34 ms | Tích lũy: 5382.59 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3883.17 ms | Tích lũy: 9265.76 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 334.86 ms | Tích lũy: 9600.62 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 308.65 ms | Tích lũy: 9909.27 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 203.54 ms | Tích lũy: 10112.81 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 188.97 ms | Tích lũy: 10301.78 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 214.16 ms | Tích lũy: 10515.94 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 235.71 ms | Tích lũy: 10751.65 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 255.02 ms | Tích lũy: 11006.66 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 3 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2351.62 ms | Tích lũy: 2351.62 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3049.67 ms | Tích lũy: 5401.29 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3797.23 ms | Tích lũy: 9198.52 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 315.99 ms | Tích lũy: 9514.51 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 289.65 ms | Tích lũy: 9804.16 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 190.91 ms | Tích lũy: 9995.07 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 190.86 ms | Tích lũy: 10185.93 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 213.97 ms | Tích lũy: 10399.90 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 239.32 ms | Tích lũy: 10639.22 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 255.57 ms | Tích lũy: 10894.79 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 4 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2370.11 ms | Tích lũy: 2370.11 ms | RAM: 2572.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 3163.03 ms | Tích lũy: 5533.14 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 4015.76 ms | Tích lũy: 9548.90 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 305.29 ms | Tích lũy: 9854.19 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 303.35 ms | Tích lũy: 10157.54 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 199.54 ms | Tích lũy: 10357.08 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 186.10 ms | Tích lũy: 10543.17 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 217.65 ms | Tích lũy: 10760.82 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 240.57 ms | Tích lũy: 11001.39 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 275.73 ms | Tích lũy: 11277.13 ms | RAM: 397.47 MB | Mẫu: 49316
+
+--- ACTUAL RUN 5 ---
+  [Lô 1/10] Dold=0 | ∆D=245 -> Thời gian: 2424.81 ms | Tích lũy: 2424.81 ms | RAM: 2570.73 MB | Mẫu: 4984526
+  [Lô 2/10] Dold=245 | ∆D=245 -> Thời gian: 2945.97 ms | Tích lũy: 5370.78 ms | RAM: 2926.82 MB | Mẫu: 4539736
+  [Lô 3/10] Dold=490 | ∆D=221 -> Thời gian: 3914.32 ms | Tích lũy: 9285.10 ms | RAM: 3310.90 MB | Mẫu: 4296076
+  [Lô 4/10] Dold=711 | ∆D=239 -> Thời gian: 323.33 ms | Tích lũy: 9608.43 ms | RAM: 432.98 MB | Mẫu: 145530
+  [Lô 5/10] Dold=950 | ∆D=240 -> Thời gian: 303.72 ms | Tích lũy: 9912.15 ms | RAM: 445.07 MB | Mẫu: 136187
+  [Lô 6/10] Dold=1190 | ∆D=208 -> Thời gian: 204.74 ms | Tích lũy: 10116.89 ms | RAM: 387.14 MB | Mẫu: 66624
+  [Lô 7/10] Dold=1398 | ∆D=220 -> Thời gian: 172.44 ms | Tích lũy: 10289.32 ms | RAM: 373.22 MB | Mẫu: 48737
+  [Lô 8/10] Dold=1618 | ∆D=232 -> Thời gian: 197.18 ms | Tích lũy: 10486.50 ms | RAM: 383.30 MB | Mẫu: 49506
+  [Lô 9/10] Dold=1850 | ∆D=213 -> Thời gian: 220.76 ms | Tích lũy: 10707.26 ms | RAM: 391.39 MB | Mẫu: 49666
+  [Lô 10/10] Dold=2063 | ∆D=226 -> Thời gian: 262.86 ms | Tích lũy: 10970.11 ms | RAM: 413.47 MB | Mẫu: 49316
+      Thời gian xử lý: 86.42 s
+✅ Đã tạo file báo cáo tổng hợp: Summary_Report_RQ4_20260328_170018_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10.txt
+      ✅ Đã xuất báo cáo: Summary_Report_RQ4_20260328_170018_D48K-C10-T1-N5K_10-10-10-10-10-10-10-10-10-10_[4_S].txt
+
+=========================================================
+ 🎉 HOÀN TẤT RQ4! CÁC FILE BÁO CÁO ĐÃ ĐƯỢC XUẤT THÀNH CÔNG.
+=========================================================

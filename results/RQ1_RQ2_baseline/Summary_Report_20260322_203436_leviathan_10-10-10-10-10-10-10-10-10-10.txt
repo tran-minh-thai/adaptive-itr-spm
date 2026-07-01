@@ -1,0 +1,147 @@
+==========================================================================================================================================
+ BÁO CÁO TỔNG HỢP THỰC NGHIỆM KHAI PHÁ MẪU TUẦN TỰ (SPM BENCHMARK)
+==========================================================================================================================================
+ Thời gian tạo báo cáo: 22/03/2026 20:34:36
+ File cấu hình        : config_leviathan.txt
+ Dataset              : leviathan.txt
+ Quy mô chia lô       : [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+==========================================================================================================================================
+
+[1] SO SÁNH THỜI GIAN THỰC THI QUA CÁC LÔ (RUNTIME in Seconds)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 1.249        | 2.886        | 5.645        | 9.983        | 16.061       | 23.715       | 32.404       | 41.884       | 52.780       | 64.949       | 
+IncTaSPM_Li        | 245.181      | 358.518      | 490.482      | 701.395      | 959.654      | 1255.691     | 1595.158     | 1968.411     | 2361.321     | 2775.597     | 
+IncStaticTaSPM     | 4762.768     | 4951.586     | 5129.341     | 5440.116     | 5781.071     | 6149.037     | 6577.143     | 7039.958     | 7515.413     | 8002.480     | 
+TalentNoReg        | 122.335      | 210.176      | 330.424      | 506.093      | 747.915      | 1057.066     | 1395.317     | 1761.973     | 2185.408     | 2654.784     | 
+BatchTaSPM         | 20.246       | 34.717       | 54.271       | 82.481       | 120.184      | 165.806      | 217.357      | 272.348      | 334.577      | 403.175      | 
+PrefixSpanTarget   | 20.202       | 34.671       | 54.416       | 82.919       | 121.190      | 167.521      | 219.543      | 274.695      | 336.952      | 404.989      | 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] SO SÁNH BỘ NHỚ ĐỈNH TÍCH LŨY QUA CÁC LÔ (PEAK RAM in MB)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 571.31       | 429.74       | 582.40       | 819.07       | 1055.71      | 1254.36      | 1347.01      | 1415.64      | 1578.25      | 1714.88      | 
+IncTaSPM_Li        | 3328.90      | 914.28       | 2405.03      | 1846.39      | 3259.60      | 2184.55      | 1055.95      | 1363.80      | 2300.50      | 873.73       | 
+IncStaticTaSPM     | 3165.17      | 979.01       | 1780.73      | 2880.80      | 290.75       | 2606.75      | 444.68       | 3593.23      | 1064.90      | 2575.52      | 
+TalentNoReg        | 1058.67      | 3456.29      | 457.74       | 355.52       | 1690.66      | 2464.06      | 2245.34      | 3434.25      | 3519.64      | 2648.86      | 
+BatchTaSPM         | 3547.00      | 2421.88      | 684.81       | 3081.37      | 2022.44      | 3565.19      | 946.11       | 910.85       | 1335.34      | 479.56       | 
+PrefixSpanTarget   | 3547.01      | 2421.84      | 684.69       | 3081.22      | 2022.45      | 3565.19      | 949.86       | 911.01       | 1335.20      | 479.53       | 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[3] KẾT QUẢ TỔNG HỢP CHI TIẾT TỪNG THUẬT TOÁN
+------------------------------------------------------------------------------------------------------------------------------------------
+>>> THUẬT TOÁN: ADAINCTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=1000
+- Tham số AdaInc: Weights=[0.35, 0.35, 0.2, 0.1], eta=0.2, lambda=0.1
+- Phân vùng: Dold=5095 chuỗi | ∆D=567 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 63663 (Trung bình: 6366.3 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 6527 (Trung bình: 652.7 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 89.75%
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 1713.38 MB
+- Lịch sử Runtime (s) qua các lô : 1.249, 2.886, 5.645, 9.983, 16.061, 23.715, 32.404, 41.884, 52.780, 64.949
+- Lịch sử Peak RAM (MB) qua các lô: 571.31, 429.74, 582.40, 819.07, 1055.71, 1254.36, 1347.01, 1415.64, 1578.25, 1714.88
+- Tổng thời gian cộng dồn (Cumulative Update Time): 64.949 s
+- Peak Memory toàn trình (Max Update Mem): 1714.88 MB
+
+>>> THUẬT TOÁN: INCTASPM_LI
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=1000
+- Tham số Li et al.: buffer_ratio=0.1 (Ngưỡng vùng đệm tĩnh)
+- Phân vùng: Dold=5095 chuỗi | ∆D=567 chuỗi
+- Ngưỡng nội bộ: min_sup=30 | pre_large_threshold=27
+- Tổng Item ban đầu (Toàn trình)      : 24938 (Trung bình: 2493.8 items/lô)
+- Tổng mẫu đệm sau tỉa (Toàn trình)   : 7728 (Trung bình: 772.8 mẫu/lô)
+- Tỷ lệ cắt tỉa trung bình (Toàn trình): 69.01%
+- Tổng số lần phải Quét ngược (Backscan Count): 20736 lần
+- Quét ngược trung bình mỗi lô: 2073.60 lần
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 3328.83 MB
+- Lịch sử Runtime (s) qua các lô : 245.181, 358.518, 490.482, 701.395, 959.654, 1255.691, 1595.158, 1968.411, 2361.321, 2775.597
+- Lịch sử Peak RAM (MB) qua các lô: 3328.90, 914.28, 2405.03, 1846.39, 3259.60, 2184.55, 1055.95, 1363.80, 2300.50, 873.73
+- Lịch sử Backscan qua các lô    : 1146, 1283, 1458, 1763, 1896, 2131, 2488, 2688, 2858, 3025
+- Tổng thời gian cộng dồn (Cumulative Update Time): 2775.597 s
+- Peak Memory toàn trình (Max Update Mem): 3328.90 MB
+
+>>> THUẬT TOÁN: INCSTATICTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=1000
+- Tham số IncStatic: buffer_ratio=0.1 (Ngưỡng vùng đệm tĩnh)
+- Phân vùng: Dold=5095 chuỗi | ∆D=567 chuỗi
+- Ngưỡng nội bộ: min_sup=30 | pre_large_threshold=27
+- Tổng số Hạng mục (1-item) khởi tạo      : 63663 (Trung bình: 6366.3 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 7728 (Trung bình: 772.8 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 87.86%
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 3593.04 MB
+- Lịch sử Runtime (s) qua các lô : 4762.768, 4951.586, 5129.341, 5440.116, 5781.071, 6149.037, 6577.143, 7039.958, 7515.413, 8002.480
+- Lịch sử Peak RAM (MB) qua các lô: 3165.17, 979.01, 1780.73, 2880.80, 290.75, 2606.75, 444.68, 3593.23, 1064.90, 2575.52
+- Tổng thời gian cộng dồn (Cumulative Update Time): 8002.480 s
+- Peak Memory toàn trình (Max Update Mem): 3593.23 MB
+
+>>> THUẬT TOÁN: TALENTNOREG
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=1000
+- Tham số: TalentNoReg (Pure Batch + Correct SPM Matrices)
+- Phân vùng: Dold=5251 chuỗi | ∆D=583 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 63663 (Trung bình: 6366.3 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 6521 (Trung bình: 652.1 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 89.76%
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 3472.12 MB
+- Lịch sử Runtime (s) qua các lô : 122.335, 210.176, 330.424, 506.093, 747.915, 1057.066, 1395.317, 1761.973, 2185.408, 2654.784
+- Lịch sử Peak RAM (MB) qua các lô: 1058.67, 3456.29, 457.74, 355.52, 1690.66, 2464.06, 2245.34, 3434.25, 3519.64, 2648.86
+- Tổng thời gian cộng dồn (Cumulative Update Time): 2654.784 s
+- Peak Memory toàn trình (Max Update Mem): 3519.64 MB
+
+>>> THUẬT TOÁN: BATCHTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: BatchTaSPM (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 63663 (Trung bình: 6366.3 items/lô)
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 3565.15 MB
+- Lịch sử Runtime (s) qua các lô : 20.246, 34.717, 54.271, 82.481, 120.184, 165.806, 217.357, 272.348, 334.577, 403.175
+- Lịch sử Peak RAM (MB) qua các lô: 3547.00, 2421.88, 684.81, 3081.37, 2022.44, 3565.19, 946.11, 910.85, 1335.34, 479.56
+- Tổng thời gian cộng dồn (Cumulative Update Time): 403.175 s
+- Peak Memory toàn trình (Max Update Mem): 3565.19 MB
+
+>>> THUẬT TOÁN: PREFIXSPANTARGET
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: leviathan.txt
+- Kích thước dữ liệu gốc (Data size): 5834 chuỗi
+- Kích thước DB sau lọc Target: 5662 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: PrefixSpan (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 63663 (Trung bình: 6366.3 items/lô)
+- Tổng số mẫu (Patterns): 708537
+- Peak Memory trung bình: 3565.13 MB
+- Lịch sử Runtime (s) qua các lô : 20.202, 34.671, 54.416, 82.919, 121.190, 167.521, 219.543, 274.695, 336.952, 404.989
+- Lịch sử Peak RAM (MB) qua các lô: 3547.01, 2421.84, 684.69, 3081.22, 2022.45, 3565.19, 949.86, 911.01, 1335.20, 479.53
+- Tổng thời gian cộng dồn (Cumulative Update Time): 404.989 s
+- Peak Memory toàn trình (Max Update Mem): 3565.19 MB
+

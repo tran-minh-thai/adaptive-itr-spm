@@ -1,0 +1,125 @@
+==========================================================================================================================================
+ BÁO CÁO TỔNG HỢP THỰC NGHIỆM KHAI PHÁ MẪU TUẦN TỰ (SPM BENCHMARK)
+==========================================================================================================================================
+ Thời gian tạo báo cáo: 16/03/2026 17:04:55
+ File cấu hình        : config_D45K.txt
+ Dataset              : D45K-C8-T1-N5K.txt
+ Quy mô chia lô       : [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+==========================================================================================================================================
+
+[1] SO SÁNH THỜI GIAN THỰC THI QUA CÁC LÔ (RUNTIME in Seconds)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 4.169        | 4.262        | 4.339        | 4.385        | 4.417        | 4.485        | 4.540        | 4.575        | 4.612        | 4.668        | 
+IncTaSPM_Li        | 2754.721     | 2761.713     | 2766.802     | 2770.478     | 2771.729     | 2773.673     | 2775.108     | 2776.653     | 2778.268     | 2778.591     | 
+TalentNoReg        | 136.785      | 137.928      | 138.705      | 139.363      | 139.648      | 139.910      | 140.187      | 140.431      | 140.785      | 140.947      | 
+BatchTaSPM         | 176.661      | 177.996      | 179.287      | 180.326      | 180.791      | 181.253      | 181.696      | 182.176      | 182.726      | 183.002      |
+PrefixSpanTarget   | 158.271      | 159.419      | 160.532      | 161.349      | 161.719      | 162.024      | 162.296      | 162.644      | 163.002      | 163.179      |
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] SO SÁNH BỘ NHỚ ĐỈNH TÍCH LŨY QUA CÁC LÔ (PEAK RAM in MB)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 616.67       | 346.54       | 340.57       | 332.60       | 316.63       | 316.66       | 314.69       | 316.73       | 316.75       | 306.78       | 
+IncTaSPM_Li        | 849.31       | 1749.01      | 1850.83      | 3089.05      | 2270.58      | 3520.59      | 2724.83      | 2960.96      | 3143.06      | 645.14       | 
+TalentNoReg        | 996.33       | 1578.12      | 1132.12      | 814.12       | 320.12       | 390.12       | 340.12       | 382.12       | 406.12       | 196.12       | 
+BatchTaSPM         | 61.05        | 2042.13      | 1844.13      | 1440.13      | 628.13       | 744.13       | 638.13       | 752.13       | 804.13       | 294.13       | 
+PrefixSpanTarget   | 61.08        | 2042.13      | 1844.13      | 1440.13      | 628.13       | 744.13       | 638.13       | 752.13       |
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[3] KẾT QUẢ TỔNG HỢP CHI TIẾT TỪNG THUẬT TOÁN
+------------------------------------------------------------------------------------------------------------------------------------------
+>>> THUẬT TOÁN: ADAINCTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: D45K-C8-T1-N5K.txt
+- Kích thước dữ liệu gốc (Data size): 45535 chuỗi
+- Kích thước DB sau lọc Target: 1347 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=4.0E-4, max_per=5000
+- Tham số AdaInc: Weights=[0.35, 0.35, 0.2, 0.1], eta=0.2, lambda=0.1
+- Phân vùng: Dold=1210 chuỗi | ∆D=137 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 30457 (Trung bình: 3045.7 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 2174 (Trung bình: 217.4 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 92.86%
+- Tổng số mẫu (Patterns): 1886
+- Peak Memory trung bình: 615.17 MB
+- Lịch sử Runtime (s) qua các lô : 4.169, 4.262, 4.339, 4.385, 4.417, 4.485, 4.540, 4.575, 4.612, 4.668
+- Lịch sử Peak RAM (MB) qua các lô: 616.67, 346.54, 340.57, 332.60, 316.63, 316.66, 314.69, 316.73, 316.75, 306.78
+- Tổng thời gian cộng dồn (Cumulative Update Time): 4.668 s
+- Peak Memory toàn trình (Max Update Mem): 616.67 MB
+
+>>> THUẬT TOÁN: INCTASPM_LI
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: D45K-C8-T1-N5K.txt
+- Kích thước dữ liệu gốc (Data size): 45535 chuỗi
+- Kích thước DB sau lọc Target: 1347 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=4.0E-4, max_per=5000
+- Tham số Li et al.: buffer_ratio=0.1 (Ngưỡng vùng đệm tĩnh)
+- Phân vùng: Dold=1210 chuỗi | ∆D=137 chuỗi
+- Ngưỡng nội bộ: min_sup=19 | pre_large_threshold=17
+- Tổng Item ban đầu (Toàn trình)      : 11342 (Trung bình: 1134.2 items/lô)
+- Tổng mẫu đệm sau tỉa (Toàn trình)   : 3599 (Trung bình: 359.9 mẫu/lô)
+- Tỷ lệ cắt tỉa trung bình (Toàn trình): 68.27%
+- Tổng số lần phải Quét ngược (Backscan Count): 19050 lần
+- Quét ngược trung bình mỗi lô: 1905.00 lần
+- Tổng số mẫu (Patterns): 1886
+- Peak Memory trung bình: 3520.59 MB
+- Lịch sử Runtime (s) qua các lô : 2754.721, 2761.713, 2766.802, 2770.478, 2771.729, 2773.673, 2775.108, 2776.653, 2778.268, 2778.591
+- Lịch sử Peak RAM (MB) qua các lô: 849.31, 1749.01, 1850.83, 3089.05, 2270.58, 3520.59, 2724.83, 2960.96, 3143.06, 645.14
+- Lịch sử Backscan qua các lô    : 1189, 1189, 1247, 1359, 1427, 2465, 2479, 2537, 2568, 2590
+- Tổng thời gian cộng dồn (Cumulative Update Time): 2778.591 s
+- Peak Memory toàn trình (Max Update Mem): 3520.59 MB
+
+>>> THUẬT TOÁN: TALENTNOREG
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: D45K-C8-T1-N5K.txt
+- Kích thước dữ liệu gốc (Data size): 45535 chuỗi
+- Kích thước DB sau lọc Target: 1347 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=4.0E-4, max_per=5000
+- Tham số: TalentNoReg (Pure Batch + Correct SPM Matrices)
+- Phân vùng: Dold=40981 chuỗi | ∆D=4554 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 30457 (Trung bình: 3045.7 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 2174 (Trung bình: 217.4 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 92.86%
+- Tổng số mẫu (Patterns): 1886
+- Peak Memory trung bình: 1578.12 MB
+- Lịch sử Runtime (s) qua các lô : 136.785, 137.928, 138.705, 139.363, 139.648, 139.910, 140.187, 140.431, 140.785, 140.947
+- Lịch sử Peak RAM (MB) qua các lô: 996.33, 1578.12, 1132.12, 814.12, 320.12, 390.12, 340.12, 382.12, 406.12, 196.12
+- Tổng thời gian cộng dồn (Cumulative Update Time): 140.947 s
+- Peak Memory toàn trình (Max Update Mem): 1578.12 MB
+
+>>> THUẬT TOÁN: BATCHTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: D45K-C8-T1-N5K.txt
+- Kích thước dữ liệu gốc (Data size): 45535 chuỗi
+- Kích thước DB sau lọc Target: 1347 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: BatchTaSPM (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 30457 (Trung bình: 3045.7 items/lô)
+- Tổng số mẫu (Patterns): 1886
+- Peak Memory trung bình: 2042.13 MB
+- Lịch sử Runtime (s) qua các lô : 176.661, 177.996, 179.287, 180.326, 180.791, 181.253, 181.696, 182.176, 182.726, 183.002
+- Lịch sử Peak RAM (MB) qua các lô: 61.05, 2042.13, 1844.13, 1440.13, 628.13, 744.13, 638.13, 752.13, 804.13, 294.13
+- Tổng thời gian cộng dồn (Cumulative Update Time): 183.002 s
+- Peak Memory toàn trình (Max Update Mem): 2042.13 MB
+
+>>> THUẬT TOÁN: PREFIXSPANTARGET
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: D45K-C8-T1-N5K.txt
+- Kích thước dữ liệu gốc (Data size): 45535 chuỗi
+- Kích thước DB sau lọc Target: 1347 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: PrefixSpan (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 30457 (Trung bình: 3045.7 items/lô)
+- Tổng số mẫu (Patterns): 1886
+- Peak Memory trung bình: 2042.13 MB
+- Lịch sử Runtime (s) qua các lô : 158.271, 159.419, 160.532, 161.349, 161.719, 162.024, 162.296, 162.644, 163.002, 163.179
+- Lịch sử Peak RAM (MB) qua các lô: 61.08, 2042.13, 1844.13, 1440.13, 628.13, 744.13, 638.13, 752.13, 804.13, 294.13
+- Tổng thời gian cộng dồn (Cumulative Update Time): 163.179 s
+- Peak Memory toàn trình (Max Update Mem): 2042.13 MB
+

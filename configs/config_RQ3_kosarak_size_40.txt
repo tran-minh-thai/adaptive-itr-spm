@@ -1,0 +1,36 @@
+# ========================================================================
+# GENERAL EXPERIMENT CONFIGURATION
+# Note: no spaces around the "=" sign
+# ========================================================================
+# --- 1. INPUT DATA ---
+# Input dataset filename (relative to datasets/ or an absolute path)
+dataset_path=kosarak_40.txt
+# Batch split ratio (default: 10 batches of 10% each)
+data_chunks=0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1
+# --- 2. CORE MINING PARAMETERS ---
+# Relative minimum support threshold (e.g. 0.005 = 0.5% of the current sequence count)
+min_sup_rate=0.002
+# Maximum gap between consecutive occurrences for a pattern to remain "regular"
+max_per=2000
+# List of target items (must be real item ids from the dataset)
+target_items=6, 3, 11, 1, 218
+# Pre-large buffer ratio used by the incremental baselines (IncTaSPM_Li, IncStaticTaSPM)
+buffer_ratio=0.1
+# --- 3. ADA-INC ADAPTIVE-PRUNING WEIGHTS ---
+# Support-relaxation amplitude (eta) - max allowed reduction, e.g. 0.05 = up to 5% off
+eta=0.2
+# Time-decay coefficient (lambda) used by the Recency component
+lambda=0.1
+# w1: weight of the Volume (local support density) component
+w1=0.35
+# w2: weight of the Target-Proximity (target co-occurrence) component
+w2=0.35
+# w3: weight of the Recency (time-decay) component
+w3=0.2
+# w4: weight of the Stability (Welford variance) component
+w4=0.1
+# --- 4. BENCHMARK SETTINGS ---
+# Total iterations per batch (warm-up + measured runs)
+total_runs=7
+# Number of warm-up iterations (JVM JIT training, excluded from the measurement)
+warmup_runs=2

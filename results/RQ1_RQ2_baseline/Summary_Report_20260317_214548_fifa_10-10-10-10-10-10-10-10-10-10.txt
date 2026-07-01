@@ -1,0 +1,147 @@
+==========================================================================================================================================
+ BÁO CÁO TỔNG HỢP THỰC NGHIỆM KHAI PHÁ MẪU TUẦN TỰ (SPM BENCHMARK)
+==========================================================================================================================================
+ Thời gian tạo báo cáo: 17/03/2026 21:45:48
+ File cấu hình        : config_fifa.txt
+ Dataset              : fifa.txt
+ Quy mô chia lô       : [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+==========================================================================================================================================
+
+[1] SO SÁNH THỜI GIAN THỰC THI QUA CÁC LÔ (RUNTIME in Seconds)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 5.672        | 13.103       | 19.026       | 25.878       | 33.429       | 41.755       | 50.706       | 59.976       | 69.853       | 80.154       | 
+IncTaSPM_Li        | 307.555      | 797.241      | 1189.057     | 1682.683     | 2229.495     | 2830.242     | 3518.883     | 4231.427     | 4981.010     | 5753.728     | 
+IncStaticTaSPM     | 301.710      | 773.811      | 1150.751     | 1628.321     | 2160.807     | 2762.122     | 3451.111     | 4175.531     | 4939.427     | 5725.565     | 
+TalentNoReg        | 542.485      | 1454.392     | 2229.211     | 3158.597     | 4330.715     | 5681.084     | 7195.310     | 8785.206     | 10490.511    | 12283.883    | 
+BatchTaSPM         | 102.692      | 271.911      | 415.656      | 589.592      | 797.495      | 1031.992     | 1291.102     | 1568.148     | 1867.593     | 2181.626     | 
+PrefixSpanTarget   | 103.673      | 272.214      | 417.017      | 595.252      | 801.863      | 1029.316     | 1281.160     | 1555.779     | 1853.686     | 2166.739     | 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] SO SÁNH BỘ NHỚ ĐỈNH TÍCH LŨY QUA CÁC LÔ (PEAK RAM in MB)
+------------------------------------------------------------------------------------------------------------------------------------------
+Thuật toán         | Lô 1          | Lô 2          | Lô 3          | Lô 4          | Lô 5          | Lô 6          | Lô 7          | Lô 8          | Lô 9          | Lô 10         | 
+------------------------------------------------------------------------------------------------------------------------------------------
+AdaIncTaSPM        | 446.43       | 538.25       | 420.05       | 471.88       | 519.59       | 569.36       | 605.25       | 628.98       | 664.79       | 690.46       | 
+IncTaSPM_Li        | 333.07       | 31.91        | 3084.63      | 1568.01      | 3733.57      | 249.60       | 2886.52      | 2237.40      | 493.29       | 3717.95      | 
+IncStaticTaSPM     | 2788.85      | 1066.34      | 853.49       | 269.90       | 1830.41      | 2137.03      | 3475.62      | 319.52       | 2854.56      | 3571.49      | 
+TalentNoReg        | 1773.26      | 2305.94      | 1868.38      | 2132.02      | 805.75       | 147.48       | 2307.29      | 1245.14      | 2870.69      | 3587.91      | 
+BatchTaSPM         | 471.30       | 2209.13      | 2799.60      | 3111.06      | 1727.61      | 2510.66      | 3145.25      | 2988.12      | 1051.34      | 2947.66      | 
+PrefixSpanTarget   | 471.34       | 2208.93      | 2796.73      | 3125.18      | 1728.22      | 2522.43      | 3154.88      | 2983.52      | 1048.29      | 2947.69      | 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[3] KẾT QUẢ TỔNG HỢP CHI TIẾT TỪNG THUẬT TOÁN
+------------------------------------------------------------------------------------------------------------------------------------------
+>>> THUẬT TOÁN: ADAINCTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=70
+- Tham số AdaInc: Weights=[0.35, 0.35, 0.2, 0.1], eta=0.2, lambda=0.1
+- Phân vùng: Dold=11947 chuỗi | ∆D=1319 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 21232 (Trung bình: 2123.2 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 3706 (Trung bình: 370.6 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 82.55%
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 690.36 MB
+- Lịch sử Runtime (s) qua các lô : 5.672, 13.103, 19.026, 25.878, 33.429, 41.755, 50.706, 59.976, 69.853, 80.154
+- Lịch sử Peak RAM (MB) qua các lô: 446.43, 538.25, 420.05, 471.88, 519.59, 569.36, 605.25, 628.98, 664.79, 690.46
+- Tổng thời gian cộng dồn (Cumulative Update Time): 80.154 s
+- Peak Memory toàn trình (Max Update Mem): 690.46 MB
+
+>>> THUẬT TOÁN: INCTASPM_LI
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=70
+- Tham số Li et al.: buffer_ratio=0.1 (Ngưỡng vùng đệm tĩnh)
+- Phân vùng: Dold=11947 chuỗi | ∆D=1319 chuỗi
+- Ngưỡng nội bộ: min_sup=103 | pre_large_threshold=92
+- Tổng Item ban đầu (Toàn trình)      : 13734 (Trung bình: 1373.4 items/lô)
+- Tổng mẫu đệm sau tỉa (Toàn trình)   : 4047 (Trung bình: 404.7 mẫu/lô)
+- Tỷ lệ cắt tỉa trung bình (Toàn trình): 70.53%
+- Tổng số lần phải Quét ngược (Backscan Count): 5778 lần
+- Quét ngược trung bình mỗi lô: 577.80 lần
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 3732.23 MB
+- Lịch sử Runtime (s) qua các lô : 307.555, 797.241, 1189.057, 1682.683, 2229.495, 2830.242, 3518.883, 4231.427, 4981.010, 5753.728
+- Lịch sử Peak RAM (MB) qua các lô: 333.07, 31.91, 3084.63, 1568.01, 3733.57, 249.60, 2886.52, 2237.40, 493.29, 3717.95
+- Lịch sử Backscan qua các lô    : 449, 488, 523, 546, 557, 582, 632, 653, 663, 685
+- Tổng thời gian cộng dồn (Cumulative Update Time): 5753.728 s
+- Peak Memory toàn trình (Max Update Mem): 3733.57 MB
+
+>>> THUẬT TOÁN: INCSTATICTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=70
+- Tham số IncStatic: buffer_ratio=0.1 (Ngưỡng vùng đệm tĩnh)
+- Phân vùng: Dold=11947 chuỗi | ∆D=1319 chuỗi
+- Ngưỡng nội bộ: min_sup=103 | pre_large_threshold=92
+- Tổng số Hạng mục (1-item) khởi tạo      : 21232 (Trung bình: 2123.2 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 4047 (Trung bình: 404.7 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 80.94%
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 3571.49 MB
+- Lịch sử Runtime (s) qua các lô : 301.710, 773.811, 1150.751, 1628.321, 2160.807, 2762.122, 3451.111, 4175.531, 4939.427, 5725.565
+- Lịch sử Peak RAM (MB) qua các lô: 2788.85, 1066.34, 853.49, 269.90, 1830.41, 2137.03, 3475.62, 319.52, 2854.56, 3571.49
+- Tổng thời gian cộng dồn (Cumulative Update Time): 5725.565 s
+- Peak Memory toàn trình (Max Update Mem): 3571.49 MB
+
+>>> THUẬT TOÁN: TALENTNOREG
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Cấu hình chung: min_sup_rate=0.005, max_per=70
+- Tham số: TalentNoReg (Pure Batch + Correct SPM Matrices)
+- Phân vùng: Dold=18405 chuỗi | ∆D=2045 chuỗi
+- Tổng số Hạng mục (1-item) khởi tạo      : 21232 (Trung bình: 2123.2 items/lô)
+- Tổng số Mục ứng viên lọt qua bộ lọc     : 3661 (Trung bình: 366.1 ứng viên/lô)
+- Tỷ lệ cắt tỉa không gian tìm kiếm (TB)  : 82.76%
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 3587.91 MB
+- Lịch sử Runtime (s) qua các lô : 542.485, 1454.392, 2229.211, 3158.597, 4330.715, 5681.084, 7195.310, 8785.206, 10490.511, 12283.883
+- Lịch sử Peak RAM (MB) qua các lô: 1773.26, 2305.94, 1868.38, 2132.02, 805.75, 147.48, 2307.29, 1245.14, 2870.69, 3587.91
+- Tổng thời gian cộng dồn (Cumulative Update Time): 12283.883 s
+- Peak Memory toàn trình (Max Update Mem): 3587.91 MB
+
+>>> THUẬT TOÁN: BATCHTASPM
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: BatchTaSPM (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 21232 (Trung bình: 2123.2 items/lô)
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 3143.71 MB
+- Lịch sử Runtime (s) qua các lô : 102.692, 271.911, 415.656, 589.592, 797.495, 1031.992, 1291.102, 1568.148, 1867.593, 2181.626
+- Lịch sử Peak RAM (MB) qua các lô: 471.30, 2209.13, 2799.60, 3111.06, 1727.61, 2510.66, 3145.25, 2988.12, 1051.34, 2947.66
+- Tổng thời gian cộng dồn (Cumulative Update Time): 2181.626 s
+- Peak Memory toàn trình (Max Update Mem): 3145.25 MB
+
+>>> THUẬT TOÁN: PREFIXSPANTARGET
+KẾT QUẢ TỔNG HỢP CHI TIẾT (LÔ CUỐI CÙNG):
+- Dataset: fifa.txt
+- Kích thước dữ liệu gốc (Data size): 20450 chuỗi
+- Kích thước DB sau lọc Target: 13266 chuỗi (Tính trên lô cuối)
+- Tỉ lệ phân chia lô (Data chunks): [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+- Tham số thuật toán: PrefixSpan (Pure Batch - Bao gồm chi phí I/O)
+- Tổng số Hạng mục (1-item) khởi tạo      : 21232 (Trung bình: 2123.2 items/lô)
+- Tổng số mẫu (Patterns): 7675
+- Peak Memory trung bình: 3143.22 MB
+- Lịch sử Runtime (s) qua các lô : 103.673, 272.214, 417.017, 595.252, 801.863, 1029.316, 1281.160, 1555.779, 1853.686, 2166.739
+- Lịch sử Peak RAM (MB) qua các lô: 471.34, 2208.93, 2796.73, 3125.18, 1728.22, 2522.43, 3154.88, 2983.52, 1048.29, 2947.69
+- Tổng thời gian cộng dồn (Cumulative Update Time): 2166.739 s
+- Peak Memory toàn trình (Max Update Mem): 3154.88 MB
+

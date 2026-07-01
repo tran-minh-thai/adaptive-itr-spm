@@ -1,0 +1,37 @@
+# Maven build output
+target/
+*.class
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# The bundled datasets in datasets/*.txt and the reference experiment outputs
+# in results/**/*.txt ARE checked in so the repository is self-contained for
+# paper reproducibility. If you re-run experiments and prefer to keep the
+# working directory tidy, uncomment the lines below to ignore fresh outputs.
+#
+# results/result_*.txt
+# results/Summary_Report_*.txt
+
+# Legacy compiled artifacts
+*.jar
+!lib/*.jar
+
+# Log files
+*.log
+
+# Backup files
+*.bak
+*.tmp
+*~
