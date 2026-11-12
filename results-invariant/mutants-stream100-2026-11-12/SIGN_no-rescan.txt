@@ -1,0 +1,7 @@
+command: results-invariant/mutants-stream100-2026-11-12/run.sh; git 9caabe7; jar sha256 74be334fac100be7; VerifyMutants md5 b94f7b79054922f0edfc7dd9e2afce4c
+openjdk version "25.0.4.1" 2026-08-18 LTS
+comparator: missing/support/extra caught and identical maps clean = true
+no-rescan: batches with a difference = 98 of 101 | engine counters: rescans=0 rescans_inserting=0 promotions=2249688
+unmodified engine (control): batches with a difference = 0 of 101 | engine counters: rescans=522330 rescans_inserting=64319 promotions=2266653
+ALL CAUGHT
+exit=0

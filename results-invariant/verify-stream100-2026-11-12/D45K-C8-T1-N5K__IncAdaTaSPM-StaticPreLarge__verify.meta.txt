@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_D45K.txt --arm=IncAdaTaSPM-StaticPreLarge --mode=verify --timeout-min=240 --out=results-invariant/verify-stream100-2026-11-12
+started=2026-11-12T11:06:58+07:00
+build.source_tree_id=3647f323957ad565d07158f5f967469d03ab74cb
+build.source_commit=6203faca5b7a18569fccc5bf50f2efa8f0dce973
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-12T00:13:34Z
+build.release=8
+jar_sha256=74be334fac100be70e4be0b10ac4b0cc5659077d63c2c3d9324368554d88a01d
+config_file=stream_D45K.txt
+config_sha256=19e526f3c86e168a3524caf78555deaf0f3ca855b9a25b9c64cdde583dafaefd
+dataset=D45K-C8-T1-N5K.txt
+dataset_sha256=52f8ea78f4036e603e82e67b1e974824fb7c9dd6867a03d58905ca8a9b594ebc
+sequences=45535 target_sequences=1347
+init_size=25535 batch_count=100 increment_sizes=200
+min_sup_rate=0.0004 max_per=5000 targets=[2238402, 4178270, 3406625, 4999999, 3659561]
+arm=IncAdaTaSPM-StaticPreLarge params: eta=0.5 lambda=0.1 wV=0.25 wR=0.25 wS=0.25 wTBR=0.0 phi=0.5 lazy=true score=const
+load_ms=145 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=6144 jvm_args=[-Xms6g, -Xmx6g]
+verify: reference arm RemineTaSPM, exact comparison of pattern sets and supports after every batch
+verify_batches_compared=101 batches_with_difference=0 reference_patterns_summed_over_batches=1088657
+finished=2026-11-12T11:07:01+07:00 exit=0

@@ -1,0 +1,10 @@
+written=2026-11-12T11:10:03+07:00
+hostname=ThaiTMs-MacBook-Pro.local
+os=Mac OS X 27.2 arch=aarch64
+cpu=unknown logical_processors=10
+physical_memory_mb=32768
+java.runtime.version=25.0.4.1+1-LTS
+java.vendor=Eclipse Adoptium
+java.vm.name=OpenJDK 64-Bit Server VM
+max_heap_mb=6144
+collectors=G1 Young Generation;G1 Concurrent GC;G1 Old Generation;

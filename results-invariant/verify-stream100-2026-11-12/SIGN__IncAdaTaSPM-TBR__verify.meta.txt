@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_sign.txt --arm=IncAdaTaSPM-TBR --mode=verify --timeout-min=240 --out=results-invariant/verify-stream100-2026-11-12
+started=2026-11-12T09:03:51+07:00
+build.source_tree_id=3647f323957ad565d07158f5f967469d03ab74cb
+build.source_commit=6203faca5b7a18569fccc5bf50f2efa8f0dce973
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-12T00:13:34Z
+build.release=8
+jar_sha256=74be334fac100be70e4be0b10ac4b0cc5659077d63c2c3d9324368554d88a01d
+config_file=stream_sign.txt
+config_sha256=de7422764b257aa4f76ea356e8f74f62e41bb754ca83ef4a15d574b306ac9b58
+dataset=SIGN.txt
+dataset_sha256=3c93441fd0fa2b9ebb85b2ef606f1d435596ae8962def78aca5ac27d83188981
+sequences=730 target_sequences=676
+init_size=230 batch_count=100 increment_sizes=5
+min_sup_rate=0.05 max_per=200 targets=[3, 4, 5, 6, 7]
+arm=IncAdaTaSPM-TBR params: eta=0.5 lambda=0.1 wV=0.25 wR=0.25 wS=0.25 wTBR=0.25 phi=0.5 lazy=true score=adaptive
+load_ms=25 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=6144 jvm_args=[-Xms6g, -Xmx6g]
+verify: reference arm RemineTaSPM, exact comparison of pattern sets and supports after every batch
+verify_batches_compared=101 batches_with_difference=0 reference_patterns_summed_over_batches=11177498
+finished=2026-11-12T09:10:08+07:00 exit=0
