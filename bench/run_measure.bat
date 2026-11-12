@@ -9,7 +9,7 @@ rem
 rem Results go to results\stream-bench\<COMPUTERNAME>\ : one CSV and one .meta.txt per run,
 rem machine.txt, java-version.txt, runtime.lock and progress.log.
 rem Running the same command again resumes: a run whose CSV exists is skipped (exit code 4).
-rem Heap: set BENCH_XMX before running to change it (default 48g, used for -Xms and -Xmx;
+rem Heap: set BENCH_XMX before running to change it (default 32g, used for -Xms and -Xmx;
 rem the measurement machine has 64 GB of RAM).
 rem
 rem Before a long campaign: pause Windows Update, select the High performance power plan,
@@ -19,7 +19,7 @@ rem disable sleep (run.txt in the project keeps the machine awake while this scr
 setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0.."
 set "ONLY=%~1"
-if not defined BENCH_XMX set "BENCH_XMX=48g"
+if not defined BENCH_XMX set "BENCH_XMX=32g"
 set "JAVA=java"
 if defined JAVA_HOME set "JAVA=%JAVA_HOME%\bin\java.exe"
 set "JAR=bench\adaptive-itr-spm-bench.jar"
