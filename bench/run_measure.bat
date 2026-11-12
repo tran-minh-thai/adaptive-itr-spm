@@ -20,8 +20,15 @@ setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0.."
 set "ONLY=%~1"
 if not defined BENCH_XMX set "BENCH_XMX=32g"
+rem Java: JAVA_HOME\bin\java.exe only when that file exists, otherwise java on PATH.
 set "JAVA=java"
-if defined JAVA_HOME set "JAVA=%JAVA_HOME%\bin\java.exe"
+set "JAVA_SRC=PATH"
+set "JH="
+if defined JAVA_HOME set "JH=%JAVA_HOME:"=%"
+if defined JH if exist "!JH!\bin\java.exe" set "JAVA_SRC=JAVA_HOME"
+if "!JAVA_SRC!"=="JAVA_HOME" set "JAVA=!JH!\bin\java.exe"
+if defined JH if "!JAVA_SRC!"=="PATH" echo [run_measure] JAVA_HOME has no bin\java.exe: "!JH!"; using java on PATH
+echo [run_measure] java from !JAVA_SRC!: "!JAVA!"
 set "JAR=bench\adaptive-itr-spm-bench.jar"
 if not exist "%JAR%" (
   echo [run_measure] missing %CD%\%JAR%
@@ -33,9 +40,10 @@ if not exist "bench\plan.txt" (
 )
 set "OUT=results\stream-bench\%COMPUTERNAME%"
 if not exist "%OUT%" mkdir "%OUT%"
-"%JAVA%" -version > "%OUT%\java-version.txt" 2>&1
+> "%OUT%\java-version.txt" echo java from !JAVA_SRC!
+"%JAVA%" -version >> "%OUT%\java-version.txt" 2>&1
 if errorlevel 1 (
-  echo [run_measure] cannot start Java with "%JAVA%"
+  echo [run_measure] cannot start Java with "%JAVA%" ^(from !JAVA_SRC!^); see %OUT%\java-version.txt
   exit /b 2
 )
 set /a NDONE=0, NSKIP=0, NLIMIT=0, NDIFF=0, NFAIL=0, NSEEN=0
