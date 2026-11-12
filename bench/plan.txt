@@ -34,13 +34,6 @@ main-time;stream_bms1.txt;IncAdaTaSPM-Original;time;-;--reps=auto
 main-time;stream_bms1.txt;RemineTaSPM;time;-;--reps=auto
 main-time;stream_bms1.txt;BatchTaSPM;time;-;--reps=auto
 main-time;stream_bms1.txt;ItemPreLargeTaSPM;time;-;--reps=auto
-main-time;stream_D45K.txt;IncAdaTaSPM;time;-;--reps=auto
-main-time;stream_D45K.txt;IncAdaTaSPM-NoBuffer;time;-;--reps=auto
-main-time;stream_D45K.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
-main-time;stream_D45K.txt;IncAdaTaSPM-Original;time;-;--reps=auto
-main-time;stream_D45K.txt;RemineTaSPM;time;-;--reps=auto
-main-time;stream_D45K.txt;BatchTaSPM;time;-;--reps=auto
-main-time;stream_D45K.txt;ItemPreLargeTaSPM;time;-;--reps=auto
 main-time;stream_D48K.txt;IncAdaTaSPM;time;-;--reps=auto
 main-time;stream_D48K.txt;IncAdaTaSPM-NoBuffer;time;-;--reps=auto
 main-time;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
@@ -90,13 +83,6 @@ main-live;stream_bms1.txt;IncAdaTaSPM-Original;live;-;--reps=auto
 main-live;stream_bms1.txt;RemineTaSPM;live;-;--reps=auto
 main-live;stream_bms1.txt;BatchTaSPM;live;-;--reps=auto
 main-live;stream_bms1.txt;ItemPreLargeTaSPM;live;-;--reps=auto
-main-live;stream_D45K.txt;IncAdaTaSPM;live;-;--reps=auto
-main-live;stream_D45K.txt;IncAdaTaSPM-NoBuffer;live;-;--reps=auto
-main-live;stream_D45K.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
-main-live;stream_D45K.txt;IncAdaTaSPM-Original;live;-;--reps=auto
-main-live;stream_D45K.txt;RemineTaSPM;live;-;--reps=auto
-main-live;stream_D45K.txt;BatchTaSPM;live;-;--reps=auto
-main-live;stream_D45K.txt;ItemPreLargeTaSPM;live;-;--reps=auto
 main-live;stream_D48K.txt;IncAdaTaSPM;live;-;--reps=auto
 main-live;stream_D48K.txt;IncAdaTaSPM-NoBuffer;live;-;--reps=auto
 main-live;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
@@ -121,8 +107,6 @@ tbr;stream_bible.txt;IncAdaTaSPM-TBR;time;-;--reps=auto
 tbr;stream_bible.txt;IncAdaTaSPM-TBR;live;-;--reps=auto
 tbr;stream_bms1.txt;IncAdaTaSPM-TBR;time;-;--reps=auto
 tbr;stream_bms1.txt;IncAdaTaSPM-TBR;live;-;--reps=auto
-tbr;stream_D45K.txt;IncAdaTaSPM-TBR;time;-;--reps=auto
-tbr;stream_D45K.txt;IncAdaTaSPM-TBR;live;-;--reps=auto
 tbr;stream_D48K.txt;IncAdaTaSPM-TBR;time;-;--reps=auto
 tbr;stream_D48K.txt;IncAdaTaSPM-TBR;live;-;--reps=auto
 tbr;stream_kosarak.txt;IncAdaTaSPM-TBR;time;-;--reps=auto
@@ -137,8 +121,6 @@ phi;stream_bible.txt;IncAdaTaSPM;time;phi0.25;--reps=auto --phi=0.25
 phi;stream_bible.txt;IncAdaTaSPM;time;phi1;--reps=auto --phi=1
 phi;stream_bms1.txt;IncAdaTaSPM;time;phi0.25;--reps=auto --phi=0.25
 phi;stream_bms1.txt;IncAdaTaSPM;time;phi1;--reps=auto --phi=1
-phi;stream_D45K.txt;IncAdaTaSPM;time;phi0.25;--reps=auto --phi=0.25
-phi;stream_D45K.txt;IncAdaTaSPM;time;phi1;--reps=auto --phi=1
 phi;stream_D48K.txt;IncAdaTaSPM;time;phi0.25;--reps=auto --phi=0.25
 phi;stream_D48K.txt;IncAdaTaSPM;time;phi1;--reps=auto --phi=1
 phi;stream_kosarak.txt;IncAdaTaSPM;time;phi0.25;--reps=auto --phi=0.25
@@ -231,12 +213,6 @@ batch-count;stream_bms1.txt;IncAdaTaSPM;time;K50;--reps=auto --batch_count=50
 batch-count;stream_bms1.txt;RemineTaSPM;time;K50;--reps=auto --batch_count=50
 batch-count;stream_bms1.txt;IncAdaTaSPM;time;K67;--reps=auto --batch_count=67
 batch-count;stream_bms1.txt;RemineTaSPM;time;K67;--reps=auto --batch_count=67
-batch-count;stream_D45K.txt;IncAdaTaSPM;time;K25;--reps=auto --batch_count=25
-batch-count;stream_D45K.txt;RemineTaSPM;time;K25;--reps=auto --batch_count=25
-batch-count;stream_D45K.txt;IncAdaTaSPM;time;K50;--reps=auto --batch_count=50
-batch-count;stream_D45K.txt;RemineTaSPM;time;K50;--reps=auto --batch_count=50
-batch-count;stream_D45K.txt;IncAdaTaSPM;time;K67;--reps=auto --batch_count=67
-batch-count;stream_D45K.txt;RemineTaSPM;time;K67;--reps=auto --batch_count=67
 batch-count;stream_D48K.txt;IncAdaTaSPM;time;K25;--reps=auto --batch_count=25
 batch-count;stream_D48K.txt;RemineTaSPM;time;K25;--reps=auto --batch_count=25
 batch-count;stream_D48K.txt;IncAdaTaSPM;time;K50;--reps=auto --batch_count=50

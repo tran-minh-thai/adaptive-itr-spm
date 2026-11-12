@@ -26,7 +26,7 @@ methods are kept for reference and are not used for measured runs.
 | BIBLE | 36,369 | 21,369 | 150 | OD.Num of Pre-HUSPM |
 | BMS1 | 59,601 | 39,601 | 200 | OD.Num of Pre-HUSPM |
 | KOSARAK | 990,002 | 90,002 | 9,000 | as in the Pre-HUSPM-Adapt-Prelarge benchmark |
-| D45K | 45,535 | 25,535 | 200 | stream of the last 20,000 sequences |
+| D45K (not in the measurement plan) | 45,535 | 25,535 | 200 | stream of the last 20,000 sequences |
 | D48K | 48,467 | 28,467 | 200 | stream of the last 20,000 sequences |
 | KOSARAK_20/40/60/80 | 198,000 / 396,000 / 594,001 / 792,001 | 18,000 / 36,000 / 54,001 / 72,001 | 1,800 / 3,600 / 5,400 / 7,200 | stream = 100 * floor((10/11) N / 100), the rule that gives KOSARAK's split |
 

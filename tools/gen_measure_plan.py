@@ -10,7 +10,9 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'bench', 'plan.txt')
 
-DATASETS = ['sign', 'leviathan', 'fifa', 'bible', 'bms1', 'D45K', 'D48K', 'kosarak']
+# D45K (synthetic) is not part of the experiments (author's decision, 2026-11-12); its data
+# file and configuration stay in the repository.
+DATASETS = ['sign', 'leviathan', 'fifa', 'bible', 'bms1', 'D48K', 'kosarak']
 MAIN_ARMS = ['IncAdaTaSPM', 'IncAdaTaSPM-NoBuffer', 'IncAdaTaSPM-StaticPreLarge', 'IncAdaTaSPM-Original',
              'RemineTaSPM', 'BatchTaSPM', 'ItemPreLargeTaSPM']
 ETAS = ['0', '0.1', '0.3', '0.5', '0.7', '0.9']
