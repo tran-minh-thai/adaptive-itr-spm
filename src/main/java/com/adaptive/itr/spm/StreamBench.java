@@ -424,8 +424,14 @@ public final class StreamBench {
         int ti = 0, endOld = 0, bad = 0;
         long compared = 0, refTotal = 0;
         Map<String, Long> cur = new HashMap<>(), prev = new HashMap<>();
+        long w0 = System.nanoTime();
         try {
             for (int b = 0; b < ends.length; b++) {
+                if ((System.nanoTime() - w0) / 1_000_000 > timeoutMs) {
+                    row(out, prefix, 1, b, "TIMEOUT");
+                    meta.println("verify_status=TIMEOUT before batch " + b + " (wall clock of the verify run above --timeout-min)");
+                    return -1;
+                }
                 int n = ends[b];
                 List<int[][]> batch = new ArrayList<>();
                 List<Integer> bl = new ArrayList<>();

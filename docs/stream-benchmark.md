@@ -77,7 +77,7 @@ batch; `load_ms` in the run record), a forced collection and a 100 ms pause befo
 
 Exit codes: 0 done, 2 usage error, 3 verification difference, 4 the result file already exists
 (the run is skipped, so a plan can be resumed), 5 a stream hit the time limit (`--timeout-min`,
-default 120 per stream) or ran out of heap (the rows say `TIMEOUT` or `OOM`), 6 the JVM differs
+default 120 per stream; in verify mode, of the whole run) or ran out of heap (the rows say `TIMEOUT` or `OOM`), 6 the JVM differs
 from the runtime lock (`--lock`).
 
 ## 5. Result files
