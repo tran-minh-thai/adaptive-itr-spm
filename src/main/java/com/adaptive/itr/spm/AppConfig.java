@@ -3,6 +3,8 @@ package com.adaptive.itr.spm;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -77,7 +79,7 @@ public class AppConfig {
     /** Set of item ids that must appear at least once in every mined pattern. */
     public static Set<Integer> TARGET_ITEMS = new HashSet<>();
 
-    /** Pre-large buffer ratio used by the incremental baselines (Li et al., IncStatic). */
+    /** Pre-large buffer ratio used by the item-level pre-large baselines (ItemPreLargeTaSPM, IncStaticTaSPM). */
     public static double BUFFER_RATIO = 0.1;
 
     // -----------------------------------------------------------------
@@ -119,8 +121,66 @@ public class AppConfig {
     /** Absolute path to the currently selected dataset (rewritten by {@link #load()}). */
     public static String DATASET_PATH = "bible.txt";
 
-    /** Fractions of the dataset delivered per incremental batch. Must sum to 1. */
+    /** Fractions of the dataset delivered per incremental batch. Must sum to 1. Legacy split,
+     *  used only when {@link #INIT_SIZE} is not set. */
     public static double[] DATA_CHUNKS = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
+
+    /** Number of leading sequences (file order) that form the initial database D_init; 0 = use
+     *  the legacy {@link #DATA_CHUNKS} split. */
+    public static int INIT_SIZE = 0;
+
+    /** Number K of equal increments the sequences after D_init are cut into (file order). */
+    public static int BATCH_COUNT = 100;
+
+    /** min_sup_rate exactly as written in the configuration file (parsed as a decimal). */
+    public static BigDecimal MIN_SUP_RATE_EXACT = new BigDecimal("0.005");
+
+    /** Stub floor as a fraction of min_sup (phi) for the incremental engine. */
+    public static double PHI = 0.5;
+
+    /** Lazy insertion in the incremental engine. */
+    public static boolean LAZY = true;
+
+    /** "adaptive" (the method) or "const" (Score = 1 for every pattern: static pre-large). */
+    public static String SCORE_MODE = "adaptive";
+
+    /** Weight of the target-proximity component in the incremental engine (0 = off). */
+    public static double W_TBR = 0.0;
+
+    // -----------------------------------------------------------------
+    // 5b. Shared definitions used by every algorithm
+    // -----------------------------------------------------------------
+
+    /** min_sup = max(1, ceil(rate * n)), computed exactly in decimal arithmetic. */
+    public static int minSup(long n) {
+        BigDecimal v = MIN_SUP_RATE_EXACT.multiply(BigDecimal.valueOf(n)).setScale(0, RoundingMode.CEILING);
+        return Math.max(1, v.intValueExact());
+    }
+
+    /**
+     * Batch boundaries as cumulative sequence counts (file order, every non-empty line counts).
+     * With {@link #INIT_SIZE} > 0: entry 0 is D_init and entry k (1..K) is
+     * INIT_SIZE + floor(k * (total - INIT_SIZE) / K), so K equal increments when K divides the
+     * stream and increments differing by at most one otherwise. Without it: the legacy
+     * {@link #DATA_CHUNKS} fractions, rounded, last entry forced to total.
+     */
+    public static int[] batchEnds(int total) {
+        if (INIT_SIZE > 0) {
+            int stream = total - INIT_SIZE;
+            if (INIT_SIZE >= total) throw new IllegalArgumentException("init_size=" + INIT_SIZE + " must be below the " + total + " sequences of the dataset");
+            if (BATCH_COUNT < 1 || BATCH_COUNT > stream) throw new IllegalArgumentException("batch_count=" + BATCH_COUNT + " must be in [1, " + stream + "] (sequences after D_init)");
+            int[] e = new int[BATCH_COUNT + 1];
+            e[0] = INIT_SIZE;
+            for (int k = 1; k <= BATCH_COUNT; k++) e[k] = INIT_SIZE + (int) ((long) k * stream / BATCH_COUNT);
+            return e;
+        }
+        int nb = DATA_CHUNKS.length;
+        int[] e = new int[nb];
+        double cum = 0;
+        for (int b = 0; b < nb; b++) { cum += DATA_CHUNKS[b]; e[b] = (int) Math.round(total * cum); }
+        e[nb - 1] = total;
+        return e;
+    }
 
     // -----------------------------------------------------------------
     // 6. Path-resolution helpers
@@ -174,11 +234,42 @@ public class AppConfig {
      * reported on {@code stderr} but do not abort the run - the field
      * keeps its previous value.
      */
+    static boolean parseBool(String v) {
+        if (v.equalsIgnoreCase("true")) return true;
+        if (v.equalsIgnoreCase("false")) return false;
+        throw new NumberFormatException(v);
+    }
+
+    /** Applies one key=value pair exactly as a configuration line would (used for command-line
+     *  overrides); returns false when the key is unknown. */
+    public static boolean set(String key, String value) {
+        key = key.trim().toLowerCase(); value = value.trim();
+        switch (key) {
+            case "min_sup_rate": MIN_SUP_RATE = Double.parseDouble(value); MIN_SUP_RATE_EXACT = new BigDecimal(value); return true;
+            case "max_per": MAX_PER = Integer.parseInt(value); return true;
+            case "eta": ETA = Double.parseDouble(value); return true;
+            case "lambda": LAMBDA = Double.parseDouble(value); return true;
+            case "w1": W1 = Double.parseDouble(value); return true;
+            case "w2": W2 = Double.parseDouble(value); return true;
+            case "w3": W3 = Double.parseDouble(value); return true;
+            case "w4": W4 = Double.parseDouble(value); return true;
+            case "init_size": INIT_SIZE = Integer.parseInt(value); return true;
+            case "batch_count": BATCH_COUNT = Integer.parseInt(value); return true;
+            case "phi": PHI = Double.parseDouble(value); return true;
+            case "lazy": LAZY = parseBool(value); return true;
+            case "score_mode": SCORE_MODE = value.toLowerCase(); return true;
+            case "w_tbr": W_TBR = Double.parseDouble(value); return true;
+            case "buffer_ratio": BUFFER_RATIO = Double.parseDouble(value); return true;
+            default: return false;
+        }
+    }
+
     public static void load() {
         File configFile = resolveConfig(CURRENT_CONFIG_FILE);
         try (BufferedReader br = new BufferedReader(new FileReader(configFile))) {
             String line;
             TARGET_ITEMS.clear();
+            INIT_SIZE = 0; BATCH_COUNT = 100; PHI = 0.5; LAZY = true; SCORE_MODE = "adaptive"; W_TBR = 0.0;
             while ((line = br.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty() || line.startsWith("#")) continue;
@@ -188,7 +279,13 @@ public class AppConfig {
                 String value = parts[1].trim();
                 try {
                     switch (key) {
-                        case "min_sup_rate": MIN_SUP_RATE = Double.parseDouble(value); break;
+                        case "min_sup_rate": MIN_SUP_RATE = Double.parseDouble(value); MIN_SUP_RATE_EXACT = new BigDecimal(value); break;
+                        case "init_size": INIT_SIZE = Integer.parseInt(value); break;
+                        case "batch_count": BATCH_COUNT = Integer.parseInt(value); break;
+                        case "phi": PHI = Double.parseDouble(value); break;
+                        case "lazy": LAZY = parseBool(value); break;
+                        case "score_mode": SCORE_MODE = value.toLowerCase(); break;
+                        case "w_tbr": W_TBR = Double.parseDouble(value); break;
                         case "max_per": MAX_PER = Integer.parseInt(value); break;
                         case "target_items":
                             for (String s : value.split(",")) TARGET_ITEMS.add(Integer.parseInt(s.trim()));

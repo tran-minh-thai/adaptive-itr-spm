@@ -50,7 +50,7 @@ import java.util.*;
  * ratios and pattern counts are appended to the same file so that
  * {@link ResultAggregator} can produce a unified Summary_Report.
  */
-public class AdaIncTaSPM {
+public class RemineTaSPM {
 
     private long totalRecursiveCandidates = 0;
     private long prunedRecursiveCandidates = 0;
@@ -110,6 +110,39 @@ public class AdaIncTaSPM {
         int size;
     }
 
+    // --- In-memory stream interface (StreamBench) ---
+    /** When set, every output pattern is put here in canonical form "a b|c" with its support. */
+    Map<String, Integer> sink = null;
+    /** Rebuild the per-sequence item cache for every sequence (no state kept across batches). */
+    private boolean rebuildCache = false;
+    /** Projections computed: one per candidate item at the root, one per extension checked. */
+    long projections = 0;
+
+    /**
+     * Mines the whole current database once, as one re-mine of the stream does. Nothing computed
+     * by an earlier call is reused: the per-sequence item cache is rebuilt for every sequence.
+     *
+     * @param db       every target sequence received so far, in file order
+     * @param lineIdx  0-based file line of each entry of db
+     * @param endOld   sequences received before the current batch (scores only)
+     * @param n        sequences received so far (every non-empty line)
+     * @return number of output patterns
+     */
+    public long mineSnapshot(List<int[][]> db, List<Integer> lineIdx, int endOld, int n) {
+        resetAlgorithmState();
+        this.cachedUniqueItems = null;
+        this.cachedHasTarget = null;
+        int mx = 0;
+        for (int[][] q : db) for (int[] is : q) for (int x : is) if (x > mx) mx = x;
+        this.maxItemId = mx;
+        this.rebuildCache = true;
+        setupBatchVariables(endOld, n, db, lineIdx);
+        this.enableFileOutput = sink != null;
+        runCoreAlgorithm();
+        this.enableFileOutput = false;
+        return patternCount;
+    }
+
     private void resetAlgorithmState() {
         this.patternCount = 0;
         this.totalItemsBeforePruning = 0;
@@ -132,14 +165,8 @@ public class AdaIncTaSPM {
         System.out.println("======================================================");
         System.out.println("Dataset: " + AppConfig.DATASET_PATH);
 
-        int numBatches = AppConfig.DATA_CHUNKS.length;
-        int[] batchEndOrigSids = new int[numBatches];
-        double cumulativeRatio = 0.0;
-        for (int b = 0; b < numBatches; b++) {
-            cumulativeRatio += AppConfig.DATA_CHUNKS[b];
-            batchEndOrigSids[b] = (int) Math.round(fullTotalTransCount * cumulativeRatio);
-        }
-        batchEndOrigSids[numBatches - 1] = fullTotalTransCount;
+        int[] batchEndOrigSids = AppConfig.batchEnds(fullTotalTransCount);
+        int numBatches = batchEndOrigSids.length;
 
         double[] avgUpdateTimes = new double[numBatches];
         double[] peakMems = new double[numBatches];
@@ -334,7 +361,7 @@ public class AdaIncTaSPM {
         }
 
         int[] itemBuf = new int[256];
-        for (int sid = dbSizeOld; sid < totalDBSize; sid++) {
+        for (int sid = (rebuildCache ? 0 : dbSizeOld); sid < totalDBSize; sid++) {
             boolean hasTarget = false;
             int totalItems = 0;
             for (int[] is : database[sid]) totalItems += is.length;
@@ -513,7 +540,7 @@ public class AdaIncTaSPM {
         this.totalRecursiveCandidates = 0;
         this.prunedRecursiveCandidates = 0;
 
-        this.min_sup = Math.max(1, (int) Math.ceil(currentOrigTransCount * AppConfig.MIN_SUP_RATE));
+        this.min_sup = AppConfig.minSup(currentOrigTransCount);
         AdaptScore[] adaptScores = computeAdaptiveScores_Pass1();
 
         int nc = 0;
@@ -559,6 +586,7 @@ public class AdaIncTaSPM {
         }
 
         TsiData[] itemOccs = new TsiData[nc];
+        projections += nc;
 
         for (int ci = 0; ci < nc; ci++) {
             BitSet bmp = itemBits[ci];
@@ -784,6 +812,7 @@ public class AdaIncTaSPM {
     }
 
     private TsiData checkIExtRegularity(BitSet pBmp, BitSet itemBmp, TsiData pTsi, TsiData itemRawOccs) {
+        projections++;
         int maxGap = 0, prevPos = 0;
         int pIndex = 0, rawIndex = 0, sidCount = 0, totalOccs = 0;
         tmpOffsets[0] = 0;
@@ -846,6 +875,7 @@ public class AdaIncTaSPM {
     }
 
     private TsiData checkSExtRegularity(BitSet pBmp, BitSet itemBmp, TsiData pTsi, TsiData itemRawOccs) {
+        projections++;
         int maxGap = 0, prevPos = 0;
         int pIndex = 0, rawIndex = 0, sidCount = 0, totalOccs = 0;
         tmpOffsets[0] = 0;
@@ -932,6 +962,18 @@ public class AdaIncTaSPM {
 
     private void writePatternToFile(int support) {
         if (!enableFileOutput) return;
+        if (sink != null) {
+            StringBuilder k = new StringBuilder(32);
+            int idx = 0;
+            for (int q = 0; q < prefixItemsetCount; q++) {
+                if (q > 0) k.append('|');
+                int end = itemsetBoundaries[q];
+                for (int i = idx; i < end; i++) { if (i > idx) k.append(' '); k.append(currentPrefix[i]); }
+                idx = end;
+            }
+            sink.put(k.toString(), support);
+            return;
+        }
         StringBuilder sb = new StringBuilder(64);
         sb.append("<");
         int itemIdx = 0;
@@ -1021,6 +1063,6 @@ public class AdaIncTaSPM {
     }
 
     public static void main(String[] args) {
-        new AdaIncTaSPM().run();
+        new RemineTaSPM().run();
     }
 }

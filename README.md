@@ -1,8 +1,11 @@
 # Adaptive Incremental Target Regular Sequential Pattern Mining (Ada-ITR-SPM)
 
-Reference implementation of **Ada-IncTaSPM** and five baseline algorithms
-(**IncTaSPM_Li**, **IncStaticTaSPM**, **TalentNoReg**, **BatchTaSPM**,
-**PrefixSpanTarget**) accompanying the submitted paper.
+Reference implementation of **Ada-IncTaSPM** (class `IncAdaTaSPM`), an incremental miner for
+target regular sequential patterns, with the baselines it is compared against.
+
+**Measured runs use `StreamBench`; see [docs/stream-benchmark.md](docs/stream-benchmark.md)**
+for the stream split, the arms, what each clock covers and the result columns. The sections
+below describe the earlier (legacy) harness and are kept for reference.
 
 Released under the [MIT License](LICENSE) — free for academic and commercial use
 with attribution.
@@ -56,9 +59,10 @@ target-SPM baselines.
 
 | Class                       | Family              | Incremental? | Regularity | Comment |
 | --------------------------- | ------------------- | ------------ | ---------- | ------- |
-| **AdaIncTaSPM** (proposed)  | pattern-growth + vertical hybrid | yes          | yes        | Adaptive per-item threshold; V9.0 fuses PrefixSpan-style local support counting into the vertical projection. |
-| IncTaSPM_Li                 | pre-large + backscan             | yes          | yes        | Classical incremental target-SPM baseline; static `buffer_ratio`. |
-| IncStaticTaSPM              | pre-large, in-memory             | yes          | yes        | Simpler variant of IncTaSPM_Li — no disk streaming. |
+| **IncAdaTaSPM** (proposed)  | incremental prefix tree with exact-count stubs | yes | yes | See docs/stream-benchmark.md. |
+| RemineTaSPM (formerly AdaIncTaSPM) | pattern-growth + vertical hybrid | no (re-mines every batch) | yes | Adaptive per-item threshold; V9.0 fuses PrefixSpan-style local support counting into the vertical projection. |
+| ItemPreLargeTaSPM (formerly IncTaSPM_Li) | item-level pre-large + backscan | items only; patterns re-mined | yes | Self-built baseline, not an implementation of a published algorithm; static `buffer_ratio`. |
+| IncStaticTaSPM              | pre-large, in-memory             | yes          | yes        | Simpler variant of ItemPreLargeTaSPM — no disk streaming. |
 | TalentNoReg                 | projection + CoocMap             | no (batch)   | no         | Two-matrix (S / I) CoocMap; separates sequential vs. itemset extensions. |
 | BatchTaSPM                  | vertical batch                   | no (batch)   | yes        | Rebuilds the full projected DB on every batch; I/O cost included. |
 | PrefixSpanTarget            | PrefixSpan + target filter       | no (batch)   | yes        | Baseline PrefixSpan with a target-item filter bolted on. |
@@ -94,20 +98,22 @@ adaptive-itr-spm/
 ├── README.md                      (this file)
 ├── scripts/                       Convenience launchers (Windows + POSIX)
 │   ├── build.bat / build.sh       Build the fat jar
-│   ├── run.bat / run.sh           Generic dispatcher (see §4)
+│   ├── run.bat / run.sh           Generic dispatcher (see section 4)
 │   ├── run-all.bat / run-all.sh   Run the full paper pipeline
 │   ├── run-rq1.bat / run-rq1.sh   Baseline comparison (RQ1/RQ2)
 │   ├── run-rq3.bat / run-rq3.sh   Parameter sensitivity (RQ3)
 │   ├── run-rq3-scale.*            Kosarak scalability (RQ3-scale)
 │   └── run-rq4.bat / run-rq4.sh   Ablation study (RQ4)
 ├── configs/                       All experiment configuration files (.txt)
-├── datasets/                      Input datasets (download from SPMF, see §3)
+├── datasets/                      Input datasets (download from SPMF, see section 3)
 ├── results/                       Auto-created by run scripts; holds outputs
 └── src/main/java/com/adaptive/itr/spm/
     ├── Main.java                  CLI dispatcher (jar entry-point)
     ├── AppConfig.java             Central config + path resolution
-    ├── AdaIncTaSPM.java           Proposed algorithm (Ada-IncTaSPM)
-    ├── IncTaSPM_Li.java           Baseline: Li et al. incremental (pre-large)
+    ├── IncAdaTaSPM.java           Proposed algorithm (Ada-IncTaSPM, incremental)
+    ├── RemineTaSPM.java           Re-mine baseline (formerly AdaIncTaSPM)
+    ├── StreamBench.java           Stream benchmark used for measured runs
+    ├── ItemPreLargeTaSPM.java     Self-built item-level pre-large baseline (formerly IncTaSPM_Li)
     ├── IncStaticTaSPM.java        Baseline: static-buffer incremental
     ├── TalentNoReg.java           Baseline: talent-style pure batch
     ├── BatchTaSPM.java            Baseline: batch target-SPM
@@ -207,7 +213,7 @@ Every run script forwards its CLI flags straight to the underlying runner:
 ```bash
 # Only two datasets, only two algorithms
 ./scripts/run-rq1.sh --configs=config_bible.txt,config_kosarak.txt \
-                     --algos=AdaIncTaSPM,IncTaSPM_Li
+                     --algos=RemineTaSPM,ItemPreLargeTaSPM
 
 # RQ3 with a coarser λ grid
 ./scripts/run-rq3.sh --datasets=D48K --lambdas=0.1,0.5,0.9

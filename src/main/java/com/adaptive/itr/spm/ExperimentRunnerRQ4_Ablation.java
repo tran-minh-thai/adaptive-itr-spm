@@ -80,7 +80,7 @@ public class ExperimentRunnerRQ4_Ablation {
                 AppConfig.load();
 
                 long startTime = System.currentTimeMillis();
-                new AdaIncTaSPM().run();
+                new RemineTaSPM().run();
                 long endTime = System.currentTimeMillis();
                 System.out.println("      Wall time: " + (endTime - startTime) / 1000.0 + " s");
 

@@ -8,7 +8,7 @@ import java.util.*;
  * <b>IncStaticTaSPM</b> - Baseline incremental miner with a fixed
  * static-buffer ratio (V4.9).
  *
- * <p>A simpler cousin of {@link IncTaSPM_Li}: keeps the same
+ * <p>A simpler cousin of {@link ItemPreLargeTaSPM}: keeps the same
  * pre-large concept and static buffer band controlled by
  * {@link AppConfig#BUFFER_RATIO}, but does not attempt to reduce
  * memory pressure by streaming from disk. On every batch it re-projects
@@ -77,15 +77,8 @@ public class IncStaticTaSPM {
         System.out.println("Dataset: " + AppConfig.DATASET_PATH);
         System.out.println("Chunks : " + Arrays.toString(AppConfig.DATA_CHUNKS));
 
-        int numBatches = AppConfig.DATA_CHUNKS.length;
-        int[] batchEndOrigSids = new int[numBatches];
-        double cumulativeRatio = 0.0;
-
-        for (int b = 0; b < numBatches; b++) {
-            cumulativeRatio += AppConfig.DATA_CHUNKS[b];
-            batchEndOrigSids[b] = (int) Math.round(fullTotalTransCount * cumulativeRatio);
-        }
-        batchEndOrigSids[numBatches - 1] = fullTotalTransCount;
+        int[] batchEndOrigSids = AppConfig.batchEnds(fullTotalTransCount);
+        int numBatches = batchEndOrigSids.length;
 
         double[] avgUpdateTimes = new double[numBatches];
         double[] peakMems = new double[numBatches];
@@ -275,7 +268,7 @@ public class IncStaticTaSPM {
     }
 
     private void runCoreAlgorithm() {
-        this.min_sup = Math.max(1, (int) Math.ceil(currentOrigTransCount * AppConfig.MIN_SUP_RATE));
+        this.min_sup = AppConfig.minSup(currentOrigTransCount);
 
         // Static buffer threshold (Pre-large Threshold)
         this.pre_large_threshold = Math.max(1, (int) Math.floor(this.min_sup * (1.0 - AppConfig.BUFFER_RATIO)));

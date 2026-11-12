@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/BMS1_spmf.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=1307 -> Time: 70.39 ms | Cumulative: 70.39 ms | RAM: 4.87 MB | Patterns: 7513
+  [Batch 2/10] Dold=1307 | ∆D=1136 -> Time: 19.13 ms | Cumulative: 89.52 ms | RAM: 5.33 MB | Patterns: 2181
+  [Batch 3/10] Dold=2443 | ∆D=1680 -> Time: 11.15 ms | Cumulative: 100.67 ms | RAM: 5.52 MB | Patterns: 662
+  [Batch 4/10] Dold=4123 | ∆D=1784 -> Time: 7.69 ms | Cumulative: 108.36 ms | RAM: 5.59 MB | Patterns: 362
+  [Batch 5/10] Dold=5907 | ∆D=2126 -> Time: 8.95 ms | Cumulative: 117.31 ms | RAM: 6.84 MB | Patterns: 274
+  [Batch 6/10] Dold=8033 | ∆D=1814 -> Time: 8.91 ms | Cumulative: 126.22 ms | RAM: 7.80 MB | Patterns: 251
+  [Batch 7/10] Dold=9847 | ∆D=1218 -> Time: 10.29 ms | Cumulative: 136.50 ms | RAM: 8.48 MB | Patterns: 246
+  [Batch 8/10] Dold=11065 | ∆D=936 -> Time: 14.65 ms | Cumulative: 151.16 ms | RAM: 8.53 MB | Patterns: 159
+  [Batch 9/10] Dold=12001 | ∆D=1103 -> Time: 12.01 ms | Cumulative: 163.17 ms | RAM: 9.20 MB | Patterns: 146
+  [Batch 10/10] Dold=13104 | ∆D=831 -> Time: 14.88 ms | Cumulative: 178.05 ms | RAM: 9.68 MB | Patterns: 126

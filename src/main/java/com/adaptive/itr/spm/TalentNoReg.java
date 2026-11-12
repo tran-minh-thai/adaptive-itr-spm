@@ -95,15 +95,8 @@ public class TalentNoReg {
         System.out.println("======================================================");
         System.out.println("Dataset: " + AppConfig.DATASET_PATH);
 
-        int numBatches = AppConfig.DATA_CHUNKS.length;
-        int[] batchEndOrigSids = new int[numBatches];
-        double cumulativeRatio = 0.0;
-
-        for (int b = 0; b < numBatches; b++) {
-            cumulativeRatio += AppConfig.DATA_CHUNKS[b];
-            batchEndOrigSids[b] = (int) Math.round(fullTotalTransCount * cumulativeRatio);
-        }
-        batchEndOrigSids[numBatches - 1] = fullTotalTransCount;
+        int[] batchEndOrigSids = AppConfig.batchEnds(fullTotalTransCount);
+        int numBatches = batchEndOrigSids.length;
 
         double[] avgUpdateTimes = new double[numBatches];
         double[] peakMems = new double[numBatches];
@@ -333,7 +326,7 @@ public class TalentNoReg {
     // ========================================================================
     private void mineOnDataset() {
         if (totalDBSize == 0) return;
-        this.min_sup = Math.max(1, (int) Math.ceil(currentOrigTransCount * AppConfig.MIN_SUP_RATE));
+        this.min_sup = AppConfig.minSup(currentOrigTransCount);
 
         Map<Integer, Integer> counts = new HashMap<>();
         for (int sid = 0; sid < totalDBSize; sid++) {

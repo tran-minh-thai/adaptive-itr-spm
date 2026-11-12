@@ -66,6 +66,34 @@ public class BatchTaSPM {
     private List<String> discoveredPatterns = new ArrayList<>();
     private final String OUTPUT_FILE = "result_BatchTaSPM.txt";
 
+    // --- In-memory stream interface (StreamBench) ---
+    /** When set, every output pattern is put here in canonical form "a b|c" with its support. */
+    Map<String, Integer> sink = null;
+
+    /**
+     * Mines the whole current database from scratch, as the batch baseline does after every
+     * batch; nothing is kept from an earlier call. The file is read by the caller (outside the
+     * clock), so this covers building the filtered database and mining it.
+     *
+     * @param db      every target sequence received so far, in file order
+     * @param lineIdx 0-based file line of each entry of db
+     * @param n       sequences received so far (every non-empty line)
+     * @return number of output patterns
+     */
+    public long mineSnapshot(List<int[][]> db, List<Integer> lineIdx, int n) {
+        resetMiningState();
+        List<RawSequence> raw = new ArrayList<>(db.size());
+        for (int i = 0; i < db.size(); i++) {
+            RawSequence r = new RawSequence(lineIdx.get(i));
+            r.itemsets = Arrays.asList(db.get(i));
+            raw.add(r);
+        }
+        this.enableFileOutput = sink != null;
+        mineOnDataset(raw, n);
+        this.enableFileOutput = false;
+        return patternCount;
+    }
+
     private void resetMiningState() {
         this.patternCount = 0;
         this.filteredSize = 0;
@@ -90,14 +118,8 @@ public class BatchTaSPM {
         System.out.println("Dataset: " + AppConfig.DATASET_PATH);
         System.out.println("Chunks : " + Arrays.toString(AppConfig.DATA_CHUNKS));
 
-        int numBatches = AppConfig.DATA_CHUNKS.length;
-        int[] batchEndOrigSids = new int[numBatches];
-        double cumulativeRatio = 0.0;
-        for (int b = 0; b < numBatches; b++) {
-            cumulativeRatio += AppConfig.DATA_CHUNKS[b];
-            batchEndOrigSids[b] = (int) Math.round(fullTotalTransCount * cumulativeRatio);
-        }
-        batchEndOrigSids[numBatches - 1] = fullTotalTransCount;
+        int[] batchEndOrigSids = AppConfig.batchEnds(fullTotalTransCount);
+        int numBatches = batchEndOrigSids.length;
 
         double[] avgUpdateTimes = new double[numBatches];
         double[] peakMems = new double[numBatches];
@@ -295,7 +317,7 @@ public class BatchTaSPM {
         buildFilteredDatabase(dataset);
         if (totalDBSize == 0) return;
 
-        this.min_sup = Math.max(1, (int) Math.ceil(currentOrigTransCount * AppConfig.MIN_SUP_RATE));
+        this.min_sup = AppConfig.minSup(currentOrigTransCount);
 
         Map<Integer, Integer> supportCount = new HashMap<>();
         for (int i = 0; i < totalDBSize; i++) {
@@ -514,6 +536,16 @@ public class BatchTaSPM {
 
     private void writePatternToFile(List<int[]> prefix, int support) {
         if (!enableFileOutput) return;
+        if (sink != null) {
+            StringBuilder k = new StringBuilder(32);
+            for (int q = 0; q < prefix.size(); q++) {
+                if (q > 0) k.append('|');
+                int[] is = prefix.get(q);
+                for (int i = 0; i < is.length; i++) { if (i > 0) k.append(' '); k.append(is[i]); }
+            }
+            sink.put(k.toString(), support);
+            return;
+        }
         StringBuilder sb = new StringBuilder(64);
         sb.append("<");
         for (int k = 0; k < prefix.size(); k++) {

@@ -33,15 +33,15 @@ public class ResultAggregator {
         AppConfig.load();
 
         String[] algos = {
-                "AdaIncTaSPM",
-                "IncTaSPM_Li",
+                "RemineTaSPM",
+                "ItemPreLargeTaSPM",
                 "IncStaticTaSPM",
                 "TalentNoReg",
                 "BatchTaSPM",
                 "PrefixSpanTarget"
         };
 
-        int numChunks = AppConfig.DATA_CHUNKS.length;
+        int numChunks = AppConfig.INIT_SIZE > 0 ? AppConfig.BATCH_COUNT + 1 : AppConfig.DATA_CHUNKS.length;
 
         // Cache per-batch arrays used to render the tables
         Map<String, String[]> runtimeMap = new LinkedHashMap<>();

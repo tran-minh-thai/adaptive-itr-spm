@@ -1,0 +1,10 @@
+  [Batch 1/10] N=99000 minSup=198 time=594.77 ms cum=594.77 ms RAM=63.21 MB rescans=0
+  [Batch 2/10] N=198000 minSup=396 time=635.59 ms cum=1230.36 ms RAM=134.66 MB rescans=0
+  [Batch 3/10] N=297001 minSup=595 time=511.14 ms cum=1741.50 ms RAM=192.35 MB rescans=0
+  [Batch 4/10] N=396001 minSup=793 time=483.28 ms cum=2224.78 ms RAM=194.83 MB rescans=0
+  [Batch 5/10] N=495001 minSup=991 time=402.43 ms cum=2627.21 ms RAM=239.11 MB rescans=0
+  [Batch 6/10] N=594001 minSup=1189 time=386.48 ms cum=3013.70 ms RAM=271.50 MB rescans=0
+  [Batch 7/10] N=693001 minSup=1387 time=402.53 ms cum=3416.23 ms RAM=307.42 MB rescans=0
+  [Batch 8/10] N=792002 minSup=1585 time=391.58 ms cum=3807.80 ms RAM=349.70 MB rescans=0
+  [Batch 9/10] N=891002 minSup=1783 time=505.40 ms cum=4313.20 ms RAM=377.37 MB rescans=0
+  [Batch 10/10] N=990002 minSup=1981 time=357.82 ms cum=4671.03 ms RAM=419.13 MB rescans=0

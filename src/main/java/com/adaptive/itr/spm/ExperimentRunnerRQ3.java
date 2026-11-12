@@ -75,7 +75,7 @@ public class ExperimentRunnerRQ3 {
 
                 // RQ3 measures only the proposed algorithm; baselines are
                 // not sensitive to lambda so they are not swept.
-                runAlgorithm("AdaIncTaSPM", () -> new AdaIncTaSPM().run());
+                runAlgorithm("RemineTaSPM", () -> new RemineTaSPM().run());
 
                 System.out.println("\n  >>> Aggregating results for lambda = " + lambda + " ...");
                 ResultAggregator.main(new String[]{});

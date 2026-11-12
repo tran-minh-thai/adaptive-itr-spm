@@ -27,6 +27,8 @@ Thumbs.db
 # Legacy compiled artifacts
 *.jar
 !lib/*.jar
+!bench/*.jar
+!results-invariant/**/lib/*.jar
 
 # Log files
 *.log
@@ -35,3 +37,6 @@ Thumbs.db
 *.bak
 *.tmp
 *~
+
+# Partial result files of an interrupted run
+*.csv.part

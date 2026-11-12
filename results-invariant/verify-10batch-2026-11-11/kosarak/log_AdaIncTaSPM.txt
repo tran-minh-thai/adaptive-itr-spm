@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/kosarak.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=84928 -> Time: 1299.15 ms | Cumulative: 1299.15 ms | RAM: 73.81 MB | Patterns: 4663
+  [Batch 2/10] Dold=84928 | ∆D=84986 -> Time: 2134.01 ms | Cumulative: 3433.17 ms | RAM: 98.29 MB | Patterns: 3462
+  [Batch 3/10] Dold=169914 | ∆D=84822 -> Time: 3217.92 ms | Cumulative: 6651.09 ms | RAM: 165.18 MB | Patterns: 2907
+  [Batch 4/10] Dold=254736 | ∆D=84897 -> Time: 4333.92 ms | Cumulative: 10985.00 ms | RAM: 198.22 MB | Patterns: 2628
+  [Batch 5/10] Dold=339633 | ∆D=84802 -> Time: 5332.11 ms | Cumulative: 16317.11 ms | RAM: 236.01 MB | Patterns: 2342
+  [Batch 6/10] Dold=424435 | ∆D=84653 -> Time: 6573.35 ms | Cumulative: 22890.47 ms | RAM: 322.15 MB | Patterns: 2217
+  [Batch 7/10] Dold=509088 | ∆D=84855 -> Time: 7535.85 ms | Cumulative: 30426.32 ms | RAM: 319.41 MB | Patterns: 2089
+  [Batch 8/10] Dold=593943 | ∆D=84884 -> Time: 8651.55 ms | Cumulative: 39077.87 ms | RAM: 359.10 MB | Patterns: 1977
+  [Batch 9/10] Dold=678827 | ∆D=84989 -> Time: 9696.14 ms | Cumulative: 48774.01 ms | RAM: 416.82 MB | Patterns: 1890
+  [Batch 10/10] Dold=763816 | ∆D=84837 -> Time: 10652.63 ms | Cumulative: 59426.64 ms | RAM: 469.69 MB | Patterns: 1815

@@ -162,7 +162,7 @@ public class Main {
         System.out.println();
         System.out.println("Common flags (forwarded to the underlying runner):");
         System.out.println("  --configs=a.txt,b.txt        Override the list of dataset config files");
-        System.out.println("  --algos=AdaIncTaSPM,...      Restrict algorithm suite");
+        System.out.println("  --algos=RemineTaSPM,...      Restrict algorithm suite");
         System.out.println("  --datasets=D48K,BMS1_spmf    (rq3) restrict dataset prefixes");
         System.out.println("  --lambdas=0.1,0.3,0.5        (rq3) restrict lambda grid");
         System.out.println("  --sizes=20,40,60,80,100      (rq3-scale) restrict Kosarak sizes");

@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/D48K-C10-T1-N5K.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=245 -> Time: 238.17 ms | Cumulative: 238.17 ms | RAM: 163.96 MB | Patterns: 91113
+  [Batch 2/10] Dold=245 | ∆D=245 -> Time: 151.44 ms | Cumulative: 389.62 ms | RAM: 144.30 MB | Patterns: 34444
+  [Batch 3/10] Dold=490 | ∆D=221 -> Time: 91.13 ms | Cumulative: 480.74 ms | RAM: 193.83 MB | Patterns: 33471
+  [Batch 4/10] Dold=711 | ∆D=239 -> Time: 87.88 ms | Cumulative: 568.62 ms | RAM: 339.63 MB | Patterns: 33871
+  [Batch 5/10] Dold=950 | ∆D=240 -> Time: 67.71 ms | Cumulative: 636.33 ms | RAM: 164.91 MB | Patterns: 34381
+  [Batch 6/10] Dold=1190 | ∆D=208 -> Time: 69.30 ms | Cumulative: 705.63 ms | RAM: 166.54 MB | Patterns: 33903
+  [Batch 7/10] Dold=1398 | ∆D=220 -> Time: 71.82 ms | Cumulative: 777.45 ms | RAM: 170.13 MB | Patterns: 34182
+  [Batch 8/10] Dold=1618 | ∆D=232 -> Time: 81.99 ms | Cumulative: 859.44 ms | RAM: 175.36 MB | Patterns: 34559
+  [Batch 9/10] Dold=1850 | ∆D=213 -> Time: 134.14 ms | Cumulative: 993.58 ms | RAM: 367.40 MB | Patterns: 34958
+  [Batch 10/10] Dold=2063 | ∆D=226 -> Time: 312.70 ms | Cumulative: 1306.28 ms | RAM: 344.48 MB | Patterns: 34943

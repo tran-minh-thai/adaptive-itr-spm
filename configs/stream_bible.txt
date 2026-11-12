@@ -1,0 +1,21 @@
+# Stream configuration (D_init followed by batch_count equal increments, file order).
+# D_init source: OD.Num of Pre-HUSPM. Sequences in file: 36369; increments of 150 sequences.
+dataset_path=BIBLE.txt
+init_size=21369
+batch_count=100
+min_sup_rate=0.001
+max_per=1000
+target_items=1,102,10,31
+# Adaptive parameters as stated in the manuscript (all RQs): eta=0.5, lambda=0.1, equal weights.
+# w1 = W_V, w3 = W_R, w4 = W_Stab; w2 is the W_TBR weight, used only by the IncAdaTaSPM-TBR arm.
+eta=0.5
+lambda=0.1
+w1=0.25
+w2=0.25
+w3=0.25
+w4=0.25
+# Stub floor fraction and lazy insertion of the incremental engine.
+phi=0.5
+lazy=true
+# Buffer ratio of the item-level pre-large baseline (ItemPreLargeTaSPM).
+buffer_ratio=0.1

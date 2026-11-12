@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/LEVIATHAN.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=558 -> Time: 898.34 ms | Cumulative: 898.34 ms | RAM: 16.85 MB | Patterns: 1373118
+  [Batch 2/10] Dold=558 | ∆D=564 -> Time: 1090.02 ms | Cumulative: 1988.36 ms | RAM: 4.22 MB | Patterns: 621556
+  [Batch 3/10] Dold=1122 | ∆D=570 -> Time: 1783.70 ms | Cumulative: 3772.06 ms | RAM: 6.90 MB | Patterns: 622152
+  [Batch 4/10] Dold=1692 | ∆D=572 -> Time: 2806.87 ms | Cumulative: 6578.93 ms | RAM: 19.64 MB | Patterns: 707222
+  [Batch 5/10] Dold=2264 | ∆D=570 -> Time: 3938.67 ms | Cumulative: 10517.60 ms | RAM: 9.03 MB | Patterns: 769330
+  [Batch 6/10] Dold=2834 | ∆D=567 -> Time: 5019.68 ms | Cumulative: 15537.28 ms | RAM: 9.28 MB | Patterns: 792436
+  [Batch 7/10] Dold=3401 | ∆D=567 -> Time: 5726.95 ms | Cumulative: 21264.23 ms | RAM: 8.65 MB | Patterns: 752945
+  [Batch 8/10] Dold=3968 | ∆D=568 -> Time: 6312.67 ms | Cumulative: 27576.90 ms | RAM: 15.08 MB | Patterns: 707569
+  [Batch 9/10] Dold=4536 | ∆D=559 -> Time: 7417.23 ms | Cumulative: 34994.13 ms | RAM: 13.04 MB | Patterns: 712139
+  [Batch 10/10] Dold=5095 | ∆D=567 -> Time: 8361.54 ms | Cumulative: 43355.67 ms | RAM: 85.83 MB | Patterns: 708537

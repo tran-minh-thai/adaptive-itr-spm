@@ -54,7 +54,7 @@ public class ExperimentRunnerRQ3_SplitKosarak {
             AppConfig.CURRENT_CONFIG_FILE = configFile;
             AppConfig.load();
 
-            runAlgorithm("AdaIncTaSPM", () -> new AdaIncTaSPM().run());
+            runAlgorithm("RemineTaSPM", () -> new RemineTaSPM().run());
 
             System.out.println("\n>>> Aggregating results for size = " + size + " % ...");
             ResultAggregator.main(new String[]{});

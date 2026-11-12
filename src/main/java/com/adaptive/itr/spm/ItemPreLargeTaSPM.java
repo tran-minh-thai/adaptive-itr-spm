@@ -5,10 +5,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
- * <b>IncTaSPM (Li et al.)</b> - Baseline incremental miner that uses the
- * pre-large concept and a backward scan (V4.11).
+ * <b>ItemPreLargeTaSPM</b> - self-built incremental baseline: pre-large bookkeeping at the
+ * item level with a backward scan, and a full pattern re-mine over the tracked items after
+ * every batch. It is not an implementation of a published algorithm; it was written for this
+ * benchmark following the pre-large idea (an item band below min_sup kept with its exact
+ * support).
  *
- * <p>This is the classical incremental target-SPM baseline. When a new
+ * <p>When a new
  * batch arrives, an item that was <em>not</em> frequent in the previous
  * database can now become frequent thanks to the additional support
  * from the delta. The pre-large concept keeps a <em>buffer band</em>
@@ -31,7 +34,7 @@ import java.util.*;
  * <em>fixed</em> relaxation ratio ({@code buffer_ratio}) instead of an
  * adaptive per-item score.
  */
-public class IncTaSPM_Li {
+public class ItemPreLargeTaSPM {
 
     // ========================================================================
     // 1. DATA STRUCTURES (unchanged from the prior version)
@@ -115,6 +118,38 @@ public class IncTaSPM_Li {
     // ========================================================================
     // 3. BENCHMARK ORCHESTRATION
     // ========================================================================
+    // --- In-memory stream interface (StreamBench) ---
+    /** When set, every output pattern is put here in canonical form "a b|c" with its support. */
+    Map<String, Integer> sink = null;
+    private final List<int[][]> streamDB = new ArrayList<>();
+    private final List<Integer> streamSIDs = new ArrayList<>();
+    private boolean streamStarted = false;
+    /** Backward scans of D_old in the last batch (one per item whose exact support was rebuilt). */
+    int lastBackscans() { return totalBackscanCount; }
+
+    /**
+     * Adds one batch and mines the current database, carrying the item-level pre-large state
+     * across calls. The file is read by the caller (outside the clock).
+     *
+     * @param seqs    the target sequences of the batch, in file order
+     * @param lineIdx 0-based file line of each entry of seqs
+     * @param endOld  sequences received before this batch
+     * @param n       sequences received after this batch (every non-empty line)
+     * @return number of output patterns
+     */
+    public long addBatch(List<int[][]> seqs, List<Integer> lineIdx, int endOld, int n) {
+        if (!streamStarted) { resetRunState(); streamStarted = true; }
+        resetBatchState();
+        this.totalBackscanCount = 0;
+        streamDB.addAll(seqs);
+        streamSIDs.addAll(lineIdx);
+        setupBatchVariables(endOld, n, streamDB, streamSIDs);
+        this.enableFileOutput = sink != null;
+        runCoreAlgorithm();
+        this.enableFileOutput = false;
+        return patternCount;
+    }
+
     private void resetRunState() {
         this.oldExactSupport = new HashMap<>();
         this.oldBitmaps = new HashMap<>();
@@ -136,19 +171,13 @@ public class IncTaSPM_Li {
         if (fullTotalDBSize == 0) return;
 
         System.out.println("======================================================");
-        System.out.println("=== INC-TASPM (LI ET AL.) V4.15 - FULL METRICS & RAM DELAY WRITE");
+        System.out.println("=== ItemPreLargeTaSPM (self-built item-level pre-large baseline)");
         System.out.println("======================================================");
         System.out.println("Dataset: " + AppConfig.DATASET_PATH);
         System.out.println("Chunks : " + Arrays.toString(AppConfig.DATA_CHUNKS));
 
-        int numBatches = AppConfig.DATA_CHUNKS.length;
-        int[] batchEndOrigSids = new int[numBatches];
-        double cumulativeRatio = 0.0;
-        for (int b = 0; b < numBatches; b++) {
-            cumulativeRatio += AppConfig.DATA_CHUNKS[b];
-            batchEndOrigSids[b] = (int) Math.round(fullTotalTransCount * cumulativeRatio);
-        }
-        batchEndOrigSids[numBatches - 1] = fullTotalTransCount;
+        int[] batchEndOrigSids = AppConfig.batchEnds(fullTotalTransCount);
+        int numBatches = batchEndOrigSids.length;
 
         double[] avgUpdateTimes = new double[numBatches];
         double[] peakMems = new double[numBatches];
@@ -289,7 +318,7 @@ public class IncTaSPM_Li {
                     bw.write("- DB size after target filtering: " + fullTotalDBSize + " sequences\n");
                     bw.write("- Batch splitting ratio (Data chunks): " + Arrays.toString(AppConfig.DATA_CHUNKS) + "\n");
                     bw.write("- General config: min_sup_rate=" + AppConfig.MIN_SUP_RATE + ", max_per=" + AppConfig.MAX_PER + "\n");
-                    bw.write("- Li et al. parameters: buffer_ratio=" + AppConfig.BUFFER_RATIO + " (static buffer threshold)\n");
+                    bw.write("- Pre-large parameters: buffer_ratio=" + AppConfig.BUFFER_RATIO + " (static buffer threshold)\n");
                     bw.write("- Partitions: Dold=" + dbSizeOld + " sequences | ∆D=" + dbSizeDelta + " sequences\n");
                     bw.write("- Internal thresholds: min_sup=" + min_sup + " | pre_large_threshold=" + pre_large_threshold + "\n");
 
@@ -429,7 +458,7 @@ public class IncTaSPM_Li {
     // 5. MINING CORE (unchanged from the reference)
     // ========================================================================
     private void runCoreAlgorithm() {
-        this.min_sup = Math.max(1, (int) Math.ceil(currentOrigTransCount * AppConfig.MIN_SUP_RATE));
+        this.min_sup = AppConfig.minSup(currentOrigTransCount);
         this.pre_large_threshold = Math.max(1, (int) Math.floor(this.min_sup * (1.0 - AppConfig.BUFFER_RATIO)));
 
         Map<Integer, Integer> deltaSup = new HashMap<>();
@@ -593,6 +622,16 @@ public class IncTaSPM_Li {
 
     private void writePatternToFile(List<int[]> prefix, int support) {
         if (!enableFileOutput) return;
+        if (sink != null) {
+            StringBuilder k = new StringBuilder(32);
+            for (int q = 0; q < prefix.size(); q++) {
+                if (q > 0) k.append('|');
+                int[] is = prefix.get(q);
+                for (int i = 0; i < is.length; i++) { if (i > 0) k.append(' '); k.append(is[i]); }
+            }
+            sink.put(k.toString(), support);
+            return;
+        }
 
         StringBuilder sb = new StringBuilder(64);
         sb.append("<");
@@ -677,5 +716,5 @@ public class IncTaSPM_Li {
         return c;
     }
 
-    public static void main(String[] args) { new IncTaSPM_Li().run(); }
+    public static void main(String[] args) { new ItemPreLargeTaSPM().run(); }
 }

@@ -1,4 +1,9 @@
-# Reference experiment outputs
+# Reference experiment outputs (legacy harness)
+
+> These files come from the legacy ten-batch harness (`data_chunks = 0.1x10`) of the earlier
+> manuscript, measured on the development machine at the time. They are kept as records and
+> are not the stream benchmark (`docs/stream-benchmark.md`). In them, `AdaIncTaSPM` is the
+> class now named `RemineTaSPM` and `IncTaSPM_Li` the class now named `ItemPreLargeTaSPM`.
 
 This directory holds the **reference `Summary_Report_*.txt` files that back the
 tables and figures of the paper**. They were produced by running the harness

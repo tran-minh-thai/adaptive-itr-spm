@@ -24,8 +24,9 @@ final class AlgorithmRegistry {
     static Runnable get(String name) {
         if (name == null) return null;
         switch (name.trim()) {
-            case "AdaIncTaSPM":       return () -> new AdaIncTaSPM().run();
-            case "IncTaSPM_Li":       return () -> new IncTaSPM_Li().run();
+            case "RemineTaSPM":       return () -> new RemineTaSPM().run();
+            case "IncAdaTaSPM":       return () -> new IncAdaTaSPM().run();
+            case "ItemPreLargeTaSPM":       return () -> new ItemPreLargeTaSPM().run();
             case "IncStaticTaSPM":    return () -> new IncStaticTaSPM().run();
             case "TalentNoReg":       return () -> new TalentNoReg().run();
             case "BatchTaSPM":        return () -> new BatchTaSPM().run();

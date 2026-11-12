@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/FIFA.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=1288 -> Time: 3842.28 ms | Cumulative: 3842.28 ms | RAM: 5.68 MB | Patterns: 50747
+  [Batch 2/10] Dold=1288 | ∆D=1355 -> Time: 5144.23 ms | Cumulative: 8986.52 ms | RAM: 7.12 MB | Patterns: 34550
+  [Batch 3/10] Dold=2643 | ∆D=1344 -> Time: 4154.19 ms | Cumulative: 13140.70 ms | RAM: 17.41 MB | Patterns: 15063
+  [Batch 4/10] Dold=3987 | ∆D=1338 -> Time: 4919.64 ms | Cumulative: 18060.34 ms | RAM: 12.34 MB | Patterns: 13389
+  [Batch 5/10] Dold=5325 | ∆D=1320 -> Time: 5418.83 ms | Cumulative: 23479.17 ms | RAM: 17.62 MB | Patterns: 11972
+  [Batch 6/10] Dold=6645 | ∆D=1337 -> Time: 6188.96 ms | Cumulative: 29668.13 ms | RAM: 21.12 MB | Patterns: 10941
+  [Batch 7/10] Dold=7982 | ∆D=1318 -> Time: 6804.42 ms | Cumulative: 36472.55 ms | RAM: 23.17 MB | Patterns: 9937
+  [Batch 8/10] Dold=9300 | ∆D=1335 -> Time: 7241.67 ms | Cumulative: 43714.22 ms | RAM: 26.93 MB | Patterns: 8782
+  [Batch 9/10] Dold=10635 | ∆D=1312 -> Time: 7816.38 ms | Cumulative: 51530.60 ms | RAM: 28.50 MB | Patterns: 8238
+  [Batch 10/10] Dold=11947 | ∆D=1319 -> Time: 8349.58 ms | Cumulative: 59880.18 ms | RAM: 28.30 MB | Patterns: 7675

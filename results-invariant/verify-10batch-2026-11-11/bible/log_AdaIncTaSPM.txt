@@ -1,0 +1,16 @@
+======================================================
+=== ADA-INCTASPM (V9.0 - PATTERN-GROWTH HYBRID)    ===
+======================================================
+Dataset: /sessions/rcw-01wsekvbexxxyn993nimyfxj/mnt/01_Adaptive_ITR_SPM/Adaptive_ITR_SPM_Code (1)/datasets/BIBLE.txt
+
+--- ACTUAL RUN 1 ---
+  [Batch 1/10] Dold=0 | ∆D=3218 -> Time: 2054.86 ms | Cumulative: 2054.86 ms | RAM: 9.18 MB | Patterns: 348449
+  [Batch 2/10] Dold=3218 | ∆D=3315 -> Time: 3034.10 ms | Cumulative: 5088.96 ms | RAM: 14.68 MB | Patterns: 140581
+  [Batch 3/10] Dold=6533 | ∆D=3273 -> Time: 3166.20 ms | Cumulative: 8255.17 ms | RAM: 20.37 MB | Patterns: 75516
+  [Batch 4/10] Dold=9806 | ∆D=3404 -> Time: 3607.20 ms | Cumulative: 11862.36 ms | RAM: 21.15 MB | Patterns: 64687
+  [Batch 5/10] Dold=13210 | ∆D=3028 -> Time: 1806.86 ms | Cumulative: 13669.22 ms | RAM: 22.19 MB | Patterns: 8979
+  [Batch 6/10] Dold=16238 | ∆D=2973 -> Time: 1605.10 ms | Cumulative: 15274.32 ms | RAM: 24.65 MB | Patterns: 5365
+  [Batch 7/10] Dold=19211 | ∆D=3206 -> Time: 1800.56 ms | Cumulative: 17074.89 ms | RAM: 38.66 MB | Patterns: 5309
+  [Batch 8/10] Dold=22417 | ∆D=3192 -> Time: 1894.89 ms | Cumulative: 18969.78 ms | RAM: 34.44 MB | Patterns: 5094
+  [Batch 9/10] Dold=25609 | ∆D=2933 -> Time: 1873.44 ms | Cumulative: 20843.22 ms | RAM: 39.50 MB | Patterns: 4280
+  [Batch 10/10] Dold=28542 | ∆D=3010 -> Time: 1970.37 ms | Cumulative: 22813.59 ms | RAM: 44.46 MB | Patterns: 4020

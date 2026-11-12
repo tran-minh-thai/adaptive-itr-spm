@@ -1,0 +1,21 @@
+# Stream configuration (D_init followed by batch_count equal increments, file order).
+# D_init source: rule: stream = 100*floor((10/11)*N/100), as for full KOSARAK. Sequences in file: 198000; increments of 1800 sequences.
+dataset_path=kosarak_20.txt
+init_size=18000
+batch_count=100
+min_sup_rate=0.002
+max_per=2000
+target_items=6,3,11,1,218
+# Adaptive parameters as stated in the manuscript (all RQs): eta=0.5, lambda=0.1, equal weights.
+# w1 = W_V, w3 = W_R, w4 = W_Stab; w2 is the W_TBR weight, used only by the IncAdaTaSPM-TBR arm.
+eta=0.5
+lambda=0.1
+w1=0.25
+w2=0.25
+w3=0.25
+w4=0.25
+# Stub floor fraction and lazy insertion of the incremental engine.
+phi=0.5
+lazy=true
+# Buffer ratio of the item-level pre-large baseline (ItemPreLargeTaSPM).
+buffer_ratio=0.1

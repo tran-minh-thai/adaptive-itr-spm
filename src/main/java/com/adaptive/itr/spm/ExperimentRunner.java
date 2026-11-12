@@ -34,7 +34,7 @@ import java.util.Locale;
  * <pre>
  *   java ... ExperimentRunner
  *   java ... ExperimentRunner --configs=config_bible.txt,config_kosarak.txt
- *   java ... ExperimentRunner --algos=AdaIncTaSPM,BatchTaSPM
+ *   java ... ExperimentRunner --algos=RemineTaSPM,BatchTaSPM
  * </pre>
  */
 public class ExperimentRunner {
@@ -56,8 +56,8 @@ public class ExperimentRunner {
      * The order matches the columns of the Summary_Report table.
      */
     public static final String[] DEFAULT_ALGORITHMS = {
-            "AdaIncTaSPM",
-            "IncTaSPM_Li",
+            "RemineTaSPM",
+            "ItemPreLargeTaSPM",
             "IncStaticTaSPM",
             "TalentNoReg",
             "BatchTaSPM",
