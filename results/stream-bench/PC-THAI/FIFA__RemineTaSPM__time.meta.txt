@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_fifa.txt --arm=RemineTaSPM --mode=time --tag=- --out=results\stream-bench\PC-THAI --lock=results\stream-bench\PC-THAI\runtime.lock --reps=auto
+started=2026-11-13T04:00:45+07:00
+build.source_tree_id=3647f323957ad565d07158f5f967469d03ab74cb
+build.source_commit=6203faca5b7a18569fccc5bf50f2efa8f0dce973
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-12T00:13:34Z
+build.release=8
+jar_sha256=74be334fac100be70e4be0b10ac4b0cc5659077d63c2c3d9324368554d88a01d
+config_file=stream_fifa.txt
+config_sha256=90a06750424a23942e1ce4f57fb136547ab293788e1270df6b31f011df4c04bd
+dataset=FIFA.txt
+dataset_sha256=1abed450db4c25473d220fbebb3171de22ce73bdcd444dfba27b36c412a71c1f
+sequences=20450 target_sequences=13266
+init_size=10450 batch_count=100 increment_sizes=100
+min_sup_rate=0.005 max_per=70 targets=[17, 98, 18, 2, 30]
+arm=RemineTaSPM params: buffer_ratio=0.1
+load_ms=117 (reading and parsing the file, outside every clock)
+java=25.0.5+8-LTS vendor=Eclipse Adoptium max_heap_mb=32768 jvm_args=[-Xms32g, -Xmx32g]
+warmup_streams=1 reps=auto (rule: from the first measured stream's total time T: T<1s 15, T<10s 10, T<120s 5, else 3)
+first_stream_s=654.030 reps_chosen=3
+finished=2026-11-13T04:45:12+07:00 exit=0

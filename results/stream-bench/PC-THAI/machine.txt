@@ -1,0 +1,10 @@
+written=2026-11-13T13:49:22+07:00
+hostname=PC-THAI
+os=Windows 11 10.0 arch=amd64
+cpu=AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD logical_processors=32
+physical_memory_mb=63122
+java.runtime.version=25.0.5+8-LTS
+java.vendor=Eclipse Adoptium
+java.vm.name=OpenJDK 64-Bit Server VM
+max_heap_mb=32768
+collectors=G1 Young Generation;G1 Concurrent GC;G1 Old Generation;

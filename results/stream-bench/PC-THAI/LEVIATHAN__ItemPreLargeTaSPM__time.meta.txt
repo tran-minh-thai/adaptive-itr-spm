@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_leviathan.txt --arm=ItemPreLargeTaSPM --mode=time --tag=- --out=results\stream-bench\PC-THAI --lock=results\stream-bench\PC-THAI\runtime.lock --reps=auto
+started=2026-11-13T01:34:05+07:00
+build.source_tree_id=3647f323957ad565d07158f5f967469d03ab74cb
+build.source_commit=6203faca5b7a18569fccc5bf50f2efa8f0dce973
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-12T00:13:34Z
+build.release=8
+jar_sha256=74be334fac100be70e4be0b10ac4b0cc5659077d63c2c3d9324368554d88a01d
+config_file=stream_leviathan.txt
+config_sha256=bd7451c2991662b9ac0c59b5722e442a942ee224c9a284b6fea5e4133808ecb7
+dataset=LEVIATHAN.txt
+dataset_sha256=af0ee47c574e2b5e93b67bc7b10b2d297c930ffc4a24ca804c85cb60b67dd906
+sequences=5834 target_sequences=5662
+init_size=2834 batch_count=100 increment_sizes=30
+min_sup_rate=0.005 max_per=1000 targets=[1, 18, 71, 8, 14]
+arm=ItemPreLargeTaSPM params: buffer_ratio=0.1
+load_ms=50 (reading and parsing the file, outside every clock)
+java=25.0.5+8-LTS vendor=Eclipse Adoptium max_heap_mb=32768 jvm_args=[-Xms32g, -Xmx32g]
+warmup_streams=1 reps=auto (rule: from the first measured stream's total time T: T<1s 15, T<10s 10, T<120s 5, else 3)
+warmup_status=TIMEOUT
+finished=2026-11-13T03:35:25+07:00 exit=5
