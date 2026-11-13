@@ -5,6 +5,7 @@ rem
 rem   bench\run_measure.bat            every phase, in plan order
 rem   bench\run_measure.bat main-time  one phase (main-time, main-live, tbr, phi, eta-lambda,
 rem                                    batch-count, kosarak-scale)
+rem   bench\run_measure.bat main-time 3  only the 3rd plan line of that phase
 rem
 rem Results go to results\stream-bench\<COMPUTERNAME>\ : one CSV and one .meta.txt per run,
 rem machine.txt, java-version.txt, runtime.lock and progress.log.
@@ -19,6 +20,7 @@ rem disable sleep (run.txt in the project keeps the machine awake while this scr
 setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0.."
 set "ONLY=%~1"
+set "LINE=%~2"
 if not defined BENCH_XMX set "BENCH_XMX=32g"
 rem Java: JAVA_HOME\bin\java.exe only when that file exists, otherwise java on PATH.
 set "JAVA=java"
@@ -46,11 +48,15 @@ if errorlevel 1 (
   echo [run_measure] cannot start Java with "%JAVA%" ^(from !JAVA_SRC!^); see %OUT%\java-version.txt
   exit /b 2
 )
-set /a NDONE=0, NSKIP=0, NLIMIT=0, NDIFF=0, NFAIL=0, NSEEN=0
+set /a NDONE=0, NSKIP=0, NLIMIT=0, NDIFF=0, NFAIL=0, NSEEN=0, NMATCH=0
 for /f "usebackq eol=# tokens=1-6 delims=;" %%a in ("bench\plan.txt") do (
   set "GO=0"
   if "!ONLY!"=="" set "GO=1"
   if /i "!ONLY!"=="%%a" set "GO=1"
+  if "!GO!"=="1" (
+    set /a NMATCH+=1
+    if defined LINE if not "!NMATCH!"=="!LINE!" set "GO=0"
+  )
   if "!GO!"=="1" (
     set /a NSEEN+=1
     echo [!date! !time!] %%a  %%b  %%c  %%d  %%e
@@ -69,7 +75,7 @@ for /f "usebackq eol=# tokens=1-6 delims=;" %%a in ("bench\plan.txt") do (
   )
 )
 if "!NSEEN!"=="0" (
-  echo [run_measure] no plan line matches phase "%ONLY%"
+  echo [run_measure] no plan line matches phase "%ONLY%" line "%LINE%"
   exit /b 2
 )
 echo [run_measure] runs=!NSEEN! done=!NDONE! skipped_existing=!NSKIP! time_or_heap_limit=!NLIMIT! verify_diff=!NDIFF! failed=!NFAIL!
