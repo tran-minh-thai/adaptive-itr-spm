@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_kosarak.txt --arm=RemineTaSPM --mode=time --tag=- --out=results\stream-bench\PC-THAI --lock=results\stream-bench\PC-THAI\runtime.lock --reps=auto
+started=2026-11-13T21:37:11+07:00
+build.source_tree_id=3647f323957ad565d07158f5f967469d03ab74cb
+build.source_commit=6203faca5b7a18569fccc5bf50f2efa8f0dce973
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-12T00:13:34Z
+build.release=8
+jar_sha256=74be334fac100be70e4be0b10ac4b0cc5659077d63c2c3d9324368554d88a01d
+config_file=stream_kosarak.txt
+config_sha256=b89461fa9be90dd45b67449f4af469cb36051cedaf2523436f005ae38259ffae
+dataset=kosarak.txt
+dataset_sha256=7f443c8a7715595ce8da7973f35fc34bac2c14d5bedc280c33d599f42e5738e0
+sequences=990002 target_sequences=848653
+init_size=90002 batch_count=100 increment_sizes=9000
+min_sup_rate=0.002 max_per=2000 targets=[1, 3, 6, 218, 11]
+arm=RemineTaSPM params: buffer_ratio=0.1
+load_ms=838 (reading and parsing the file, outside every clock)
+java=25.0.5+8-LTS vendor=Eclipse Adoptium max_heap_mb=32768 jvm_args=[-Xms32g, -Xmx32g]
+warmup_streams=1 reps=auto (rule: from the first measured stream's total time T: T<1s 15, T<10s 10, T<120s 5, else 3)
+first_stream_s=537.793 reps_chosen=3
+finished=2026-11-13T22:14:10+07:00 exit=0
