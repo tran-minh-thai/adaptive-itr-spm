@@ -1,5 +1,5 @@
 command=tools/stats_campaign.py <analysis dir> --reference=IncAdaTaSPM-StaticPreLarge
 tool_sha256=6e70ccb538d0c2ee86d9f0a4585a862e6f879c87ecab4365318eaf5ce7cb2576
-input 4596548505e94f24c038c94fbe889d312b20bdb1005587dbc16977a42b4cf97b runs.tsv
-input 599cfb776d7e7d71a8dd8842df4a9ffcae2c9ea30d15bdfc4ac39ea3a8f8279b batches.tsv
+input 467b2f6bb46b687f7be445d910068ed6558a3ffbf97348f83d1feb7f33bdd667 runs.tsv
+input e61eb33e5a9a23a976f9464415e790b125518d0f1dc8f35a3c38033d2c8f9796 batches.tsv
 numpy=2.5.4 scipy=1.18.1
