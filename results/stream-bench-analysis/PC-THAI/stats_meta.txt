@@ -1,0 +1,5 @@
+command=tools/stats_campaign.py <analysis dir>
+tool_sha256=bc9106648f76d14ee23928738f3317754f8a0ea6adcdde47aac380a5d4bc6daa
+input 40bf3bb21741fb2d9a61ac17b1bf23c3a595c60aad2988b6fedd222b3ff0f7e0 runs.tsv
+input 599cfb776d7e7d71a8dd8842df4a9ffcae2c9ea30d15bdfc4ac39ea3a8f8279b batches.tsv
+numpy=2.5.4 scipy=1.18.1
