@@ -13,10 +13,12 @@ Writes into the analysis directory:
 Rules (fixed before looking at the outcome):
   * metric 'update_ms': median over repetitions of the summed update time (batches 1..K);
     'total_ms' adds the initial mine; 'peak_live_mb' is the main-live peak live set.
-  * a run that hit the 120-minute limit has no measured value. For ranks it is placed after every
+  * a run that hit the 120-minute limit has no measured time. For ranks it is placed after every
     finished arm of the dataset (it ran longer than any of them); runs that hit the limit on the
-    same dataset share their ranks. For the Wilcoxon test over datasets it enters with the lower
-    bound 120 min (7,200,000 ms), so its difference to the proposed arm is a lower bound.
+    same dataset share their ranks. For the Wilcoxon test over datasets it enters with a lower
+    bound: total > 120 min; update > 120 min minus the initial mine of the stopped stream. Its
+    difference to the proposed arm is therefore a lower bound. For peak_live_mb a stopped run
+    enters, for ranks and tests alike, with the peak over the batches it reached (a lower bound).
   * ties in ranks get the average rank; lower values are better for every metric.
   * Wilcoxon over batches is not computed for a pair with a run that hit the limit.
 
@@ -99,7 +101,19 @@ def load(d):
     return runs, bat
 
 
+def lower_bound(r, metric):
+    """Lower bound for a run that hit the time limit: the stream stops once init + update time
+    exceeds the limit, so total > limit and update > limit - init (init of the stopped stream)."""
+    if metric == 'update_ms_med':
+        return LIMIT_MS - float(r['stop_init_ms'])
+    if metric == 'total_ms_med':
+        return LIMIT_MS
+    raise SystemExit('no lower bound defined for %s (run %s)' % (metric, r['file']))
+
+
 def value(r, metric):
+    if metric == 'peak_live_mb' and r.get(metric, '') != '':
+        return float(r[metric])  # for a stopped run: peak over the batches reached (lower bound)
     if r['status'] != 'OK' or r.get(metric, '') == '':
         return None
     return float(r[metric])
@@ -125,7 +139,7 @@ def main(d):
             if j == pi:
                 continue
             x = [row[pi] for row in table]
-            y = [row[j] if row[j] is not None else LIMIT_MS for row in table]
+            y = [row[j] if row[j] is not None else lower_bound(sel[(ds, a)], metric) for row, ds in zip(table, dss)]
             if any(v is None for v in x):
                 sys.exit('the proposed arm hit the limit; the over-datasets test is undefined')
             W, pw = wilcoxon(x, y)

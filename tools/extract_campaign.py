@@ -16,7 +16,9 @@ Definitions (fixed here, used by every table and test):
     table reports the median over repetitions (and min and max for update_ms and total_ms).
   * a run that hit the time or heap limit has status TIMEOUT or OOM, the batch it stopped at
     (stop_batch) and the repetition (stop_rep, negative = in the warm-up stream); it has no
-    timing summaries when no measured repetition finished.
+    timing summaries when no measured repetition finished. stop_init_ms is the time of batch 0 in
+    the stopped stream: the stream stops when init plus update time exceeds the limit, so the update
+    time of such a run is more than (limit - stop_init_ms).
   * live mode: peak_live_mb = max live_mb over all batches; peak_live_upd_mb = max over batches
     1..K; final_retained_mb = retained_mb after the last batch; max_retained_mb = max retained_mb.
   * counters (patterns, rescans, rescan_inserts, promotions, tree sizes) come from the first
@@ -127,6 +129,8 @@ for meta in sorted(glob.glob(os.path.join(camp, '*.meta.txt'))):
                 prev = [r for r in rows if r['rep'] == stop[0]['rep'] and r['status'] == 'OK']
                 if prev:
                     rec['stop_cum_ms'] = num(prev[-1]['cum_ms'])
+                    b0 = [r for r in prev if r['batch'] == '0']
+                    rec['stop_init_ms'] = num(b0[0]['time_ms']) if b0 else ''
     else:
         rr = {int(r['batch']): r for r in ok}
         rec['reps_measured'] = 1 if not stop else 0
@@ -152,7 +156,7 @@ for meta in sorted(glob.glob(os.path.join(camp, '*.meta.txt'))):
             rec['max_' + c] = max(vv) if vv else ''
     runs.append(rec)
 
-RUN_KEYS = ['phase', 'dataset', 'arm', 'tag', 'mode', 'status', 'stop_rep', 'stop_batch', 'stop_cum_ms',
+RUN_KEYS = ['phase', 'dataset', 'arm', 'tag', 'mode', 'status', 'stop_rep', 'stop_batch', 'stop_cum_ms', 'stop_init_ms',
             'reps_measured', 'batches', 'min_sup_init', 'init_ms_med', 'update_ms_med', 'update_ms_min',
             'update_ms_max', 'total_ms_med', 'total_ms_min', 'total_ms_max', 'peak_live_mb',
             'peak_live_upd_mb', 'final_retained_mb', 'max_retained_mb', 'gc_forced', 'final_patterns',
