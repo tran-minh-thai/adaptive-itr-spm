@@ -1,0 +1,2 @@
+git 18036f8; jar sha256 74be334fac100be7; CheckStubFloor md5 1eb4852108bc1f0a4cfd16dbe3406aa9
+openjdk version "25.0.4.1" 2026-08-18 LTS

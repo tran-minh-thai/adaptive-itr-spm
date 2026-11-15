@@ -1,0 +1,8 @@
+dataset=stream_fifa.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=43099 promotions=81718
+mutant=none
+(R) rescan horizon: 43099 rescans checked, 0 violations
+(B) bound on b:     2282813 node checks, 0 violations
+(S) exact stubs:    0 stub recounts, 0 violations
+(L) stub >= first floor: 109144550 stub checks, 0 violations; stubs below the current floor: 4412
+RESULT pass
+exit=0

@@ -1,0 +1,8 @@
+dataset=stream_sign.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=305635 promotions=903230
+mutant=none
+(R) rescan horizon: 305635 rescans checked, 0 violations
+(B) bound on b:     223769927 node checks, 0 violations
+(S) exact stubs:    0 stub recounts, 0 violations
+(L) stub >= first floor: 1182147738 stub checks, 0 violations; stubs below the current floor: 19743
+RESULT pass
+exit=0

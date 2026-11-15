@@ -1,0 +1,7 @@
+mutant=miscount-stub
+(R) rescan horizon: 54507 rescans checked, 0 violations
+(B) bound on b:     2958958 node checks, 0 violations
+(S) exact stubs:    575175 stub recounts, 133870 violations
+(L) stub >= first floor: 575175 stub checks, 0 violations; stubs below the current floor: 1983
+RESULT violation
+exit=1

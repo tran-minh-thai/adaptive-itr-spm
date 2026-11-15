@@ -1,0 +1,7 @@
+mutant=extra-rescan
+(R) rescan horizon: 256680 rescans checked, 28603 violations
+(B) bound on b:     3438429 node checks, 0 violations
+(S) exact stubs:    776727 stub recounts, 0 violations
+(L) stub >= first floor: 776727 stub checks, 0 violations; stubs below the current floor: 162
+RESULT violation
+exit=1

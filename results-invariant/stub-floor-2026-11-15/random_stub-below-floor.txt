@@ -1,0 +1,7 @@
+mutant=stub-below-floor
+(R) rescan horizon: 54915 rescans checked, 0 violations
+(B) bound on b:     2906966 node checks, 0 violations
+(S) exact stubs:    480440 stub recounts, 63135 violations
+(L) stub >= first floor: 480440 stub checks, 43576 violations; stubs below the current floor: 43920
+RESULT violation
+exit=1
