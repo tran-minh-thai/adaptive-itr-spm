@@ -241,3 +241,91 @@ kosarak-scale;stream_kosarak_80.txt;IncAdaTaSPM;time;-;--reps=auto
 kosarak-scale;stream_kosarak_80.txt;IncAdaTaSPM;live;-;--reps=auto
 kosarak-scale;stream_kosarak_80.txt;RemineTaSPM;time;-;--reps=auto
 kosarak-scale;stream_kosarak_80.txt;RemineTaSPM;live;-;--reps=auto
+sup-recheck;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;recheck;--reps=auto
+sup-recheck;stream_bms1.txt;RemineTaSPM;time;recheck;--reps=auto
+sup-recheck;stream_D48K.txt;RemineTaSPM;time;recheck;--reps=auto
+sup-recheck;stream_kosarak_20.txt;RemineTaSPM;time;recheck;--reps=auto
+sup-phi;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-phi;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;phi0.25;--reps=auto --phi=0.25
+sup-phi;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;phi1;--reps=auto --phi=1
+sup-eta;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-eta;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;eta0;--reps=auto --eta=0
+sup-eta;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.1;--reps=auto --eta=0.1
+sup-eta;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.3;--reps=auto --eta=0.3
+sup-eta;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.7;--reps=auto --eta=0.7
+sup-eta;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;eta0.9;--reps=auto --eta=0.9
+sup-batch-count;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_sign.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_bible.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-batch-count;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;K25;--reps=auto --batch_count=25
+sup-batch-count;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;K50;--reps=auto --batch_count=50
+sup-batch-count;stream_kosarak.txt;IncAdaTaSPM-StaticPreLarge;time;K67;--reps=auto --batch_count=67
+sup-kosarak-scale;stream_kosarak_20.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_20.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_40.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_40.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_60.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_60.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_80.txt;IncAdaTaSPM-StaticPreLarge;time;-;--reps=auto
+sup-kosarak-scale;stream_kosarak_80.txt;IncAdaTaSPM-StaticPreLarge;live;-;--reps=auto
