@@ -4,9 +4,9 @@
 Writes into the analysis directory:
   stats_friedman.tsv  per metric: Friedman chi-square and p, Iman-Davenport F and p, Nemenyi
                       critical difference (alpha 0.05), average rank of every arm
-  stats_wilcoxon_datasets.tsv  per metric: the proposed arm against every other arm over the
+  stats_wilcoxon_datasets.tsv  per metric: the reference arm against every other arm over the
                       datasets (Wilcoxon signed-rank, exact two-sided), with Holm-adjusted p
-  stats_wilcoxon_batches.tsv  per dataset: the proposed arm against every other arm over the
+  stats_wilcoxon_batches.tsv  per dataset: the reference arm against every other arm over the
                       K update batches (median batch time over repetitions, paired by batch)
   stats_meta.txt      command, SHA-256 of this tool and of the inputs
 
@@ -17,12 +17,16 @@ Rules (fixed before looking at the outcome):
     finished arm of the dataset (it ran longer than any of them); runs that hit the limit on the
     same dataset share their ranks. For the Wilcoxon test over datasets it enters with a lower
     bound: total > 120 min; update > 120 min minus the initial mine of the stopped stream. Its
-    difference to the proposed arm is therefore a lower bound. For peak_live_mb a stopped run
+    difference to the reference arm is therefore a lower bound. For peak_live_mb a stopped run
     enters, for ranks and tests alike, with the peak over the batches it reached (a lower bound).
   * ties in ranks get the average rank; lower values are better for every metric.
   * Wilcoxon over batches is not computed for a pair with a run that hit the limit.
 
-Usage: tools/stats_campaign.py <analysis dir>   |   tools/stats_campaign.py --self-test
+Usage: tools/stats_campaign.py <analysis dir> [--reference=<arm>]   |   tools/stats_campaign.py --self-test
+
+The reference arm (the one every other arm is compared against in the Wilcoxon tests) defaults to
+IncAdaTaSPM-StaticPreLarge, the method as proposed in the paper (fixed pre-large threshold with
+exact-count stubs and lazy insertion). Friedman and Nemenyi do not depend on the reference.
 """
 import csv
 import hashlib
@@ -33,7 +37,7 @@ import sys
 import numpy as np
 from scipy import stats
 
-PROPOSED = 'IncAdaTaSPM'
+PROPOSED = 'IncAdaTaSPM-StaticPreLarge'
 ARMS = ['IncAdaTaSPM', 'IncAdaTaSPM-NoBuffer', 'IncAdaTaSPM-StaticPreLarge', 'IncAdaTaSPM-Original',
         'RemineTaSPM', 'BatchTaSPM', 'ItemPreLargeTaSPM']
 LIMIT_MS = 120 * 60 * 1000.0
@@ -141,7 +145,7 @@ def main(d):
             x = [row[pi] for row in table]
             y = [row[j] if row[j] is not None else lower_bound(sel[(ds, a)], metric) for row, ds in zip(table, dss)]
             if any(v is None for v in x):
-                sys.exit('the proposed arm hit the limit; the over-datasets test is undefined')
+                sys.exit('the reference arm hit the limit; the over-datasets test is undefined')
             W, pw = wilcoxon(x, y)
             better = sum(1 for u, v in zip(x, y) if u < v)
             worse = sum(1 for u, v in zip(x, y) if u > v)
@@ -197,7 +201,7 @@ def main(d):
     write('stats_wilcoxon_datasets.tsv', out_w)
     write('stats_wilcoxon_batches.tsv', out_b)
     with open(os.path.join(d, 'stats_meta.txt'), 'w', newline='\n', encoding='utf-8') as w:
-        w.write('command=tools/stats_campaign.py <analysis dir>\n')
+        w.write('command=tools/stats_campaign.py <analysis dir> --reference=%s\n' % PROPOSED)
         w.write('tool_sha256=%s\n' % sha(os.path.abspath(__file__)))
         for f in ('runs.tsv', 'batches.tsv'):
             w.write('input %s %s\n' % (sha(os.path.join(d, f)), f))
@@ -261,4 +265,11 @@ def self_test():
 if __name__ == '__main__':
     if sys.argv[1:] == ['--self-test']:
         self_test()
+    for a in sys.argv[2:]:
+        if a.startswith('--reference='):
+            PROPOSED = a.split('=', 1)[1]
+            if PROPOSED not in ARMS:
+                sys.exit('unknown reference arm ' + PROPOSED)
+        else:
+            sys.exit('unknown option ' + a)
     main(sys.argv[1])
