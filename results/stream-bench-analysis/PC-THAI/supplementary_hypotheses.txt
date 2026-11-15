@@ -1,0 +1,55 @@
+command: python3 tools/check_supplementary.py results/stream-bench-analysis/PC-THAI/runs.tsv
+tool_sha256: 0367ff4a08690220c22921e8d3ba0cbcbeeabe16a1214edf932f1a91c239ec71
+runs_tsv_sha256: 467b2f6bb46b687f7be445d910068ed6558a3ffbf97348f83d1feb7f33bdd667
+python: Python 3.14.6
+
+H1 BIBLE            IncAdaTaSPM-StaticPreLarge  main    13008.7 ms  recheck    12849.8 ms  drift  -1.22%
+H1 BMS1_spmf        IncAdaTaSPM-StaticPreLarge  main       41.8 ms  recheck       40.3 ms  drift  -3.66%
+H1 BMS1_spmf        RemineTaSPM                 main     1105.0 ms  recheck     1100.9 ms  drift  -0.37%
+H1 D48K-C10-T1-N5K  IncAdaTaSPM-StaticPreLarge  main      211.0 ms  recheck      194.0 ms  drift  -8.08%
+H1 D48K-C10-T1-N5K  RemineTaSPM                 main     7522.9 ms  recheck     7460.0 ms  drift  -0.84%
+H1 FIFA             IncAdaTaSPM-StaticPreLarge  main    26654.1 ms  recheck    27266.6 ms  drift  +2.30%
+H1 LEVIATHAN        IncAdaTaSPM-StaticPreLarge  main    28788.9 ms  recheck    29571.6 ms  drift  +2.72%
+H1 SIGN             IncAdaTaSPM-StaticPreLarge  main    21197.0 ms  recheck    21229.3 ms  drift  +0.15%
+H1 kosarak_20       RemineTaSPM                 main    98887.5 ms  recheck    98569.3 ms  drift  -0.32%
+H1 kosarak          IncAdaTaSPM-StaticPreLarge  main     5193.3 ms  recheck     5217.8 ms  drift  +0.47%
+H2 BIBLE            ratio at K = 25, 50, 67, 100: 6.79, 9.91, 11.16, 13.07  increasing
+H2 BMS1_spmf        ratio at K = 25, 50, 67, 100: 13.62, 19.08, 21.45, 26.44  increasing
+H2 D48K-C10-T1-N5K  ratio at K = 25, 50, 67, 100: 16.46, 25.38, 31.26, 35.65  increasing
+H2 FIFA             ratio at K = 25, 50, 67, 100: 17.19, 18.56, 21.78, 24.33  increasing
+H2 LEVIATHAN        ratio at K = 25, 50, 67, 100: 9.40, 13.85, 15.76, 20.53  increasing
+H2 SIGN             ratio at K = 25, 50, 67, 100: 5.04, 7.12, 8.29, 10.15  increasing
+H2 kosarak          ratio at K = 25, 50, 67, 100: 34.10, 58.52, 76.38, 103.32  increasing
+H3 BIBLE            phi1    vs phi0.5: +258.70% (tie band 1.22%) -> slower
+H3 BIBLE            phi0.25 vs phi0.5:  -23.72% (tie band 1.22%) -> faster
+H3 BMS1_spmf        phi1    vs phi0.5: +125.63% (tie band 12.83%) -> slower
+H3 BMS1_spmf        phi0.25 vs phi0.5:   -6.82% (tie band 14.56%) -> tie
+H3 D48K-C10-T1-N5K  phi1    vs phi0.5:   +8.61% (tie band 8.08%) -> slower
+H3 D48K-C10-T1-N5K  phi0.25 vs phi0.5:  +41.56% (tie band 8.08%) -> slower
+H3 FIFA             phi1    vs phi0.5: +424.51% (tie band 2.30%) -> slower
+H3 FIFA             phi0.25 vs phi0.5:  -18.91% (tie band 2.30%) -> faster
+H3 LEVIATHAN        phi1    vs phi0.5: +104.04% (tie band 2.72%) -> slower
+H3 LEVIATHAN        phi0.25 vs phi0.5:   -4.21% (tie band 2.72%) -> faster
+H3 SIGN             phi1    vs phi0.5:  +15.17% (tie band 0.18%) -> slower
+H3 SIGN             phi0.25 vs phi0.5:  +13.17% (tie band 0.15%) -> slower
+H3 kosarak          phi1    vs phi0.5: +343.96% (tie band 1.37%) -> slower
+H3 kosarak          phi0.25 vs phi0.5:  +18.63% (tie band 1.37%) -> slower
+H4 SIGN             final_live_nodes eta 0..0.9: 726312, 843426, 1236292, 1674167, 1723358, 1723358  non-decreasing
+H4 SIGN             max_live_nodes   eta 0..0.9: 2151902, 2207201, 2413870, 2549594, 2549594, 2549594  non-decreasing
+H4 SIGN             update ms        eta 0..0.9: 24135, 20376, 20530, 21197, 21022, 21017
+H4 LEVIATHAN        final_live_nodes eta 0..0.9: 731432, 816408, 945128, 949538, 949538, 949538  non-decreasing
+H4 LEVIATHAN        max_live_nodes   eta 0..0.9: 853244, 903276, 979173, 979173, 979173, 979173  non-decreasing
+H4 LEVIATHAN        update ms        eta 0..0.9: 35472, 29767, 29670, 28789, 29646, 29301
+
+H1: rejected for BMS1_spmf/IncAdaTaSPM-StaticPreLarge, D48K-C10-T1-N5K/IncAdaTaSPM-StaticPreLarge (10 runs compared)
+H2: supported (7 datasets)
+H3a: supported (phi = 1 vs 0.5, 7 datasets)
+H3b: rejected for BMS1_spmf (tie) (phi = 0.25 vs 0.5, 4 datasets)
+H4: supported for nodes (2 datasets x 2 counters); memory half not testable (eta sweep has no live-mode runs)
+
+self-test H1   changed ['H1'] -> ok
+self-test H2   changed ['H2'] -> ok
+self-test H3a  changed ['H3a'] -> ok
+self-test H3b  changed ['H3b'] -> ok
+self-test H4   changed ['H4'] -> ok
+self-test: 5 of 5 faults caught by exactly their own verdict
