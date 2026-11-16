@@ -1,0 +1,4 @@
+git 9fdb1228de11e3008694591e858241dd89481ed1 tree 0 modified
+d0cf446bb9f2a85f4ea87fd6602c6ceec90cb0c4169afc22fb18b881e83069cf  bench/adaptive-itr-spm-bench.jar
+openjdk version "25.0.4.1" 2026-08-18 LTS
+Darwin arm64

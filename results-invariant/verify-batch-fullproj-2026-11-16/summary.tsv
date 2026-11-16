@@ -1,0 +1,8 @@
+dataset	arm	batches_compared	batches_differing	stopped	ref_patterns_summed	ref_patterns_last_batch	rescans	rescans_inserting	promotions	backscans	init_live_nodes	init_stubs	init_min_sup	status	file
+BIBLE	BatchTaSPM	101	0		494693	4020	-1	-1	-1	-1	-1	-1	22	OK	BIBLE__BatchTaSPM__verify.csv
+BMS1_spmf	BatchTaSPM	101	0		17765	126	-1	-1	-1	-1	-1	-1	40	OK	BMS1_spmf__BatchTaSPM__verify.csv
+D48K-C10-T1-N5K	BatchTaSPM	101	0		3488924	34943	-1	-1	-1	-1	-1	-1	26	OK	D48K-C10-T1-N5K__BatchTaSPM__verify.csv
+FIFA	BatchTaSPM	52	0	TIMEOUT	546749	8825	-1	-1	-1	-1	-1	-1	53	CHECK	FIFA__BatchTaSPM__verify.csv
+LEVIATHAN	BatchTaSPM	101	0		75204924	708537	-1	-1	-1	-1	-1	-1	15	OK	LEVIATHAN__BatchTaSPM__verify.csv
+SIGN	BatchTaSPM	101	0		11177498	55627	-1	-1	-1	-1	-1	-1	12	OK	SIGN__BatchTaSPM__verify.csv
+kosarak	BatchTaSPM	101	0		256388	1815	-1	-1	-1	-1	-1	-1	181	OK	kosarak__BatchTaSPM__verify.csv
