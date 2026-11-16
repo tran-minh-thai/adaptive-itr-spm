@@ -1,0 +1,22 @@
+command=StreamBench --config=stream_bms1.txt --arm=BatchTaSPM --mode=time --tag=fullproj --out=results\stream-bench\PC-THAI --lock=results\stream-bench\PC-THAI\runtime.lock --reps=auto
+started=2026-11-16T11:05:12+07:00
+build.source_tree_id=610579fcc0219d6b394d758b0cda83d0dc5cdf47
+build.source_commit=7d22b607a1108aac61dcf4fb0deb6c1329f33b03
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-16T03:30:28Z
+build.release=8
+jar_sha256=d0cf446bb9f2a85f4ea87fd6602c6ceec90cb0c4169afc22fb18b881e83069cf
+config_file=stream_bms1.txt
+config_sha256=b7a1338ea4ebf1bfe8c98cc766a9719c2fe47c1442aebee711afca87f94f985d
+dataset=BMS1_spmf.txt
+dataset_sha256=e797a4be0cd0fd8dc3cd55aad9c842092eacaa649478f693cc71e344552bd887
+sequences=59601 target_sequences=13935
+init_size=39601 batch_count=100 increment_sizes=200
+min_sup_rate=0.001 max_per=3000 targets=[10307, 33449, 10315, 33469, 12895]
+arm=BatchTaSPM params: buffer_ratio=0.1
+load_ms=62 (reading and parsing the file, outside every clock)
+java=25.0.5+8-LTS vendor=Eclipse Adoptium max_heap_mb=32768 jvm_args=[-Xms32g, -Xmx32g]
+warmup_streams=1 reps=auto (rule: from the first measured stream's total time T: T<1s 15, T<10s 10, T<120s 5, else 3)
+first_stream_s=5.221 reps_chosen=10
+finished=2026-11-16T11:08:28+07:00 exit=0
