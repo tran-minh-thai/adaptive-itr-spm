@@ -8,6 +8,11 @@ import java.util.*;
  * <b>BatchTaSPM</b> - Static batch baseline for target-based
  * sequential pattern mining.
  *
+ * <p>Pattern growth over projected databases. A projected sequence keeps every itemset where an
+ * occurrence of the prefix ends, so I-extensions are searched in every itemset that holds the
+ * prefix's last itemset, not only in the first one; the output is the complete set of regular
+ * patterns that contain a target item.
+ *
  * <p>Runs the whole target-SPM pipeline from scratch on every batch:
  * the algorithm re-reads the entire prefix of the dataset that has
  * arrived so far, rebuilds the projected database, then mines
@@ -40,13 +45,34 @@ public class BatchTaSPM {
         }
     }
 
+    /**
+     * One sequence of a projected database: every itemset where an occurrence of the prefix
+     * ends. tids holds the itemset indices in increasing order and offs[k] the index, inside
+     * itemset tids[k], of the last item of the prefix. S-extensions grow from the first end
+     * (tids[0]); I-extensions grow from every end, so an I-extension that occurs only after a
+     * later occurrence of the prefix's last itemset is found.
+     */
     private static class ProjectedSequence {
-        int sidIdx, tidIdx, itemOffset;
-        ProjectedSequence(int sidIdx, int tidIdx, int itemOffset) {
+        final int sidIdx;
+        final int[] tids, offs;
+        ProjectedSequence(int sidIdx, int[] tids, int[] offs) {
             this.sidIdx = sidIdx;
-            this.tidIdx = tidIdx;
-            this.itemOffset = itemOffset;
+            this.tids = tids;
+            this.offs = offs;
         }
+    }
+
+    /** Growable pair of int lists used while one projection is being built. */
+    private static final class EndList {
+        final int sidIdx;
+        int[] t = new int[4], o = new int[4];
+        int n = 0;
+        EndList(int sidIdx) { this.sidIdx = sidIdx; }
+        void add(int tid, int off) {
+            if (n == t.length) { t = Arrays.copyOf(t, 2 * n); o = Arrays.copyOf(o, 2 * n); }
+            t[n] = tid; o[n] = off; n++;
+        }
+        ProjectedSequence done() { return new ProjectedSequence(sidIdx, Arrays.copyOf(t, n), Arrays.copyOf(o, n)); }
     }
 
     // ========================================================================
@@ -333,13 +359,10 @@ public class BatchTaSPM {
         }
         Collections.sort(frequentItems);
 
-        List<ProjectedSequence> initialPDB = new ArrayList<>();
-        for (int i = 0; i < totalDBSize; i++) initialPDB.add(new ProjectedSequence(i, 0, -1));
-
         for (int item : frequentItems) {
             List<int[]> prefix = new ArrayList<>();
             prefix.add(new int[]{item});
-            List<ProjectedSequence> nextPDB = buildProjectedDB(initialPDB, item, true);
+            List<ProjectedSequence> nextPDB = projectItem(item);
             if (nextPDB.size() >= min_sup && checkRegularity(nextPDB)) {
                 if (containsTarget(prefix)) {
                     patternCount++;
@@ -386,7 +409,7 @@ public class BatchTaSPM {
         for (ProjectedSequence pseq : pdb) {
             int[][] seq = database[pseq.sidIdx];
             Set<Integer> seenInSidS = new HashSet<>();
-            for (int i = pseq.tidIdx + 1; i < seq.length; i++) {
+            for (int i = pseq.tids[0] + 1; i < seq.length; i++) {
                 for (int j = 0; j < seq[i].length; j++) {
                     int item = seq[i][j];
                     if (!seenInSidS.contains(item)) {
@@ -395,10 +418,10 @@ public class BatchTaSPM {
                     }
                 }
             }
-            if (pseq.itemOffset != -1) {
-                int[] itemset = seq[pseq.tidIdx];
-                Set<Integer> seenInSidI = new HashSet<>();
-                for (int j = pseq.itemOffset + 1; j < itemset.length; j++) {
+            Set<Integer> seenInSidI = new HashSet<>();
+            for (int k = 0; k < pseq.tids.length; k++) {
+                int[] itemset = seq[pseq.tids[k]];
+                for (int j = pseq.offs[k] + 1; j < itemset.length; j++) {
                     int item = itemset[j];
                     if (item > lastItemInPrefix && !seenInSidI.contains(item)) {
                         seenInSidI.add(item);
@@ -423,27 +446,33 @@ public class BatchTaSPM {
 
         for (ProjectedSequence pseq : pdb) {
             int[][] seq = database[pseq.sidIdx];
-            Set<Integer> seenInSidS = new HashSet<>();
-            for (int i = pseq.tidIdx + 1; i < seq.length; i++) {
+            Map<Integer, EndList> sEnds = new HashMap<>();
+            for (int i = pseq.tids[0] + 1; i < seq.length; i++) {
                 for (int j = 0; j < seq[i].length; j++) {
                     int item = seq[i][j];
-                    if (validSItems.contains(item) && !seenInSidS.contains(item)) {
-                        seenInSidS.add(item);
-                        sMap.computeIfAbsent(item, k -> new ArrayList<>()).add(new ProjectedSequence(pseq.sidIdx, i, j));
+                    if (validSItems.contains(item)) {
+                        EndList el = sEnds.get(item);
+                        if (el == null) { el = new EndList(pseq.sidIdx); sEnds.put(item, el); }
+                        el.add(i, j);
                     }
                 }
             }
-            if (pseq.itemOffset != -1) {
-                int[] itemset = seq[pseq.tidIdx];
-                Set<Integer> seenInSidI = new HashSet<>();
-                for (int j = pseq.itemOffset + 1; j < itemset.length; j++) {
+            for (Map.Entry<Integer, EndList> en : sEnds.entrySet())
+                sMap.computeIfAbsent(en.getKey(), k -> new ArrayList<>()).add(en.getValue().done());
+            Map<Integer, EndList> iEnds = new HashMap<>();
+            for (int k = 0; k < pseq.tids.length; k++) {
+                int[] itemset = seq[pseq.tids[k]];
+                for (int j = pseq.offs[k] + 1; j < itemset.length; j++) {
                     int item = itemset[j];
-                    if (validIItems.contains(item) && !seenInSidI.contains(item)) {
-                        seenInSidI.add(item);
-                        iMap.computeIfAbsent(item, k -> new ArrayList<>()).add(new ProjectedSequence(pseq.sidIdx, pseq.tidIdx, j));
+                    if (item > lastItemInPrefix && validIItems.contains(item)) {
+                        EndList el = iEnds.get(item);
+                        if (el == null) { el = new EndList(pseq.sidIdx); iEnds.put(item, el); }
+                        el.add(pseq.tids[k], j);
                     }
                 }
             }
+            for (Map.Entry<Integer, EndList> en : iEnds.entrySet())
+                iMap.computeIfAbsent(en.getKey(), k -> new ArrayList<>()).add(en.getValue().done());
         }
 
         for (int item : frequentItems) {
@@ -477,37 +506,22 @@ public class BatchTaSPM {
         }
     }
 
-    private List<ProjectedSequence> buildProjectedDB(List<ProjectedSequence> currentPDB, int item, boolean isSExtension) {
+    /** Projection of the one-item pattern (item): every itemset of every sequence that holds it. */
+    private List<ProjectedSequence> projectItem(int item) {
         List<ProjectedSequence> nextPDB = new ArrayList<>();
-        Set<Integer> processedSids = new HashSet<>();
-        for (ProjectedSequence pseq : currentPDB) {
-            if (processedSids.contains(pseq.sidIdx)) continue;
-            int[][] seq = database[pseq.sidIdx];
-            if (isSExtension) {
-                boolean found = false;
-                for (int i = pseq.tidIdx; i < seq.length; i++) {
-                    for (int j = 0; j < seq[i].length; j++) {
-                        if (seq[i][j] == item) {
-                            nextPDB.add(new ProjectedSequence(pseq.sidIdx, i, j));
-                            processedSids.add(pseq.sidIdx);
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found) break;
-                }
-            } else {
-                if (pseq.itemOffset != -1) {
-                    int[] itemset = seq[pseq.tidIdx];
-                    for (int j = pseq.itemOffset + 1; j < itemset.length; j++) {
-                        if (itemset[j] == item) {
-                            nextPDB.add(new ProjectedSequence(pseq.sidIdx, pseq.tidIdx, j));
-                            processedSids.add(pseq.sidIdx);
-                            break;
-                        }
+        for (int sid = 0; sid < totalDBSize; sid++) {
+            int[][] seq = database[sid];
+            EndList el = null;
+            for (int i = 0; i < seq.length; i++) {
+                for (int j = 0; j < seq[i].length; j++) {
+                    if (seq[i][j] == item) {
+                        if (el == null) el = new EndList(sid);
+                        el.add(i, j);
+                        break;
                     }
                 }
             }
+            if (el != null) nextPDB.add(el.done());
         }
         return nextPDB;
     }
