@@ -1,0 +1,6 @@
+class files: main-campaign jar 43, this jar 44, identical 40
+differs: build-info.properties
+differs: com/adaptive/itr/spm/BatchTaSPM$EndList.class (only in this jar)
+differs: com/adaptive/itr/spm/BatchTaSPM$ProjectedSequence.class
+differs: com/adaptive/itr/spm/BatchTaSPM$RawSequence.class
+differs: com/adaptive/itr/spm/BatchTaSPM.class

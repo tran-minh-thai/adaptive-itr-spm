@@ -43,7 +43,7 @@ and sets `--batch_count=25|50|67`.
 | `IncAdaTaSPM-Original` | the same code with `phi = 1` and lazy insertion off: the design procedure without stubs and lazy insertion |
 | `IncAdaTaSPM-TBR` | the method with the target-proximity component in the score, weight `w2` |
 | `RemineTaSPM` | mines the whole current database after every batch (the former `AdaIncTaSPM` class, which re-mined every batch) |
-| `BatchTaSPM` | a PrefixSpan-style batch miner with a target filter and regularity check, re-run on the whole current database after every batch |
+| `BatchTaSPM` | a pattern-growth batch miner over projected databases with a target filter and regularity check, re-run on the whole current database after every batch. A projected sequence keeps every itemset where the prefix ends, so I-extensions are found in every itemset that holds the prefix's last itemset (since commit `7d22b60`; the jar of the main campaign, `74be334f`, kept only the first such itemset and missed I-extensions that occur only later, see section 6) |
 | `ItemPreLargeTaSPM` | self-built baseline: item-level pre-large bookkeeping with backward scans and a full re-mine over the tracked items after every batch (formerly `IncTaSPM_Li`; it is not an implementation of a published algorithm) |
 
 ## 3. What the clock covers
@@ -103,3 +103,36 @@ from the runtime lock (`--lock`).
 | `cmp_ref_patterns`, `cmp_only_arm`, `cmp_only_ref`, `cmp_sup_diff` | verify mode |
 
 `-1` means the counter does not exist for that arm.
+
+## 6. Batch baseline re-measured after the projection fix (phase `fix-batch`, 2026-11-16)
+
+The batch baseline of the main campaign (jar `74be334f`) projected each sequence from the first
+itemset where the prefix ends, so it missed an I-extension that occurs only in a later itemset
+holding the prefix's last itemset (`results-invariant/baseline-first-occurrence-2026-11-16`). The
+fix keeps every such itemset (commit `7d22b60`, jar `d0cf446b`). Checks before measuring
+(`results-invariant/batch-full-projection-2026-11-16`): the three small databases; 2000 random
+databases with multi-item itemsets against exhaustive enumeration (0 differences for Batch,
+Re-mine and the engine; the jar of the main campaign differs on 959); 40 of the 43 class files of
+the main-campaign jar are byte-identical in the new jar, and only the four `BatchTaSPM` entries
+and the build stamp differ, so every other arm runs the code it ran in the main campaign and is
+not measured again. What the clock covers for `BatchTaSPM` (section 3) is unchanged.
+
+Phase `fix-batch` of `bench/plan.txt`, per dataset in this order (BMS1, D48K, BIBLE, SIGN,
+LEVIATHAN, KOSARAK, FIFA): the proposed method `IncAdaTaSPM-StaticPreLarge` in time mode (tag
+`recheck3`), `BatchTaSPM` in time and live mode (tag `fullproj`), the proposed method in live
+mode (tag `recheck3`). Same machine, JDK lock, heap (32g), `--reps=auto` and time limit (120
+minutes per stream) as the main campaign.
+
+Written before the runs:
+
+* The output of the fixed Batch is the output of the old Batch on every dataset of the
+  experiments: the verification of the old Batch against Re-mine found 0 differing batches on
+  the seven datasets, and the fixed Batch is checked again
+  (`results-invariant/verify-batch-fullproj-2026-11-16`). Only its time and memory change.
+* Ratios that involve Batch (update time or memory of Batch / the proposed method) are computed
+  from the two arms of phase `fix-batch`, measured in the same session, on every dataset. They
+  are not formed with the proposed method of the main campaign.
+* The drift of the proposed method between the main campaign and this session
+  (`recheck3` against `main-time`) is reported per dataset, as for the supplementary session.
+* FIFA: the old Batch hit the 120-minute limit in both modes; the fixed Batch does at least the
+  same work, so a limit is expected again and the FIFA ratio stays a lower bound.

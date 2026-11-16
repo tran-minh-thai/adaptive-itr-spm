@@ -2,8 +2,11 @@
 """Checks a finished StreamBench campaign directory against bench/plan.txt.
 
 For every plan line there must be exactly one finished run (a .meta.txt whose command matches
-the line, with a 'finished=' record, and its .csv). All runs must share one jar, one build
-commit, one clean source tree, one Java runtime and one set of JVM arguments; every dataset and
+the line, with a 'finished=' record, and its .csv). All runs must share one Java runtime; the
+runs of one jar group share one jar, one build commit and one clean source tree. The jar groups
+are phase fix-batch (the jar with the fixed batch baseline, whose other classes are
+byte-identical to the main jar: results-invariant/batch-full-projection-2026-11-16) and every
+other phase; every dataset and
 configuration file must have one SHA-256 across runs. Exit codes 0 (done) and 5 (time or heap
 limit) are accepted; limit hits are listed. Exit code 1 if anything else is found.
 
@@ -72,8 +75,10 @@ for ph, key in plan:
         limits.append('%s (stopped at %s)' % (os.path.basename(csv), ','.join(last[4:6]) + ' ' + (last[-1] if last else '')))
     elif code != '0':
         problems.append('exit code %s in %s' % (code, os.path.basename(m)))
-    for k in ('jar_sha256', 'build.source_commit', 'build.source_tree', 'java'):
-        shared[k].add(kv.get(k, ''))
+    grp = 'fix-batch' if ph == 'fix-batch' else 'main'
+    for k in ('jar_sha256', 'build.source_commit', 'build.source_tree'):
+        shared['%s [%s]' % (k, grp)].add(kv.get(k, ''))
+    shared['java'].add(kv.get('java', ''))
     per_file['dataset ' + kv.get('dataset', '')].add(kv.get('dataset_sha256', ''))
     per_file['config ' + kv.get('config_file', '')].add(kv.get('config_sha256', ''))
 
@@ -84,8 +89,9 @@ for key, kv in runs.items():
 for k, vals in shared.items():
     if len(vals) != 1:
         problems.append('%s differs across runs: %s' % (k, sorted(vals)))
-if shared.get('build.source_tree') and shared['build.source_tree'] != {'clean'}:
-    problems.append('jar built from a modified source tree')
+for k, vals in shared.items():
+    if k.startswith('build.source_tree') and vals != {'clean'}:
+        problems.append('jar built from a modified source tree (%s)' % k)
 for k, vals in per_file.items():
     if len(vals) != 1:
         problems.append('%s has %d different SHA-256 values' % (k, len(vals)))
