@@ -1,0 +1,7 @@
+mutant=none
+(R) rescan horizon: 54596 rescans checked, 0 violations
+(B) bound on b:     2916729 node checks, 0 violations
+(S) exact stubs:    582185 stub recounts, 0 violations
+(L) stub >= first floor: 582185 stub checks, 0 violations; stubs below the current floor: 292
+RESULT pass
+exit=0

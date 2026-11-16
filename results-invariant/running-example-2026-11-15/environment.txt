@@ -1,0 +1,2 @@
+git 46d536e; jar sha256 74be334fac100be7; RunningExample sha256 9f4062e28e1d304d
+openjdk version "25.0.4.1" 2026-08-18 LTS

@@ -1,0 +1,8 @@
+dataset=stream_leviathan.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=297639 promotions=357176
+mutant=none
+(R) rescan horizon: 297639 rescans checked, 0 violations
+(B) bound on b:     94483447 node checks, 0 violations
+(S) exact stubs:    0 stub recounts, 0 violations
+(L) stub >= first floor: 812381710 stub checks, 0 violations; stubs below the current floor: 19818
+RESULT pass
+exit=0

@@ -1,0 +1,8 @@
+dataset=stream_kosarak.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=0 promotions=883
+mutant=none
+(R) rescan horizon: 0 rescans checked, 0 violations
+(B) bound on b:     304001 node checks, 0 violations
+(S) exact stubs:    0 stub recounts, 0 violations
+(L) stub >= first floor: 10622282 stub checks, 0 violations; stubs below the current floor: 2388
+RESULT untested statement
+exit=1

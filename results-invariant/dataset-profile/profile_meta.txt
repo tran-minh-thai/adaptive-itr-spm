@@ -1,0 +1,3 @@
+command=python3 tools/dataset_profile.py
+tool_sha256=39b839c69733ab9ff3b6b3aefa6a504d3e8169afdc8faf19948a47ad7b7f7f07
+python=3.14.6

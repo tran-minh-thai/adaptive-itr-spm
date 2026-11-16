@@ -1,0 +1,3 @@
+git 9fdb122; jar sha256 d0cf446bb9f2a85f; main-campaign jar (f370031) sha256 74be334fac100be7
+BatchRandomCheck sha256 c923896b4aaca5f0; BaselineFirstOccurrence sha256 9e6f5ac9432eea7c
+openjdk version "25.0.4.1" 2026-08-18 LTS

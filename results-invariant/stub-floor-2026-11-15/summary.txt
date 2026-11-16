@@ -1,0 +1,47 @@
+RESULT violation
+RESULT pass
+RESULT violation
+RESULT violation
+dataset=stream_D48K.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=263 promotions=0
+RESULT untested statement
+dataset=stream_D48K.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=20 promotions=62
+RESULT pass
+RESULT violation
+dataset=stream_bms1.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=34 promotions=407
+RESULT pass
+dataset=stream_D48K.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=15 promotions=65
+RESULT pass
+dataset=stream_bible.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=278730 promotions=0
+RESULT untested statement
+dataset=stream_fifa.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=43099 promotions=81718
+RESULT pass
+dataset=stream_bible.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=26608 promotions=53331
+RESULT pass
+dataset=stream_fifa.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=20510 promotions=82255
+RESULT pass
+dataset=stream_bible.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=42470 promotions=50604
+RESULT pass
+dataset=stream_kosarak.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=4968 promotions=0
+RESULT untested statement
+dataset=stream_kosarak.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=0 promotions=883
+RESULT untested statement
+dataset=stream_bms1.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=1904 promotions=0
+RESULT untested statement
+dataset=stream_bms1.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=131 promotions=396
+RESULT pass
+dataset=stream_sign.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=305635 promotions=903230
+RESULT pass
+dataset=stream_leviathan.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=2466412 promotions=0
+RESULT untested statement
+dataset=stream_kosarak.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=0 promotions=883
+RESULT untested statement
+dataset=stream_sign.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=2128248 promotions=0
+RESULT untested statement
+dataset=stream_leviathan.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=527761 promotions=341992
+RESULT pass
+dataset=stream_leviathan.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.25 rescans=297639 promotions=357176
+RESULT pass
+dataset=stream_fifa.txt arm=IncAdaTaSPM-StaticPreLarge phi=1.0 rescans=567111 promotions=0
+RESULT untested statement
+dataset=stream_sign.txt arm=IncAdaTaSPM-StaticPreLarge phi=0.5 rescans=551219 promotions=877972
+RESULT pass

@@ -1,0 +1,8 @@
+case 0: Batch differs; missing [1 5] extra []
+case 2: Batch differs; missing [1 4, 1 5] extra []
+case 3: Batch differs; missing [1 5] extra []
+cases=2000 seed=20261116 cases_with_multi_item_itemsets=2000 cases_with_nonempty_reference=1766 reference_patterns=38906
+Batch: cases differing from the reference=959
+Re-mine: cases differing from the reference=0
+engine: cases differing from the reference=0
+exit=1

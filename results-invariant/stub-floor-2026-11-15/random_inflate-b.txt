@@ -1,0 +1,8 @@
+note: the first run of this case inside run.sh left only 'exit=1' in this file, with no output and no error message (cause not found); this is a separate rerun of the same command on the same classes
+mutant=inflate-b
+(R) rescan horizon: 185682 rescans checked, 8305 violations
+(B) bound on b:     3189718 node checks, 975099 violations
+(S) exact stubs:    706908 stub recounts, 0 violations
+(L) stub >= first floor: 706908 stub checks, 0 violations; stubs below the current floor: 205
+RESULT violation
+exit=1

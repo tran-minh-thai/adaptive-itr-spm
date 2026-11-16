@@ -1,0 +1,16 @@
+== after D_init (S1..S4): N=4 min_sup=3 floor=2 rescans=0 promotions=0 projections=3
+  output 1 sup=3
+  output 1|3 sup=3
+  root sup=3 b=1 stubs=[<(B)>:2, <(D)>:2] tombstones=[]
+  <(A)> sup=3 b=1 stubs=[<(A,B)>:2, <(A),(D)>:2] tombstones=[]
+  <(A),(C)> sup=3 b=1 stubs=[] tombstones=[]
+  <(C)> sup=3 b=1 stubs=[] tombstones=[]
+== after increment (S5, S6): N=6 min_sup=4 floor=2 rescans=0 promotions=2 projections=9
+  output 1 sup=5
+  output 1 2 sup=4
+  root sup=5 b=1 stubs=[<(D)>:3] tombstones=[]
+  <(A)> sup=5 b=2 stubs=[<(A),(D)>:3] tombstones=[]
+  <(A,B)> sup=4 b=1 stubs=[<(A,B),(C)>:2, <(A,B),(D)>:2] tombstones=[]
+  <(A),(C)> sup=3 b=1 stubs=[] tombstones=[]
+  <(B)> sup=4 b=1 stubs=[<(B),(C)>:2, <(B),(D)>:2] tombstones=[]
+  <(C)> sup=5 b=2 stubs=[] tombstones=[]
