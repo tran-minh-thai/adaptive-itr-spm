@@ -1,0 +1,7 @@
+BMS1_spmf exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=6
+D48K-C10-T1-N5K exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=6
+BIBLE exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=35
+kosarak exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=0
+SIGN exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=13
+LEVIATHAN exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=35
+FIFA exit=0 batches=101 compared_with_measured=101 differences=0 max_rescans_one_node=3
