@@ -13,7 +13,7 @@ import java.util.*;
  * sequences of 1 to 4 itemsets of 1 to 3 distinct items over {1..5}; target set {1};
  * min_sup_rate in {0.2, 0.3, 0.5}; max_per in [2, N]; Sl / Su from the third argument.
  *
- * Usage: java -cp <classes> com.adaptive.itr.spm.PreLargeRandomCheck [cases] [seed] [lower]
+ * Usage: java -cp <classes> com.adaptive.itr.spm.PreLargeRandomCheck [cases] [seed] [lower] [regularity pruning: true|false]
  * Prints the number of snapshots compared, safe updates, rescans and differing snapshots.
  * Exit code 1 when any snapshot differs from the reference.
  */
@@ -37,6 +37,7 @@ public class PreLargeRandomCheck {
         int cases = a.length > 0 ? Integer.parseInt(a[0]) : 2000;
         long seed = a.length > 1 ? Long.parseLong(a[1]) : 20261117L;
         double lower = a.length > 2 ? Double.parseDouble(a[2]) : 0.5;
+        boolean regPrune = a.length > 3 && Boolean.parseBoolean(a[3]);
         Random rnd = new Random(seed);
         Set<Integer> T = new HashSet<>();
         T.add(1);
@@ -58,7 +59,7 @@ public class PreLargeRandomCheck {
             String rate = rates[rnd.nextInt(rates.length)];
             int maxPer = 2 + rnd.nextInt(total - 1);
             BigDecimal r = new BigDecimal(rate);
-            PreLargeSeqTaSPM pl = new PreLargeSeqTaSPM(r, lower, maxPer, T);
+            PreLargeSeqTaSPM pl = new PreLargeSeqTaSPM(r, lower, maxPer, T, regPrune);
             pl.sink = new TreeMap<>();
             List<int[][]> all = new ArrayList<>();
             List<Integer> lines = new ArrayList<>();
@@ -93,7 +94,7 @@ public class PreLargeRandomCheck {
             }
             if (caseBad) badCases++;
         }
-        System.out.println("cases=" + cases + " seed=" + seed + " lower=" + lower + " snapshots=" + snapshots
+        System.out.println("cases=" + cases + " seed=" + seed + " lower=" + lower + " regularity_pruning=" + regPrune + " snapshots=" + snapshots
                 + " snapshots_with_nonempty_reference=" + nonEmpty + " reference_patterns=" + refPatterns
                 + " safe_updates=" + safeUpdates + " rescans=" + rescans);
         System.out.println("PreLargeSeq: snapshots differing from the reference=" + badSnapshots + " cases=" + badCases);

@@ -15,19 +15,22 @@ import os, subprocess, sys, tempfile
 SRC = 'src/main/java/com/adaptive/itr/spm/PreLargeSeqTaSPM.java'
 CHECKS = ['tools/verify/java/BatchRandomCheck.java', 'tools/verify/java/PreLargeRandomCheck.java']
 
-# (name, old text, new text, must the check fail?)
+# (name, old text, new text, must the check fail?, regularity pruning of the run)
 MUTANTS = [
-    ('control-unchanged', None, None, False),
-    ('buf-not-accumulated', 'buf += q;', 'buf += 0;', True),
-    ('swumax-zero', 'long q = swuMax(all, from);', 'long q = 0;', True),
-    ('f-from-doubled-n', 'nAtRescan = n;', 'nAtRescan = 2 * n;', True),
-    ('support-not-updated', 'sup[c] += l.size();', 'sup[c] += 0;', True),
-    ('last-position-not-updated', 'last[c] = ln;', '', True),
-    ('benign-never-drop', 'if (sup[c] < low) {', 'if (false) {', False),
+    ('control-unchanged', None, None, False, 'false'),
+    ('control-unchanged-regprune', None, None, False, 'true'),
+    ('buf-not-accumulated', 'buf += q;', 'buf += 0;', True, 'false'),
+    ('swumax-zero', 'long q = swuMax(all, from);', 'long q = 0;', True, 'false'),
+    ('f-from-doubled-n', 'nAtRescan = n;', 'nAtRescan = 2 * n;', True, 'false'),
+    ('support-not-updated', 'sup[c] += l.size();', 'sup[c] += 0;', True, 'false'),
+    ('last-position-not-updated', 'last[c] = ln;', '', True, 'false'),
+    ('benign-never-drop', 'if (sup[c] < low || (pruneIrregular && irregular(c))) {', 'if (false) {', False, 'false'),
+    ('regprune-gap-off-by-one', 'return Math.max(gap[v], nNow - last[v]) > maxPer;', 'return Math.max(gap[v], nNow - last[v]) >= maxPer;', True, 'true'),
+    ('regprune-ignores-tail-gap', 'return Math.max(gap[v], nNow - last[v]) > maxPer;', 'return Math.max(gap[v], 0L) > maxPer;', False, 'true'),
 ]
 
 
-def run(name, old, new, cases, seed):
+def run(name, old, new, cases, seed, regprune):
     src = open(SRC, encoding='utf-8').read()
     if old is not None:
         k = src.count(old)
@@ -46,7 +49,7 @@ def run(name, old, new, cases, seed):
         r = subprocess.run(['javac', '-d', out, '-cp', cp, f] + CHECKS, capture_output=True, text=True)
         if r.returncode != 0:
             return name, 'compile error: ' + r.stderr.strip()[:300], None
-        r = subprocess.run(['java', '-cp', out + os.pathsep + cp, 'com.adaptive.itr.spm.PreLargeRandomCheck', str(cases), str(seed), '0.5'],
+        r = subprocess.run(['java', '-cp', out + os.pathsep + cp, 'com.adaptive.itr.spm.PreLargeRandomCheck', str(cases), str(seed), '0.5', regprune],
                            capture_output=True, text=True)
         last = [l for l in r.stdout.splitlines() if l.startswith('PreLargeSeq:') or l.startswith('cases=')]
         return name, r.returncode, ' | '.join(last)
@@ -56,8 +59,8 @@ def main():
     cases = int(sys.argv[1]) if len(sys.argv) > 1 else 2000
     seed = int(sys.argv[2]) if len(sys.argv) > 2 else 20261117
     wrong = 0
-    for name, old, new, must_fail in MUTANTS:
-        n, code, info = run(name, old, new, cases, seed)
+    for name, old, new, must_fail, regprune in MUTANTS:
+        n, code, info = run(name, old, new, cases, seed, regprune)
         ok = (code == 1) if must_fail else (code == 0)
         if not isinstance(code, int):
             ok = False

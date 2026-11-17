@@ -149,9 +149,11 @@ public final class StreamBench {
 
     /** Sl / Su of PreLargeSeqTaSPM: system property prelarge.lower, default 0.5. */
     static double preLargeLower() { return Double.parseDouble(System.getProperty("prelarge.lower", "0.5")); }
+    /** PreLargeSeqTaSPM drops irregular patterns from its buffer: system property prelarge.regprune, default false. */
+    static boolean preLargeRegPrune() { return Boolean.parseBoolean(System.getProperty("prelarge.regprune", "false")); }
 
     static final class PreLargeSeqArm implements Arm {
-        final PreLargeSeqTaSPM r = new PreLargeSeqTaSPM(AppConfig.MIN_SUP_RATE_EXACT, preLargeLower(), AppConfig.MAX_PER, AppConfig.TARGET_ITEMS);
+        final PreLargeSeqTaSPM r = new PreLargeSeqTaSPM(AppConfig.MIN_SUP_RATE_EXACT, preLargeLower(), AppConfig.MAX_PER, AppConfig.TARGET_ITEMS, preLargeRegPrune());
         final List<int[][]> all; final List<Integer> allLines;
         PreLargeSeqArm(List<int[][]> all, List<Integer> allLines) { this.all = all; this.allLines = allLines; }
         public long step(List<int[][]> batch, List<Integer> lines, int[] positions, int endOld, int n) {
@@ -195,7 +197,7 @@ public final class StreamBench {
     /** Effective engine parameters of an arm, for the run record. */
     static String armParams(String name) {
         Arm a = newArm(name, new ArrayList<int[][]>(), new ArrayList<Integer>());
-        if (a instanceof PreLargeSeqArm) return "lower_ratio=" + preLargeLower() + " rescan_test=SWUmax";
+        if (a instanceof PreLargeSeqArm) return "lower_ratio=" + preLargeLower() + " rescan_test=SWUmax regularity_pruning=" + preLargeRegPrune();
         if (!(a instanceof EngineArm)) return "buffer_ratio=" + AppConfig.BUFFER_RATIO;
         IncAdaTaSPM.Engine e = ((EngineArm) a).e;
         return String.format(Locale.US, "eta=%s lambda=%s wV=%s wR=%s wS=%s wTBR=%s phi=%s lazy=%s score=%s",

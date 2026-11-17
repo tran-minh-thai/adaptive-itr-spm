@@ -69,6 +69,10 @@ public final class PreLargeSeqTaSPM {
     final BigDecimal su, sl;
     final int maxPer;
     final Set<Integer> targets;
+    /** Drops irregular patterns from the buffer (mining and safe update). Exact: a pattern that is
+     *  irregular stays irregular as the stream grows, and so do its extensions. Off by default:
+     *  Pre-HUSPM keeps the buffer by support only. */
+    final boolean pruneIrregular;
 
     /** Output patterns are put here in canonical form "a b|c" with their support when set. */
     Map<String, Integer> sink = null;
@@ -79,6 +83,7 @@ public final class PreLargeSeqTaSPM {
 
     // ------------------------------------------------------------------ safety state
     private long nAtRescan = 0;   // N at the last rescan
+    private long nNow = 0;        // N of the batch being processed
     private long buf = 0;         // q summed over the safe updates since the last rescan
     private boolean initialised = false;
 
@@ -90,6 +95,11 @@ public final class PreLargeSeqTaSPM {
     private int used = 1, freeHead = -1;
 
     public PreLargeSeqTaSPM(BigDecimal minSupRate, double lowerRatio, int maxPer, Set<Integer> targets) {
+        this(minSupRate, lowerRatio, maxPer, targets, false);
+    }
+
+    public PreLargeSeqTaSPM(BigDecimal minSupRate, double lowerRatio, int maxPer, Set<Integer> targets, boolean pruneIrregular) {
+        this.pruneIrregular = pruneIrregular;
         this.su = minSupRate;
         this.sl = minSupRate.multiply(new BigDecimal(Double.toString(lowerRatio)));
         this.maxPer = maxPer;
@@ -126,6 +136,7 @@ public final class PreLargeSeqTaSPM {
      * @return number of output patterns
      */
     public long addBatch(List<int[][]> all, List<Integer> allLines, int from, long n) {
+        nNow = n;
         if (!initialised) {
             rescan(all, allLines, n);
             initialised = true;
@@ -247,6 +258,7 @@ public final class PreLargeSeqTaSPM {
             List<PSeq> l = roots.get(x);
             if (l.size() < low) continue;
             int v = newNode(0, x, (byte) 2, l, lines);
+            if (pruneIrregular && irregular(v)) { dropFirstChild(0); continue; }
             mine(all, lines, v, l, low);
         }
         nAtRescan = n;
@@ -259,11 +271,13 @@ public final class PreLargeSeqTaSPM {
         for (Map.Entry<Integer, List<PSeq>> e : iMap.entrySet()) {
             if (e.getValue().size() < low) continue;
             int c = newNode(v, e.getKey(), (byte) 1, e.getValue(), lines);
+            if (pruneIrregular && irregular(c)) { dropFirstChild(v); continue; }
             mine(all, lines, c, e.getValue(), low);
         }
         for (Map.Entry<Integer, List<PSeq>> e : sMap.entrySet()) {
             if (e.getValue().size() < low) continue;
             int c = newNode(v, e.getKey(), (byte) 2, e.getValue(), lines);
+            if (pruneIrregular && irregular(c)) { dropFirstChild(v); continue; }
             mine(all, lines, c, e.getValue(), low);
         }
     }
@@ -290,7 +304,7 @@ public final class PreLargeSeqTaSPM {
             if (kind[c] == 2) { if (sMap != null) l = sMap.get(item[c]); }
             else if (iMap != null) l = iMap.get(item[c]);
             if (l != null) addOccurrences(c, l, lines);
-            if (sup[c] < low) {
+            if (sup[c] < low || (pruneIrregular && irregular(c))) {
                 if (prev < 0) firstChild[v] = nx; else next[prev] = nx;
                 freeSubtree(c);
             } else {
@@ -394,6 +408,16 @@ public final class PreLargeSeqTaSPM {
             next[u] = freeHead;
             freeHead = u;
         }
+    }
+
+    private boolean irregular(int v) { return Math.max(gap[v], nNow - last[v]) > maxPer; }
+
+    /** Removes the newest child of p (just created by newNode, so it has no children). */
+    private void dropFirstChild(int p) {
+        int v = firstChild[p];
+        firstChild[p] = next[v];
+        next[v] = freeHead;
+        freeHead = v;
     }
 
     private void clearTree() {
