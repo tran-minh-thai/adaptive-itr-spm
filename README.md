@@ -3,6 +3,10 @@
 Reference implementation of **Ada-IncTaSPM** (class `IncAdaTaSPM`), an incremental miner for
 target regular sequential patterns, with the baselines it is compared against.
 
+The method is called **StaRSPM** in the accompanying paper; in the code it is the configuration
+`IncAdaTaSPM-StaticPreLarge` of `StreamBench` (fixed pre-large bound with exact-count stubs and
+lazy insertion).
+
 **Measured runs use `StreamBench`; see [docs/stream-benchmark.md](docs/stream-benchmark.md)**
 for the stream split, the arms, what each clock covers and the result columns. The sections
 below describe the earlier (legacy) harness and are kept for reference.
@@ -105,7 +109,7 @@ adaptive-itr-spm/
 │   ├── run-rq3-scale.*            Kosarak scalability (RQ3-scale)
 │   └── run-rq4.bat / run-rq4.sh   Ablation study (RQ4)
 ├── configs/                       All experiment configuration files (.txt)
-├── datasets/                      Input datasets (download from SPMF, see section 3)
+├── datasets/                      SOURCES.tsv; data files are fetched by tools/fetch_datasets.py (section 3)
 ├── results/                       Auto-created by run scripts; holds outputs
 └── src/main/java/com/adaptive/itr/spm/
     ├── Main.java                  CLI dispatcher (jar entry-point)
@@ -155,26 +159,18 @@ whose main class is `com.adaptive.itr.spm.Main`).
 
 ## 3. Datasets
 
-The eight paper datasets are bundled under [`datasets/`](datasets) so the
-repository is self-contained for reproducibility. If you want to fetch fresh
-copies (e.g. after normalising line-endings), the upstream URLs from SPMF are:
+The dataset files come from the SPMF public dataset collection and are **not redistributed** in
+this repository. Fetch them with
 
-| Name                | Direct link |
-| ------------------- | ----------- |
-| BIBLE               | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/BIBLE.txt> |
-| BMS1_spmf           | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/BMS1_spmf.txt> |
-| D45K-C8-T1-N5K      | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/data.slen_10.tlen_1.seq.patlen_6.lit.patlen_8.nitems_5000_spmf.txt> (rename to `D45K-C8-T1-N5K.txt`) |
-| D48K-C10-T1-N5K     | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/data.slen_8.tlen_1.seq.patlen_2.lit.patlen_8.nitems_5000_spmf.txt> (rename to `D48K-C10-T1-N5K.txt`) |
-| FIFA                | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/FIFA.txt> |
-| kosarak             | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/kosarak_sequences.txt> (rename to `kosarak.txt`) |
-| LEVIATHAN           | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/LEVIATHAN.txt> |
-| SIGN                | <https://www.philippe-fournier-viger.com/spmf/publicdatasets/SIGN.txt> |
+```bash
+python tools/fetch_datasets.py
+```
 
-For the Kosarak scalability experiment the code additionally uses four prefix
-cuts — `kosarak_20.txt`, `kosarak_40.txt`, `kosarak_60.txt`, `kosarak_80.txt`
-— all bundled here; the 100 % scenario reuses `kosarak.txt` itself.
-
-See [`datasets/README.md`](datasets/README.md) for further notes.
+which downloads every file into `datasets/`, converts the line ends of KOSARAK, cuts the four
+KOSARAK shares and checks each file against the SHA-256 in
+[`datasets/SOURCES.tsv`](datasets/SOURCES.tsv): the checksums of the files every measured run
+read. `python tools/fetch_datasets.py --verify-only` checks files that are already there.
+See [`datasets/README.md`](datasets/README.md) for the sources and the transforms.
 
 ---
 
