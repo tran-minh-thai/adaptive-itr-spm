@@ -1,0 +1,4 @@
+support-not-updated bms1 exit=3
+swumax-zero bms1 exit=0
+swumax-zero D48K exit=0
+swumax-zero bible exit=0

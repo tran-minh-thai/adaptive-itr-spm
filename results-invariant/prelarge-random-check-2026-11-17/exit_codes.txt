@@ -1,0 +1,3 @@
+regularity_pruning=true exit=0
+regularity_pruning=false exit=0
+mutants exit=0

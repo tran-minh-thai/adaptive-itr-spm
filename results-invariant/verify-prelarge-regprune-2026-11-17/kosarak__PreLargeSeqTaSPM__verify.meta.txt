@@ -1,0 +1,17 @@
+command=StreamBench --config=stream_kosarak.txt --arm=PreLargeSeqTaSPM --mode=verify --timeout-min=240 --out=results-invariant/verify-prelarge-regprune-2026-11-17
+started=2026-11-17T18:40:43+07:00
+build.status=missing (not built by tools/build_bench_jar.sh)
+jar_sha256=d004e1f2d432513f14867aa78c848f83f84cfd507bd1abe5f14900c93126f6d1
+config_file=stream_kosarak.txt
+config_sha256=b89461fa9be90dd45b67449f4af469cb36051cedaf2523436f005ae38259ffae
+dataset=kosarak.txt
+dataset_sha256=7f443c8a7715595ce8da7973f35fc34bac2c14d5bedc280c33d599f42e5738e0
+sequences=990002 target_sequences=848653
+init_size=90002 batch_count=100 increment_sizes=9000
+min_sup_rate=0.002 max_per=2000 targets=[1, 3, 6, 218, 11]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax regularity_pruning=true
+load_ms=1557 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=8192 jvm_args=[-Xms8g, -Xmx8g]
+verify: reference arm RemineTaSPM, exact comparison of pattern sets and supports after every batch
+verify_batches_compared=101 batches_with_difference=0 reference_patterns_summed_over_batches=256388
+finished=2026-11-17T20:27:15+07:00 exit=0

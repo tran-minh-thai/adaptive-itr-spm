@@ -1,0 +1,2 @@
+cases=2000 seed=20261117 lower=0.5 regularity_pruning=true snapshots=12052 snapshots_with_nonempty_reference=11169 reference_patterns=178601 safe_updates=5620 rescans=4432
+PreLargeSeq: snapshots differing from the reference=0 cases=0
