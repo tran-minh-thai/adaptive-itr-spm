@@ -22,10 +22,9 @@ Rules (fixed before looking at the outcome):
   * ties in ranks get the average rank; lower values are better for every metric.
   * Wilcoxon over batches is not computed for a pair with a run that hit the limit.
   * the batch baseline is taken from phase fix-batch (tag fullproj: the baseline with full
-    projection, docs/stream-benchmark.md section 6) instead of the main phases. Its paired tests
-    (over datasets and over batches) use the reference arm of the same session (tag recheck3), so
-    every pair is measured in one session; the Friedman ranks put it next to the other arms of the
-    main phases.
+    projection, docs/stream-benchmark.md section 6) instead of the main phases. Both sessions run
+    on the same machine, Java runtime and heap, so it is compared with the reference arm of the
+    main phases like every other arm (author's decision, 2026-11-17).
 
 Usage: tools/stats_campaign.py <analysis dir> [--reference=<arm>]   |   tools/stats_campaign.py --self-test
 
@@ -46,8 +45,8 @@ PROPOSED = 'IncAdaTaSPM-StaticPreLarge'
 ARMS = ['IncAdaTaSPM', 'IncAdaTaSPM-NoBuffer', 'IncAdaTaSPM-StaticPreLarge', 'IncAdaTaSPM-Original',
         'RemineTaSPM', 'BatchTaSPM', 'ItemPreLargeTaSPM']
 LIMIT_MS = 120 * 60 * 1000.0
-# arm -> (phase of its time runs, phase of its live runs, its tag, tag of the reference arm in that session)
-SESSION = {'BatchTaSPM': ('fix-batch', 'fix-batch', 'fullproj', 'recheck3')}
+# arm -> (phase of its time runs, phase of its live runs, its tag); compared with the reference arm of the main phases
+SESSION = {'BatchTaSPM': ('fix-batch', 'fix-batch', 'fullproj')}
 # Studentized range statistic q_alpha / sqrt(2) for alpha = 0.05 (Demsar, 2006, Table 5a).
 Q05 = {2: 1.960, 3: 2.343, 4: 2.569, 5: 2.728, 6: 2.850, 7: 2.949, 8: 3.031, 9: 3.102, 10: 3.164}
 
@@ -135,14 +134,11 @@ def main(d):
     out_f, out_w, out_b = [], [], []
     for metric, phase in (('update_ms_med', 'main-time'), ('total_ms_med', 'main-time'), ('peak_live_mb', 'main-live')):
         sel = {(r['dataset'], r['arm']): r for r in runs if r['phase'] == phase and r['arm'] not in SESSION}
-        ref_of = {}  # arm -> {dataset: run of the reference arm in that arm's session}
-        for a, (pt, pl, tag, rtag) in SESSION.items():
+        for a, (pt, pl, tag) in SESSION.items():
             ph = pt if phase == 'main-time' else pl
             for r in runs:
                 if r['phase'] == ph and r['arm'] == a and r['tag'] == tag and r['mode'] == ('time' if phase == 'main-time' else 'live'):
                     sel[(r['dataset'], a)] = r
-                if r['phase'] == ph and r['arm'] == PROPOSED and r['tag'] == rtag and r['mode'] == ('time' if phase == 'main-time' else 'live'):
-                    ref_of.setdefault(a, {})[r['dataset']] = r
         dss = sorted({k[0] for k in sel})
         if any((ds, a) not in sel for ds in dss for a in ARMS):
             sys.exit('incomplete table for ' + metric)
@@ -160,10 +156,6 @@ def main(d):
             if j == pi:
                 continue
             x = [row[pi] for row in table]
-            if a in ref_of:
-                if sorted(ref_of[a]) != dss:
-                    sys.exit('the session of %s lacks the reference arm on some dataset' % a)
-                x = [value(ref_of[a][ds], metric) for ds in dss]
             y = [row[j] if row[j] is not None else lower_bound(sel[(ds, a)], metric) for row, ds in zip(table, dss)]
             if any(v is None for v in x):
                 sys.exit('the reference arm hit the limit; the over-datasets test is undefined')
@@ -185,7 +177,7 @@ def main(d):
         if int(b['batch']) >= 1:
             bt.setdefault((b['dataset'], b['arm'], b['tag']), {})[int(b['batch'])] = float(b['time_ms_med'])
     main_runs = {(r['dataset'], r['arm']): r for r in runs if r['phase'] == 'main-time' and r['arm'] not in SESSION}
-    for a, (pt, _, tag, _) in SESSION.items():
+    for a, (pt, _, tag) in SESSION.items():
         for r in runs:
             if r['phase'] == pt and r['arm'] == a and r['tag'] == tag and r['mode'] == 'time':
                 main_runs[(r['dataset'], a)] = r
@@ -197,10 +189,7 @@ def main(d):
             if main_runs[(ds, a)]['status'] != 'OK':
                 rows.append({'dataset': ds, 'against': a, 'batches': 0, 'note': 'limit hit, not tested'})
                 continue
-            if a in SESSION:
-                P, O = bt[(ds, PROPOSED, SESSION[a][3])], bt[(ds, a, SESSION[a][2])]
-            else:
-                P, O = bt[(ds, PROPOSED, '-')], bt[(ds, a, '-')]
+            P, O = bt[(ds, PROPOSED, '-')], bt[(ds, a, SESSION[a][2] if a in SESSION else '-')]
             ks = sorted(set(P) & set(O))
             x, y = [P[k] for k in ks], [O[k] for k in ks]
             W, pw = wilcoxon(x, y)

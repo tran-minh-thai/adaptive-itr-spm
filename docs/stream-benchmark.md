@@ -148,12 +148,16 @@ plan lines, 0 problems; analysis in `results/stream-bench-analysis/PC-THAI/`):
   batch 59, live mode at batch 49), as expected; the FIFA ratio is a lower bound.
 * Drift of the proposed method, `recheck3` against `main-time`, update time: SIGN -0.05%,
   LEVIATHAN +1.48%, FIFA +3.78%, BIBLE +8.77%, BMS1 -2.65%, KOSARAK +0.18%, D48K -0.61%. BIBLE
-  exceeds its within-session spread (0.2%); the ratios against Batch are formed within this
-  session, so they do not carry it.
-* `tools/stats_campaign.py` takes Batch from this phase and pairs it with `recheck3` in the
-  Wilcoxon tests; the Friedman ranks place it next to the arms of the main phases. On BMS1 the
-  fixed Batch (5.22 s) and Item pre-large (5.44 s, main session) are 4.0% apart, inside the
-  cross-session variation on BMS1, so their order on BMS1 is not established.
+  exceeds its within-session spread (0.2%).
+* Analysis changed from the registration above (author's decision, 2026-11-17: both sessions run
+  on one machine, Java runtime and heap, so they are not distinguished). Batch is taken from this
+  phase and compared with the proposed method of the main campaign, like every other arm, in the
+  tables, the ratios and the statistical tests; `recheck3` is kept as a record of the session
+  drift only. With the pairing first registered (same session) the ratios were min 51.8, max 525,
+  geometric mean 144; with the main-campaign proposed method they are 56.3, 526, 146. The
+  minimum moves because of BIBLE (drift +8.77%); every ratio is above 50 in both analyses. On BMS1 the
+  fixed Batch (5.22 s) and Item pre-large (5.44 s) are 4.0% apart; the text states no order
+  between the two.
 * The fixed Batch is not an extension of the old code path (projection stored as arrays of end
   itemsets instead of one start per sequence), so its time need not exceed the old one: fixed /
   old update time is 0.83 on BMS1 and 0.95 on KOSARAK, 1.06 to 1.15 elsewhere; its peak live set
