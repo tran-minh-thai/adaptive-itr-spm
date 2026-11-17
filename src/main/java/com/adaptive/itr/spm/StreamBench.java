@@ -149,8 +149,9 @@ public final class StreamBench {
 
     /** Sl / Su of PreLargeSeqTaSPM: system property prelarge.lower, default 0.5. */
     static double preLargeLower() { return Double.parseDouble(System.getProperty("prelarge.lower", "0.5")); }
-    /** PreLargeSeqTaSPM drops irregular patterns from its buffer: system property prelarge.regprune, default false. */
-    static boolean preLargeRegPrune() { return Boolean.parseBoolean(System.getProperty("prelarge.regprune", "false")); }
+    /** PreLargeSeqTaSPM drops irregular patterns from its buffer: system property prelarge.regprune, default true
+     *  (author decision 2026-11-17: the stronger buffer is the baseline; false keeps it by support only, as in Pre-HUSPM). */
+    static boolean preLargeRegPrune() { return Boolean.parseBoolean(System.getProperty("prelarge.regprune", "true")); }
 
     static final class PreLargeSeqArm implements Arm {
         final PreLargeSeqTaSPM r = new PreLargeSeqTaSPM(AppConfig.MIN_SUP_RATE_EXACT, preLargeLower(), AppConfig.MAX_PER, AppConfig.TARGET_ITEMS, preLargeRegPrune());

@@ -37,9 +37,11 @@ import java.util.Set;
  *       a target item); the thresholds use N, which counts every sequence. SWUmax is computed
  *       over the target sequences of d; it bounds the gain in D_T of every pattern and is at
  *       most |d|, which is what the safety argument needs.</li>
- *   <li>The buffer is kept by support only, as in Pre-HUSPM. The output is filtered to the
- *       patterns that contain a target item and are regular; each buffered pattern carries its
- *       last occurrence position and its largest gap so far, updated by its new occurrences.</li>
+ *   <li>Regularity: each buffered pattern carries its last occurrence position and its largest
+ *       gap so far, updated by its new occurrences; the output is filtered to the patterns that
+ *       contain a target item and are regular. In the benchmark arm the buffer also drops
+ *       irregular patterns, as Re-mine and the batch baseline prune them ({@link #pruneIrregular});
+ *       Pre-HUSPM keeps its buffer by support only, which the option false reproduces.</li>
  * </ul>
  *
  * <p><b>Procedure</b> (Algorithms 1 to 3 of Pre-HUSPM in support form). Su = min_sup_rate,
@@ -70,8 +72,8 @@ public final class PreLargeSeqTaSPM {
     final int maxPer;
     final Set<Integer> targets;
     /** Drops irregular patterns from the buffer (mining and safe update). Exact: a pattern that is
-     *  irregular stays irregular as the stream grows, and so do its extensions. Off by default:
-     *  Pre-HUSPM keeps the buffer by support only. */
+     *  irregular stays irregular as the stream grows, and so do its extensions. On in the benchmark
+     *  arm (the stronger baseline); Pre-HUSPM itself keeps the buffer by support only. */
     final boolean pruneIrregular;
 
     /** Output patterns are put here in canonical form "a b|c" with their support when set. */
