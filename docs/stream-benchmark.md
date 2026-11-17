@@ -136,3 +136,26 @@ Written before the runs:
   (`recheck3` against `main-time`) is reported per dataset, as for the supplementary session.
 * FIFA: the old Batch hit the 120-minute limit in both modes; the fixed Batch does at least the
   same work, so a limit is expected again and the FIFA ratio stays a lower bound.
+
+Outcome (campaign branch `campaign-stream100`, commit `1b8d873`; `tools/check_campaign.py`: 358 of 358
+plan lines, 0 problems; analysis in `results/stream-bench-analysis/PC-THAI/`):
+
+* Output: the final pattern count of the fixed Batch equals that of the old Batch on 7 of 7
+  datasets; the stream verification against Re-mine compares 658 snapshots with 0 differences
+  (`results-invariant/verify-batch-fullproj-2026-11-16`; FIFA covers snapshots 0..51 before the
+  240-minute limit of the verification run).
+* FIFA: the fixed Batch hit the 120-minute limit in both modes (time mode in the warm-up stream at
+  batch 59, live mode at batch 49), as expected; the FIFA ratio is a lower bound.
+* Drift of the proposed method, `recheck3` against `main-time`, update time: SIGN -0.05%,
+  LEVIATHAN +1.48%, FIFA +3.78%, BIBLE +8.77%, BMS1 -2.65%, KOSARAK +0.18%, D48K -0.61%. BIBLE
+  exceeds its within-session spread (0.2%); the ratios against Batch are formed within this
+  session, so they do not carry it.
+* `tools/stats_campaign.py` takes Batch from this phase and pairs it with `recheck3` in the
+  Wilcoxon tests; the Friedman ranks place it next to the arms of the main phases. On BMS1 the
+  fixed Batch (5.22 s) and Item pre-large (5.44 s, main session) are 4.0% apart, inside the
+  cross-session variation on BMS1, so their order on BMS1 is not established.
+* The fixed Batch is not an extension of the old code path (projection stored as arrays of end
+  itemsets instead of one start per sequence), so its time need not exceed the old one: fixed /
+  old update time is 0.83 on BMS1 and 0.95 on KOSARAK, 1.06 to 1.15 elsewhere; its peak live set
+  is larger on 5 of 7 datasets (KOSARAK 279 -> 505 MB) and smaller on BMS1 (2.24 -> 1.70 MB).
+  The cause of the lower times on BMS1 and KOSARAK is not measured; BMS1 also varies between sessions.
