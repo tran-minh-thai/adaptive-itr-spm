@@ -5,8 +5,9 @@ For every plan line there must be exactly one finished run (a .meta.txt whose co
 the line, with a 'finished=' record, and its .csv). All runs must share one Java runtime; the
 runs of one jar group share one jar, one build commit and one clean source tree. The jar groups
 are phase fix-batch (the jar with the fixed batch baseline, whose other classes are
-byte-identical to the main jar: results-invariant/batch-full-projection-2026-11-16) and every
-other phase; every dataset and
+byte-identical to the main jar: results-invariant/batch-full-projection-2026-11-16), phases
+prelarge and sigma (the jar that adds PreLargeSeqTaSPM, docs/stream-benchmark.md section 7) and
+every other phase; every dataset and
 configuration file must have one SHA-256 across runs. Exit codes 0 (done) and 5 (time or heap
 limit) are accepted; limit hits are listed. Exit code 1 if anything else is found.
 
@@ -75,7 +76,7 @@ for ph, key in plan:
         limits.append('%s (stopped at %s)' % (os.path.basename(csv), ','.join(last[4:6]) + ' ' + (last[-1] if last else '')))
     elif code != '0':
         problems.append('exit code %s in %s' % (code, os.path.basename(m)))
-    grp = 'fix-batch' if ph == 'fix-batch' else 'main'
+    grp = 'fix-batch' if ph == 'fix-batch' else ('prelarge' if ph in ('prelarge', 'sigma') else 'main')
     for k in ('jar_sha256', 'build.source_commit', 'build.source_tree'):
         shared['%s [%s]' % (k, grp)].add(kv.get(k, ''))
     shared['java'].add(kv.get('java', ''))

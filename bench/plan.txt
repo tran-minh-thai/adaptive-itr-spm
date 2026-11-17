@@ -357,3 +357,35 @@ fix-batch;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;time;recheck3;--reps=auto
 fix-batch;stream_fifa.txt;BatchTaSPM;time;fullproj;--reps=auto
 fix-batch;stream_fifa.txt;BatchTaSPM;live;fullproj;--reps=auto
 fix-batch;stream_fifa.txt;IncAdaTaSPM-StaticPreLarge;live;recheck3;--reps=auto
+prelarge;stream_bms1.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_bms1.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_D48K.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_D48K.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_bible.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_bible.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_fifa.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_fifa.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_kosarak.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_kosarak.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_sign.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_sign.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+prelarge;stream_leviathan.txt;PreLargeSeqTaSPM;time;-;--reps=auto
+prelarge;stream_leviathan.txt;PreLargeSeqTaSPM;live;-;--reps=auto
+sigma;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.002;--reps=auto --min_sup_rate=0.002
+sigma;stream_bms1.txt;RemineTaSPM;time;sigma0.002;--reps=auto --min_sup_rate=0.002
+sigma;stream_bms1.txt;PreLargeSeqTaSPM;time;sigma0.002;--reps=auto --min_sup_rate=0.002
+sigma;stream_bms1.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.0005;--reps=auto --min_sup_rate=0.0005
+sigma;stream_bms1.txt;RemineTaSPM;time;sigma0.0005;--reps=auto --min_sup_rate=0.0005
+sigma;stream_bms1.txt;PreLargeSeqTaSPM;time;sigma0.0005;--reps=auto --min_sup_rate=0.0005
+sigma;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.0018;--reps=auto --min_sup_rate=0.0018
+sigma;stream_D48K.txt;RemineTaSPM;time;sigma0.0018;--reps=auto --min_sup_rate=0.0018
+sigma;stream_D48K.txt;PreLargeSeqTaSPM;time;sigma0.0018;--reps=auto --min_sup_rate=0.0018
+sigma;stream_D48K.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.00045;--reps=auto --min_sup_rate=0.00045
+sigma;stream_D48K.txt;RemineTaSPM;time;sigma0.00045;--reps=auto --min_sup_rate=0.00045
+sigma;stream_D48K.txt;PreLargeSeqTaSPM;time;sigma0.00045;--reps=auto --min_sup_rate=0.00045
+sigma;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.01;--reps=auto --min_sup_rate=0.01
+sigma;stream_leviathan.txt;RemineTaSPM;time;sigma0.01;--reps=auto --min_sup_rate=0.01
+sigma;stream_leviathan.txt;PreLargeSeqTaSPM;time;sigma0.01;--reps=auto --min_sup_rate=0.01
+sigma;stream_leviathan.txt;IncAdaTaSPM-StaticPreLarge;time;sigma0.0025;--reps=auto --min_sup_rate=0.0025
+sigma;stream_leviathan.txt;RemineTaSPM;time;sigma0.0025;--reps=auto --min_sup_rate=0.0025
+sigma;stream_leviathan.txt;PreLargeSeqTaSPM;time;sigma0.0025;--reps=auto --min_sup_rate=0.0025
