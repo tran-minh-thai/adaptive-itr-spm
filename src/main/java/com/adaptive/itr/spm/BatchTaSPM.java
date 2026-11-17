@@ -13,23 +13,19 @@ import java.util.*;
  * prefix's last itemset, not only in the first one; the output is the complete set of regular
  * patterns that contain a target item.
  *
- * <p>Runs the whole target-SPM pipeline from scratch on every batch:
- * the algorithm re-reads the entire prefix of the dataset that has
- * arrived so far, rebuilds the projected database, then mines
- * patterns using bitmap intersections and Ada-Inc-style projected
- * DBs. There is no incremental state carried between batches.
+ * <p>Runs the whole pipeline from scratch on every batch: it keeps only the sequences that contain
+ * a target item, rebuilds the projected database and mines it, with no state carried between
+ * batches. The class was written for this benchmark; it is not the implementation of the TaSPM
+ * authors and has no pruning strategy of TaSPM other than the filter on target sequences.
  *
- * <p>The reported wall time therefore includes both the I/O of
- * reading the file from scratch <em>and</em> the mining time on the
- * cumulative database. This is intentional: the paper needs a
- * baseline that honestly reflects the practical disadvantage of a
- * static miner compared to an incremental one - it is not enough to
- * point out that batch algorithms exist; the reader needs to see the
- * cost.
- *
- * <p>Compared to Ada-IncTaSPM, BatchTaSPM demonstrates the redundant
- * work performed when the algorithm cannot reuse the state built for
- * previous batches.
+ * <p>Entry points:
+ * <ul>
+ *   <li>{@link #mineSnapshot} - used by {@link StreamBench} for every measured run: the file is
+ *       read by the caller outside the clock, so a batch's time covers building the filtered
+ *       database and mining it.</li>
+ *   <li>{@link #run} - the legacy harness: re-reads the dataset file from its start for every
+ *       batch, so its wall time also includes reading the file.</li>
+ * </ul>
  */
 public class BatchTaSPM {
 
