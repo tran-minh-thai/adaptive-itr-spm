@@ -66,6 +66,7 @@ target-SPM baselines.
 | **IncAdaTaSPM** (proposed)  | incremental prefix tree with exact-count stubs | yes | yes | See docs/stream-benchmark.md. |
 | RemineTaSPM (formerly AdaIncTaSPM) | pattern-growth + vertical hybrid | no (re-mines every batch) | yes | Adaptive per-item threshold; V9.0 fuses PrefixSpan-style local support counting into the vertical projection. |
 | ItemPreLargeTaSPM (formerly IncTaSPM_Li) | item-level pre-large + backscan | items only; patterns re-mined | yes | Self-built baseline, not an implementation of a published algorithm; static `buffer_ratio`. |
+| PreLargeSeqTaSPM            | pattern-level pre-large (buffer of large and pre-large patterns, whole-database rescan) | yes | yes (output filter) | Support form of Pre-HUSPM (Yan et al. 2025): the pre-large sequential method of Hong et al. (2011) with a projection-based miner and the SWUmax rescan test; Sl = 0.5 Su. |
 | IncStaticTaSPM              | pre-large, in-memory             | yes          | yes        | Simpler variant of ItemPreLargeTaSPM — no disk streaming. |
 | TalentNoReg                 | projection + CoocMap             | no (batch)   | no         | Two-matrix (S / I) CoocMap; separates sequential vs. itemset extensions. |
 | BatchTaSPM                  | vertical batch                   | no (batch)   | yes        | Rebuilds the full projected DB on every batch; I/O cost included. |
@@ -118,6 +119,7 @@ adaptive-itr-spm/
     ├── RemineTaSPM.java           Re-mine baseline (formerly AdaIncTaSPM)
     ├── StreamBench.java           Stream benchmark used for measured runs
     ├── ItemPreLargeTaSPM.java     Self-built item-level pre-large baseline (formerly IncTaSPM_Li)
+    ├── PreLargeSeqTaSPM.java      Pattern-level pre-large baseline (support form of Pre-HUSPM)
     ├── IncStaticTaSPM.java        Baseline: static-buffer incremental
     ├── TalentNoReg.java           Baseline: talent-style pure batch
     ├── BatchTaSPM.java            Baseline: batch target-SPM

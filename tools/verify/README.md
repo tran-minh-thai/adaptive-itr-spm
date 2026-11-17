@@ -16,6 +16,11 @@
 - `java/Bench.java`: runs the engine on one data file and prints, per batch, time, rescans,
   promotions, live nodes and tombstones. Development aid only; timings are not measurements.
   Usage: `Bench <data> <sigma> <maxPer> <targets> <eta> <lambda> <wV> <wR> <wS> [nb] [out]`.
+- `java/PreLargeRandomCheck.java [cases] [seed] [lower]`: checks the pattern-level pre-large
+  baseline (`PreLargeSeqTaSPM`) after every batch of random small streams against the exhaustive
+  enumeration of `BatchRandomCheck`; prints the snapshots compared, safe updates and rescans.
+- `prelarge_mutants.py [cases] [seed]`: fault injection for that check (five faults that must be
+  caught, an unmodified control and one benign change that must pass).
 - `cmp_java_proto.py <n> [base]`: compares the Java pattern sets with the prototype (and the
   prototype with `remine`) after every batch on n random cases; prints the number of cases
   whose pattern sets differ and whose rescan counts differ. The rescan counts agree only with
