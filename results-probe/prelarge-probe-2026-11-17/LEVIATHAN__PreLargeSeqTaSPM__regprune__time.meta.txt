@@ -1,0 +1,17 @@
+command=StreamBench --config=stream_leviathan.txt --arm=PreLargeSeqTaSPM --mode=time --tag=regprune --reps=1 --warmup=0 --timeout-min=30 --out=results-probe/prelarge-probe-2026-11-17
+started=2026-11-17T16:12:03+07:00
+build.status=missing (not built by tools/build_bench_jar.sh)
+jar_sha256=e7f785352373931f5b2cf08933b615fb5434e377e92d6007c1a5962deef54097
+config_file=stream_leviathan.txt
+config_sha256=bd7451c2991662b9ac0c59b5722e442a942ee224c9a284b6fea5e4133808ecb7
+dataset=LEVIATHAN.txt
+dataset_sha256=af0ee47c574e2b5e93b67bc7b10b2d297c930ffc4a24ca804c85cb60b67dd906
+sequences=5834 target_sequences=5662
+init_size=2834 batch_count=100 increment_sizes=30
+min_sup_rate=0.005 max_per=1000 targets=[1, 18, 71, 8, 14]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax regularity_pruning=true
+load_ms=74 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=16384 jvm_args=[-Xms16g, -Xmx16g, -Dprelarge.regprune=true]
+warmup_streams=0 reps=1
+rep1_status=TIMEOUT
+finished=2026-11-17T16:42:44+07:00 exit=5
