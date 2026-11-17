@@ -168,14 +168,14 @@ plan lines, 0 problems; analysis in `results/stream-bench-analysis/PC-THAI/`):
 
 ## 7. Pattern-level pre-large baseline and support-threshold sweep (phases `prelarge` and `sigma`, registered 2026-11-18)
 
-Jar built from a clean tree after commit `2727718` (`bench/adaptive-itr-spm-bench.jar.sha256`). The
+Jar `8afa91f3` built from a clean tree at commit `7e71346` (`bench/adaptive-itr-spm-bench.jar.sha256`). The
 new arm `PreLargeSeqTaSPM` (sections 2 and 3) is checked before measuring: 2000 random streams
 against exhaustive enumeration, 12,052 snapshots, 0 differences for both buffers, 10 of 10 mutants
 behave as expected (`results-invariant/prelarge-random-check-2026-11-17`); stream verification
 against Re-mine on the seven datasets, 707 of 707 snapshots agree
 (`results-invariant/verify-prelarge-regprune-2026-11-17`). The other arms run the classes they ran
-in the main campaign (class-file comparison in the commit that adds the jar), so they are not
-measured again.
+in the main campaign (`results-invariant/jar-prelarge-2026-11-18`: 43 of 44 class files have identical
+code; in the harness only the arm registry changes), so they are not measured again.
 
 Phase `prelarge`: `PreLargeSeqTaSPM` in time and live mode on the seven datasets at the
 min_sup_rate of their configuration, shortest first (BMS1, D48K, BIBLE, FIFA, KOSARAK, SIGN,
