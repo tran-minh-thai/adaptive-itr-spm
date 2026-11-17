@@ -1,0 +1,5 @@
+git 17ee694d5ef06b2c187e021f80b6ab67c184b708 tree 0 modified
+jar sha256 e7f785352373931f5b2cf08933b615fb5434e377e92d6007c1a5962deef54097 (mvn package of that commit)
+openjdk version "25.0.4.1" 2026-08-18 LTS
+Darwin arm64
+PROBE: development machine, reps=1, warmup=0, timeout 30 min, -Xmx16g

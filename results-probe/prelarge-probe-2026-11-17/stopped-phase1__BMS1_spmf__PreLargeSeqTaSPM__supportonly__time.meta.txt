@@ -1,0 +1,14 @@
+command=StreamBench --config=stream_bms1.txt --arm=PreLargeSeqTaSPM --mode=time --tag=supportonly --reps=1 --warmup=0 --timeout-min=30 --out=results-probe/prelarge-probe-2026-11-17
+started=2026-11-17T15:50:56+07:00
+build.status=missing (not built by tools/build_bench_jar.sh)
+jar_sha256=e7f785352373931f5b2cf08933b615fb5434e377e92d6007c1a5962deef54097
+config_file=stream_bms1.txt
+config_sha256=b7a1338ea4ebf1bfe8c98cc766a9719c2fe47c1442aebee711afca87f94f985d
+dataset=BMS1_spmf.txt
+dataset_sha256=e797a4be0cd0fd8dc3cd55aad9c842092eacaa649478f693cc71e344552bd887
+sequences=59601 target_sequences=13935
+init_size=39601 batch_count=100 increment_sizes=200
+min_sup_rate=0.001 max_per=3000 targets=[10307, 33449, 10315, 33469, 12895]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax regularity_pruning=false
+load_ms=149 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=16384 jvm_args=[-Xms16g, -Xmx16g, -Dprelarge.regprune=false]

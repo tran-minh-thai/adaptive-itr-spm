@@ -1,0 +1,10 @@
+bms1 IncAdaTaSPM-StaticPreLarge - exit=0
+bms1 RemineTaSPM - exit=0
+bms1 PreLargeSeqTaSPM regprune exit=0
+D48K PreLargeSeqTaSPM regprune exit=0
+leviathan PreLargeSeqTaSPM regprune exit=5
+D48K IncAdaTaSPM-StaticPreLarge - exit=0
+D48K RemineTaSPM - exit=0
+leviathan IncAdaTaSPM-StaticPreLarge - exit=0
+leviathan RemineTaSPM - exit=0
+bms1 PreLargeSeqTaSPM supportonly stopped by hand at 18:36: increment 58 not finished after 80 minutes (the 30-minute limit is checked only between increments); D48K and LEVIATHAN with the buffer by support only not run

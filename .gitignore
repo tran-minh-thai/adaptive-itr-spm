@@ -16,8 +16,7 @@ target/
 .DS_Store
 Thumbs.db
 
-# The bundled datasets in datasets/*.txt and the reference experiment outputs
-# in results/**/*.txt ARE checked in so the repository is self-contained for
+# The reference experiment outputs in results/**/*.txt ARE checked in for
 # paper reproducibility. If you re-run experiments and prefer to keep the
 # working directory tidy, uncomment the lines below to ignore fresh outputs.
 #
@@ -40,3 +39,6 @@ Thumbs.db
 
 # Partial result files of an interrupted run
 *.csv.part
+
+# Dataset files are fetched by tools/fetch_datasets.py and not redistributed (datasets/SOURCES.tsv pins them).
+datasets/*.txt

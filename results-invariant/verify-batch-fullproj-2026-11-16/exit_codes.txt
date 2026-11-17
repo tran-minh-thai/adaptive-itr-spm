@@ -1,0 +1,7 @@
+bms1 BatchTaSPM exit=0
+D48K BatchTaSPM exit=0
+bible BatchTaSPM exit=0
+sign BatchTaSPM exit=0
+kosarak BatchTaSPM exit=0
+leviathan BatchTaSPM exit=0
+fifa BatchTaSPM exit=5

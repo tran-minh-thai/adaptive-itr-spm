@@ -47,6 +47,9 @@ import java.util.TimeZone;
  *       DFS; nothing is kept from the previous batch.</li>
  *   <li>ItemPreLargeTaSPM: copying the current database into its arrays, the item-level
  *       pre-large update with backward scans, and the full DFS over the tracked items.</li>
+ *   <li>PreLargeSeqTaSPM: the SWUmax of the batch, then either the safe update (projecting the
+ *       batch along the buffered patterns) or a rescan (mining the whole current D_T at the
+ *       lower threshold into a new buffer), and counting the output.</li>
  * </ul>
  * Outside every clock: reading and parsing the file, a forced collection and a 100 ms pause
  * before each batch (time mode), collecting counters after the batch.
@@ -77,7 +80,8 @@ public final class StreamBench {
             "IncAdaTaSPM-TBR",          // with the target-proximity component (w_tbr = w2)
             "RemineTaSPM",              // re-mine the whole database after every batch
             "BatchTaSPM",               // TaSPM-style batch miner re-run after every batch
-            "ItemPreLargeTaSPM"         // self-built item-level pre-large baseline
+            "ItemPreLargeTaSPM",        // self-built item-level pre-large baseline
+            "PreLargeSeqTaSPM"          // support form of Pre-HUSPM (pattern-level pre-large)
     };
 
     static final class EngineArm implements Arm {
@@ -143,12 +147,33 @@ public final class StreamBench {
         public Map<String, Integer> output() { return r.sink; }
     }
 
+    /** Sl / Su of PreLargeSeqTaSPM: system property prelarge.lower, default 0.5. */
+    static double preLargeLower() { return Double.parseDouble(System.getProperty("prelarge.lower", "0.5")); }
+    /** PreLargeSeqTaSPM drops irregular patterns from its buffer: system property prelarge.regprune, default true
+     *  (author decision 2026-11-17: the stronger buffer is the baseline; false keeps it by support only, as in Pre-HUSPM). */
+    static boolean preLargeRegPrune() { return Boolean.parseBoolean(System.getProperty("prelarge.regprune", "true")); }
+
+    static final class PreLargeSeqArm implements Arm {
+        final PreLargeSeqTaSPM r = new PreLargeSeqTaSPM(AppConfig.MIN_SUP_RATE_EXACT, preLargeLower(), AppConfig.MAX_PER, AppConfig.TARGET_ITEMS, preLargeRegPrune());
+        final List<int[][]> all; final List<Integer> allLines;
+        PreLargeSeqArm(List<int[][]> all, List<Integer> allLines) { this.all = all; this.allLines = allLines; }
+        public long step(List<int[][]> batch, List<Integer> lines, int[] positions, int endOld, int n) {
+            return r.addBatch(all, allLines, all.size() - batch.size(), n);
+        }
+        public void counters(Map<String, Long> m) {
+            m.put("rescans", r.rescans); m.put("projections", r.projections); m.put("live_nodes", (long) r.liveNodes);
+        }
+        public void captureOutput(boolean on) { r.sink = on ? new HashMap<String, Integer>() : null; }
+        public Map<String, Integer> output() { return r.sink; }
+    }
+
     /** Builds a fresh instance of the named arm from the loaded configuration. */
     static Arm newArm(String name, List<int[][]> all, List<Integer> allLines) {
         switch (name) {
             case "RemineTaSPM": return new RemineArm(all, allLines);
             case "BatchTaSPM": return new BatchArm(all, allLines);
             case "ItemPreLargeTaSPM": return new ItemPreLargeArm();
+            case "PreLargeSeqTaSPM": return new PreLargeSeqArm(all, allLines);
             default: break;
         }
         double eta = AppConfig.ETA;
@@ -173,6 +198,7 @@ public final class StreamBench {
     /** Effective engine parameters of an arm, for the run record. */
     static String armParams(String name) {
         Arm a = newArm(name, new ArrayList<int[][]>(), new ArrayList<Integer>());
+        if (a instanceof PreLargeSeqArm) return "lower_ratio=" + preLargeLower() + " rescan_test=SWUmax regularity_pruning=" + preLargeRegPrune();
         if (!(a instanceof EngineArm)) return "buffer_ratio=" + AppConfig.BUFFER_RATIO;
         IncAdaTaSPM.Engine e = ((EngineArm) a).e;
         return String.format(Locale.US, "eta=%s lambda=%s wV=%s wR=%s wS=%s wTBR=%s phi=%s lazy=%s score=%s",

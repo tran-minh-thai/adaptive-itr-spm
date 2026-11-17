@@ -1,0 +1,4 @@
+git 883d2c47e99ed96fa3b298141289e656549af269 tree 0 modified
+jar sha256 653db1aa47d5d8f71c6d3d7570fdd1e858a46d2ff16eafb7bfb0b408d474bcc5 (mvn package of that commit)
+openjdk version "25.0.4.1" 2026-08-18 LTS
+Darwin arm64

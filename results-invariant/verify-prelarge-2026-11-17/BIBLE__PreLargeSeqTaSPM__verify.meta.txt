@@ -1,0 +1,14 @@
+command=StreamBench --config=stream_bible.txt --arm=PreLargeSeqTaSPM --mode=verify --timeout-min=240 --out=results-invariant/verify-prelarge-2026-11-17
+started=2026-11-17T15:36:43+07:00
+build.status=missing (not built by tools/build_bench_jar.sh)
+jar_sha256=653db1aa47d5d8f71c6d3d7570fdd1e858a46d2ff16eafb7bfb0b408d474bcc5
+config_file=stream_bible.txt
+config_sha256=525819801b309e8ba03655133ea8525bb370f405b382180f916bf7cc18130a1a
+dataset=BIBLE.txt
+dataset_sha256=dbcbeedd1bc947829fee398dc346e87545fc52bf0ff314e924669e0f0d9b4f3e
+sequences=36369 target_sequences=31552
+init_size=21369 batch_count=100 increment_sizes=150
+min_sup_rate=0.001 max_per=1000 targets=[1, 102, 10, 31]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax
+load_ms=397 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=8192 jvm_args=[-Xms8g, -Xmx8g]

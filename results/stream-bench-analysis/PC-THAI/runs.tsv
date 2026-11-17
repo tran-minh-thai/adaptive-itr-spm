@@ -1,4 +1,6 @@
 phase	dataset	arm	tag	mode	status	stop_rep	stop_batch	stop_cum_ms	stop_init_ms	reps_measured	batches	min_sup_init	init_ms_med	update_ms_med	update_ms_min	update_ms_max	total_ms_med	total_ms_min	total_ms_max	peak_live_mb	peak_live_upd_mb	final_retained_mb	max_retained_mb	gc_forced	final_patterns	rescans	rescan_inserts	promotions	backscans	final_live_nodes	max_live_nodes	final_tombstones	max_tombstones	final_stubs	max_stubs	counters_equal_across_reps	file
+fix-batch	BIBLE	BatchTaSPM	fullproj	live	OK					1	100	22								81.676	81.676	6.828	6.828	6222	4020												BIBLE__BatchTaSPM__fullproj__live.csv
+fix-batch	BIBLE	BatchTaSPM	fullproj	time	OK					3	100	22	5435.361	732969.671	732817.598	733353.347	738396.621	738252.959	738806.120						4020											yes	BIBLE__BatchTaSPM__fullproj__time.csv
 main-live	BIBLE	BatchTaSPM	-	live	OK					1	100	22								35.928	35.928	6.827	6.827	6106	4020												BIBLE__BatchTaSPM__live.csv
 main-time	BIBLE	BatchTaSPM	-	time	OK					3	100	22	4641.885	637319.972	636225.815	638219.572	641961.857	640884.014	642848.155						4020											yes	BIBLE__BatchTaSPM__time.csv
 main-live	BIBLE	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	22								18.530	18.530	17.614	17.614	296	4020	42470	0	50604		5343	7103	314907	350881	182022	329950		BIBLE__IncAdaTaSPM-NoBuffer__live.csv
@@ -16,6 +18,8 @@ sup-eta	BIBLE	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					5	100	22	1244.643	1257
 main-live	BIBLE	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	22								18.897	18.897	18.122	18.122	289	4020	42470	0	50604		5343	7103	314907	350881	182022	329950		BIBLE__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	BIBLE	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					5	100	22	1258.895	9922.866	9910.503	9942.257	11181.761	11166.411	11206.151						4020	26608	0	53331		5343	7103	314907	350881	615095	933259	yes	BIBLE__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	BIBLE	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					5	100	22	1310.713	46662.215	46630.714	46705.121	47969.326	47926.404	48027.513						4020	278730	0	0		5343	7103	314907	350881	0	0	yes	BIBLE__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	BIBLE	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	22								18.506	18.506	17.614	17.614	305	4020	42470	0	50604		5343	7103	314907	350881	182022	329950		BIBLE__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	BIBLE	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					5	100	22	1302.851	14149.549	14145.082	14178.605	15452.037	15445.310	15500.960						4020	42470	0	50604		5343	7103	314907	350881	182022	329950	yes	BIBLE__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	BIBLE	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					5	100	22	1260.264	12849.804	12829.478	12854.284	14106.282	14084.272	14139.525						4020	42470	0	50604		5343	7103	314907	350881	182022	329950	yes	BIBLE__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	BIBLE	IncAdaTaSPM-StaticPreLarge	-	time	OK					5	100	22	1306.786	13008.723	12996.132	13020.613	14311.049	14303.425	14356.884						4020	42470	0	50604		5343	7103	314907	350881	182022	329950	yes	BIBLE__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	BIBLE	IncAdaTaSPM-TBR	-	live	OK					1	100	22								21.957	21.957	21.155	21.155	293	4020	42470	0	50604		5343	7103	314907	350881	182022	329950		BIBLE__IncAdaTaSPM-TBR__live.csv
@@ -34,6 +38,8 @@ batch-count	BIBLE	RemineTaSPM	K50	time	OK					5	50	22	1488.624	84443.175	84395.2
 batch-count	BIBLE	RemineTaSPM	K67	time	OK					5	67	22	1464.041	111472.128	111447.893	111633.900	112939.698	112908.578	113097.941						4020											yes	BIBLE__RemineTaSPM__K67__time.csv
 main-live	BIBLE	RemineTaSPM	-	live	OK					1	100	22								17.779	17.779	4.895	4.895	2004	4020												BIBLE__RemineTaSPM__live.csv
 main-time	BIBLE	RemineTaSPM	-	time	OK					3	100	22	1497.068	170066.643	170005.248	170076.584	171563.711	171500.029	171581.182						4020											yes	BIBLE__RemineTaSPM__time.csv
+fix-batch	BMS1_spmf	BatchTaSPM	fullproj	live	OK					1	100	40								1.704	1.013	1.013	1.046	204	126												BMS1_spmf__BatchTaSPM__fullproj__live.csv
+fix-batch	BMS1_spmf	BatchTaSPM	fullproj	time	OK					10	100	40	46.267	5216.928	5175.035	5265.955	5262.891	5221.331	5312.600						126											yes	BMS1_spmf__BatchTaSPM__fullproj__time.csv
 main-live	BMS1_spmf	BatchTaSPM	-	live	OK					1	100	40								2.240	2.000	1.012	1.045	205	126												BMS1_spmf__BatchTaSPM__live.csv
 main-time	BMS1_spmf	BatchTaSPM	-	time	OK					10	100	40	55.871	6311.849	6294.006	6329.387	6367.731	6349.971	6386.596						126											yes	BMS1_spmf__BatchTaSPM__time.csv
 main-live	BMS1_spmf	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	40								5.324	5.310	5.297	5.324	180	126	131	0	410		249	435	1766	1863	3815	5518		BMS1_spmf__IncAdaTaSPM-NoBuffer__live.csv
@@ -51,6 +57,8 @@ sup-eta	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					15	100	40	6.846	41
 main-live	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	40								5.324	5.310	5.297	5.324	179	126	131	0	396		249	435	1771	1868	3810	5518		BMS1_spmf__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					15	100	40	7.154	38.943	37.780	43.451	46.097	44.901	55.364						126	34	0	407		249	435	1771	1868	9534	18491	yes	BMS1_spmf__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					15	100	40	6.729	94.294	92.300	96.858	101.080	99.029	104.688						126	1904	8	0		249	435	1771	1868	0	0	yes	BMS1_spmf__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	40								5.324	5.310	5.297	5.324	185	126	131	0	396		249	435	1771	1868	3810	5518		BMS1_spmf__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					15	100	40	6.827	40.684	39.142	45.050	47.415	45.861	55.168						126	131	0	396		249	435	1771	1868	3810	5518	yes	BMS1_spmf__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					15	100	40	6.851	40.263	38.632	42.932	46.967	45.532	53.397						126	131	0	396		249	435	1771	1868	3810	5518	yes	BMS1_spmf__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	BMS1_spmf	IncAdaTaSPM-StaticPreLarge	-	time	OK					15	100	40	6.787	41.792	39.697	45.060	48.549	46.360	53.587						126	131	0	396		249	435	1771	1868	3810	5518	yes	BMS1_spmf__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	BMS1_spmf	IncAdaTaSPM-TBR	-	live	OK					1	100	40								5.879	5.879	5.879	5.879	186	126	131	0	407		249	435	1766	1863	3815	5518		BMS1_spmf__IncAdaTaSPM-TBR__live.csv
@@ -99,6 +107,8 @@ batch-count	BMS1_spmf	RemineTaSPM	K67	time	OK					15	67	40	11.171	734.616	729.26
 main-live	BMS1_spmf	RemineTaSPM	-	live	OK					1	100	40								2.755	2.755	2.755	2.755	202	126												BMS1_spmf__RemineTaSPM__live.csv
 sup-recheck	BMS1_spmf	RemineTaSPM	recheck	time	OK					10	100	40	11.242	1100.926	1098.753	1103.648	1112.055	1109.914	1114.724						126											yes	BMS1_spmf__RemineTaSPM__recheck__time.csv
 main-time	BMS1_spmf	RemineTaSPM	-	time	OK					10	100	40	11.363	1104.995	1102.042	1109.222	1116.297	1113.238	1120.715						126											yes	BMS1_spmf__RemineTaSPM__time.csv
+fix-batch	D48K-C10-T1-N5K	BatchTaSPM	fullproj	live	OK					1	100	26								0.567	0.532	0.163	0.163	911	34943												D48K-C10-T1-N5K__BatchTaSPM__fullproj__live.csv
+fix-batch	D48K-C10-T1-N5K	BatchTaSPM	fullproj	time	OK					5	100	26	538.863	67143.639	67111.585	67255.269	67684.386	67648.443	67794.132						34943											yes	D48K-C10-T1-N5K__BatchTaSPM__fullproj__time.csv
 main-live	D48K-C10-T1-N5K	BatchTaSPM	-	live	OK					1	100	26								0.551	0.551	0.163	0.163	831	34943												D48K-C10-T1-N5K__BatchTaSPM__live.csv
 main-time	D48K-C10-T1-N5K	BatchTaSPM	-	time	OK					5	100	26	488.779	60785.938	60504.402	60836.633	61280.836	60992.696	61327.991						34943											yes	D48K-C10-T1-N5K__BatchTaSPM__time.csv
 main-live	D48K-C10-T1-N5K	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	26								349.319	349.319	349.319	349.319	203	34943	20	2	184		68764	68986	6	6	177	8437		D48K-C10-T1-N5K__IncAdaTaSPM-NoBuffer__live.csv
@@ -116,6 +126,8 @@ sup-eta	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					15	100	26	10
 main-live	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	26								349.319	349.319	349.319	349.319	204	34943	20	1	62		68778	69018	11	11	173	8437		D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					15	100	26	117.880	298.691	295.695	304.573	416.182	413.768	465.094						34943	15	0	65		68778	69018	11	11	1071928	1084215	yes	D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					15	100	26	107.416	229.165	225.838	230.758	336.832	332.731	342.803						34943	263	45	0		68778	69018	11	11	0	0	yes	D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	26								349.319	349.319	349.319	349.319	204	34943	20	1	62		68778	69018	11	11	173	8437		D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					15	100	26	113.999	209.716	206.243	214.772	323.858	321.146	361.821						34943	20	1	62		68778	69018	11	11	173	8437	yes	D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					15	100	26	119.017	193.955	191.908	197.914	313.294	310.817	342.389						34943	20	1	62		68778	69018	11	11	173	8437	yes	D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	D48K-C10-T1-N5K	IncAdaTaSPM-StaticPreLarge	-	time	OK					15	100	26	114.011	211.001	208.579	213.278	325.047	323.630	355.189						34943	20	1	62		68778	69018	11	11	173	8437	yes	D48K-C10-T1-N5K__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	D48K-C10-T1-N5K	IncAdaTaSPM-TBR	-	live	OK					1	100	26								349.420	349.420	349.420	349.420	204	34943	20	2	184		68764	68986	6	6	177	8437		D48K-C10-T1-N5K__IncAdaTaSPM-TBR__live.csv
@@ -164,6 +176,8 @@ batch-count	D48K-C10-T1-N5K	RemineTaSPM	K67	time	OK					10	67	26	61.528	5052.949
 main-live	D48K-C10-T1-N5K	RemineTaSPM	-	live	OK					1	100	26								256.698	224.838	192.734	192.734	228	34943												D48K-C10-T1-N5K__RemineTaSPM__live.csv
 sup-recheck	D48K-C10-T1-N5K	RemineTaSPM	recheck	time	OK					10	100	26	60.780	7460.043	7445.629	7504.126	7520.582	7506.412	7571.462						34943											yes	D48K-C10-T1-N5K__RemineTaSPM__recheck__time.csv
 main-time	D48K-C10-T1-N5K	RemineTaSPM	-	time	OK					10	100	26	62.193	7522.864	7508.969	7559.760	7584.595	7571.205	7627.669						34943											yes	D48K-C10-T1-N5K__RemineTaSPM__time.csv
+fix-batch	FIFA	BatchTaSPM	fullproj	live	TIMEOUT	1	49			0	48									61.197	61.197	3.651	3.651	46670													FIFA__BatchTaSPM__fullproj__live.csv
+fix-batch	FIFA	BatchTaSPM	fullproj	time	TIMEOUT	-1	59	7208894.699	105843.536	0	58																										FIFA__BatchTaSPM__fullproj__time.csv
 main-live	FIFA	BatchTaSPM	-	live	TIMEOUT	1	62			0	61									28.146	28.146	3.940	3.940	52121													FIFA__BatchTaSPM__live.csv
 main-time	FIFA	BatchTaSPM	-	time	TIMEOUT	-1	74	7200689.977	81425.064	0	73																										FIFA__BatchTaSPM__time.csv
 main-live	FIFA	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	53								37.820	37.394	29.921	37.339	464	7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827		FIFA__IncAdaTaSPM-NoBuffer__live.csv
@@ -181,6 +195,8 @@ sup-eta	FIFA	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					5	100	53	5104.143	27431
 main-live	FIFA	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	53								37.894	37.571	29.921	37.617	463	7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827		FIFA__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	FIFA	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					5	100	53	5026.683	21612.691	21594.434	21620.407	26634.559	26626.510	26647.090						7675	20510	0	82255		18527	28330	3180635	4566475	2047503	3343306	yes	FIFA__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	FIFA	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					3	100	53	5048.205	139803.075	139740.775	139861.492	144851.280	144828.634	144899.936						7675	567111	0	0		18527	28330	3180635	4566475	0	0	yes	FIFA__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	FIFA	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	53								37.602	36.925	29.921	37.043	472	7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827		FIFA__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	FIFA	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					5	100	53	5118.947	27661.049	27622.748	27707.372	32797.320	32724.350	32823.488						7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827	yes	FIFA__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	FIFA	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					5	100	53	5130.538	27266.642	27207.486	27269.391	32390.178	32326.907	32409.327						7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827	yes	FIFA__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	FIFA	IncAdaTaSPM-StaticPreLarge	-	time	OK					5	100	53	5101.911	26654.060	26634.358	26688.152	31746.511	31683.451	31790.063						7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827	yes	FIFA__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	FIFA	IncAdaTaSPM-TBR	-	live	OK					1	100	53								38.803	38.274	33.110	38.312	467	7675	43099	0	81718		18527	28330	3180635	4566475	828460	1469827		FIFA__IncAdaTaSPM-TBR__live.csv
@@ -199,6 +215,8 @@ batch-count	FIFA	RemineTaSPM	K50	time	OK					3	50	53	5518.006	327207.328	326898.
 batch-count	FIFA	RemineTaSPM	K67	time	OK					3	67	53	5493.081	440365.150	439546.746	440497.323	445852.969	445039.827	446011.149						7675											yes	FIFA__RemineTaSPM__K67__time.csv
 main-live	FIFA	RemineTaSPM	-	live	OK					1	100	53								9.767	9.767	3.193	3.193	7341	7675												FIFA__RemineTaSPM__live.csv
 main-time	FIFA	RemineTaSPM	-	time	OK					3	100	53	5509.500	648498.849	648099.936	648595.535	654029.932	653555.984	654105.035						7675											yes	FIFA__RemineTaSPM__time.csv
+fix-batch	LEVIATHAN	BatchTaSPM	fullproj	live	OK					1	100	15								16.327	16.327	1.729	1.729	23412	708537												LEVIATHAN__BatchTaSPM__fullproj__live.csv
+fix-batch	LEVIATHAN	BatchTaSPM	fullproj	time	OK					3	100	15	14759.439	2258316.134	2258289.732	2261973.598	2273060.646	2273049.870	2276733.037						708537											yes	LEVIATHAN__BatchTaSPM__fullproj__time.csv
 main-live	LEVIATHAN	BatchTaSPM	-	live	OK					1	100	15								7.488	7.488	1.729	1.729	22665	708537												LEVIATHAN__BatchTaSPM__live.csv
 main-time	LEVIATHAN	BatchTaSPM	-	time	OK					3	100	15	13693.333	2099369.575	2098710.901	2099406.013	2113053.803	2112430.917	2113099.346						708537											yes	LEVIATHAN__BatchTaSPM__time.csv
 main-live	LEVIATHAN	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	15								86.296	86.296	84.381	86.275	440	708537	522382	60821	971783		731432	853244	123656	123656	2080100	2559688		LEVIATHAN__IncAdaTaSPM-NoBuffer__live.csv
@@ -216,6 +234,8 @@ sup-eta	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					5	100	15	3521.191	
 main-live	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	15								128.935	128.935	128.164	128.922	388	708537	527761	24090	341992		949538	979173	198554	198554	1874877	2555251		LEVIATHAN__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					5	100	15	3621.040	27576.947	27565.605	27580.059	31196.144	31191.165	31199.750						708537	297639	12549	357176		949538	979173	198554	198554	7013951	10574070	yes	LEVIATHAN__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					5	100	15	3575.910	58740.838	58712.709	58770.946	62318.581	62287.200	62348.501						708537	2466412	295688	0		949538	979173	198554	198554	0	0	yes	LEVIATHAN__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	15								128.933	128.933	128.161	128.922	389	708537	527761	24090	341992		949538	979173	198554	198554	1874877	2555251		LEVIATHAN__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					5	100	15	3518.390	29214.618	29200.528	29219.425	32733.008	32720.401	32738.569						708537	527761	24090	341992		949538	979173	198554	198554	1874877	2555251	yes	LEVIATHAN__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					5	100	15	3639.197	29571.643	29554.432	29612.981	33215.184	33188.677	33273.020						708537	527761	24090	341992		949538	979173	198554	198554	1874877	2555251	yes	LEVIATHAN__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	LEVIATHAN	IncAdaTaSPM-StaticPreLarge	-	time	OK					5	100	15	3522.382	28788.939	28780.505	28826.651	32311.315	32303.071	32356.285						708537	527761	24090	341992		949538	979173	198554	198554	1874877	2555251	yes	LEVIATHAN__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	LEVIATHAN	IncAdaTaSPM-TBR	-	live	OK					1	100	15								87.033	87.033	85.282	87.025	438	708537	522395	60669	968263		732240	853348	123704	123704	2079867	2559677		LEVIATHAN__IncAdaTaSPM-TBR__live.csv
@@ -234,6 +254,8 @@ batch-count	LEVIATHAN	RemineTaSPM	K50	time	OK					3	50	15	3934.154	306982.701	30
 batch-count	LEVIATHAN	RemineTaSPM	K67	time	OK					3	67	15	3808.666	396092.256	395891.885	396159.088	399900.922	399702.432	399926.490						708537											yes	LEVIATHAN__RemineTaSPM__K67__time.csv
 main-live	LEVIATHAN	RemineTaSPM	-	live	OK					1	100	15								3.731	3.731	1.471	1.471	6737	708537												LEVIATHAN__RemineTaSPM__live.csv
 main-time	LEVIATHAN	RemineTaSPM	-	time	OK					3	100	15	3771.011	590972.433	590934.504	591204.217	594747.442	594705.515	594968.820						708537											yes	LEVIATHAN__RemineTaSPM__time.csv
+fix-batch	SIGN	BatchTaSPM	fullproj	live	OK					1	100	12								5.754	5.754	0.302	0.302	13631	55627												SIGN__BatchTaSPM__fullproj__live.csv
+fix-batch	SIGN	BatchTaSPM	fullproj	time	OK					3	100	12	8903.053	1207101.983	1206705.105	1207108.651	1215996.118	1215634.776	1216011.704						55627											yes	SIGN__BatchTaSPM__fullproj__time.csv
 main-live	SIGN	BatchTaSPM	-	live	OK					1	100	12								2.433	2.433	0.302	0.302	12240	55627												SIGN__BatchTaSPM__live.csv
 main-time	SIGN	BatchTaSPM	-	time	OK					3	100	12	8406.874	1134833.986	1133898.900	1135487.619	1143274.108	1142272.911	1143894.493						55627											yes	SIGN__BatchTaSPM__time.csv
 main-live	SIGN	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	12								296.357	296.357	252.932	296.352	339	55627	522251	64521	2275534		726312	2151902	30305	30337	1424076	5240826		SIGN__IncAdaTaSPM-NoBuffer__live.csv
@@ -251,6 +273,8 @@ sup-eta	SIGN	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					5	100	12	1846.726	24135
 main-live	SIGN	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	12								296.354	296.354	254.458	296.352	302	55627	551219	35145	877972		1674167	2549594	253071	254617	1169429	5240826		SIGN__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	SIGN	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					5	100	12	2133.775	23988.017	23979.115	24000.202	26124.749	26118.019	26132.768						55627	305635	14270	903230		1674167	2549594	253071	254617	6051532	30932194	yes	SIGN__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	SIGN	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					5	100	12	1758.222	24413.643	24406.025	24450.284	26171.865	26161.811	26211.462						55627	2128248	763987	0		1674167	2549594	253071	254617	0	0	yes	SIGN__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	SIGN	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	12								296.356	296.356	254.458	296.352	295	55627	551219	35145	877972		1674167	2549594	253071	254617	1169429	5240826		SIGN__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	SIGN	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					5	100	12	1829.813	21185.500	21172.257	21194.777	23015.313	23006.090	23022.026						55627	551219	35145	877972		1674167	2549594	253071	254617	1169429	5240826	yes	SIGN__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	SIGN	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					5	100	12	1845.461	21229.278	21213.112	21256.537	23085.791	23061.847	23101.998						55627	551219	35145	877972		1674167	2549594	253071	254617	1169429	5240826	yes	SIGN__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	SIGN	IncAdaTaSPM-StaticPreLarge	-	time	OK					5	100	12	1833.277	21197.049	21189.752	21202.737	23032.968	23026.410	23034.331						55627	551219	35145	877972		1674167	2549594	253071	254617	1169429	5240826	yes	SIGN__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	SIGN	IncAdaTaSPM-TBR	-	live	OK					1	100	12								296.415	296.415	253.089	296.410	343	55627	522262	64484	2273972		726484	2151902	30313	30345	1424177	5240826		SIGN__IncAdaTaSPM-TBR__live.csv
@@ -294,6 +318,8 @@ kosarak-scale	kosarak_80	IncAdaTaSPM	-	live	OK					1	100	145								144.891	144.
 kosarak-scale	kosarak_80	IncAdaTaSPM	-	time	OK					10	100	145	430.828	4798.474	4777.737	4802.365	5227.676	5205.864	5257.053						1977	2	0	1305		2351	6397	8443	8443	20228	33144	yes	kosarak_80__IncAdaTaSPM__time.csv
 kosarak-scale	kosarak_80	RemineTaSPM	-	live	OK					1	100	145								160.704	160.704	65.854	65.854	2442	1977												kosarak_80__RemineTaSPM__live.csv
 kosarak-scale	kosarak_80	RemineTaSPM	-	time	OK					3	100	145	728.499	424184.258	424120.896	424193.505	424913.455	424846.860	424922.004						1977											yes	kosarak_80__RemineTaSPM__time.csv
+fix-batch	kosarak	BatchTaSPM	fullproj	live	OK					1	100	181								504.631	504.631	94.671	94.671	9739	1815												kosarak__BatchTaSPM__fullproj__live.csv
+fix-batch	kosarak	BatchTaSPM	fullproj	time	OK					3	100	181	4436.425	2730049.113	2726222.298	2731277.157	2734491.265	2730658.723	2735685.326						1815											yes	kosarak__BatchTaSPM__fullproj__time.csv
 main-live	kosarak	BatchTaSPM	-	live	OK					1	100	181								279.082	279.082	94.702	94.702	10470	1815												kosarak__BatchTaSPM__live.csv
 main-time	kosarak	BatchTaSPM	-	time	OK					3	100	181	4469.739	2866463.215	2864913.280	2866848.573	2870932.954	2869396.361	2871304.483						1815											yes	kosarak__BatchTaSPM__time.csv
 main-live	kosarak	IncAdaTaSPM-NoBuffer	-	live	OK					1	100	181								176.244	176.244	176.244	176.244	204	1815	0	0	888		2170	5870	8311	8313	20272	33634		kosarak__IncAdaTaSPM-NoBuffer__live.csv
@@ -311,6 +337,8 @@ sup-eta	kosarak	IncAdaTaSPM-StaticPreLarge	eta0	time	OK					10	100	181	521.776	5
 main-live	kosarak	IncAdaTaSPM-StaticPreLarge	-	live	OK					1	100	181								176.782	176.782	176.782	176.782	204	1815	0	0	883		2170	5870	8311	8313	20272	33634		kosarak__IncAdaTaSPM-StaticPreLarge__live.csv
 sup-phi	kosarak	IncAdaTaSPM-StaticPreLarge	phi0.25	time	OK					10	100	181	527.887	6160.605	6140.453	6176.540	6687.632	6669.678	6728.827						1815	0	0	883		2170	5870	8311	8313	89530	161945	yes	kosarak__IncAdaTaSPM-StaticPreLarge__phi0.25__time.csv
 sup-phi	kosarak	IncAdaTaSPM-StaticPreLarge	phi1	time	OK					5	100	181	511.360	23056.315	23043.484	23090.526	23568.304	23554.844	23605.329						1815	4968	3	0		2170	5870	8311	8313	0	0	yes	kosarak__IncAdaTaSPM-StaticPreLarge__phi1__time.csv
+fix-batch	kosarak	IncAdaTaSPM-StaticPreLarge	recheck3	live	OK					1	100	181								176.778	176.778	176.778	176.778	204	1815	0	0	883		2170	5870	8311	8313	20272	33634		kosarak__IncAdaTaSPM-StaticPreLarge__recheck3__live.csv
+fix-batch	kosarak	IncAdaTaSPM-StaticPreLarge	recheck3	time	OK					10	100	181	527.757	5202.500	5184.252	5210.539	5731.653	5712.318	5769.164						1815	0	0	883		2170	5870	8311	8313	20272	33634	yes	kosarak__IncAdaTaSPM-StaticPreLarge__recheck3__time.csv
 sup-recheck	kosarak	IncAdaTaSPM-StaticPreLarge	recheck	time	OK					10	100	181	523.890	5217.785	5203.524	5231.071	5743.105	5726.616	5770.478						1815	0	0	883		2170	5870	8311	8313	20272	33634	yes	kosarak__IncAdaTaSPM-StaticPreLarge__recheck__time.csv
 main-time	kosarak	IncAdaTaSPM-StaticPreLarge	-	time	OK					10	100	181	523.685	5193.325	5172.958	5243.919	5717.921	5697.600	5768.970						1815	0	0	883		2170	5870	8311	8313	20272	33634	yes	kosarak__IncAdaTaSPM-StaticPreLarge__time.csv
 tbr	kosarak	IncAdaTaSPM-TBR	-	live	OK					1	100	181								235.288	235.288	235.288	235.288	204	1815	0	0	883		2170	5870	8311	8313	20272	33634		kosarak__IncAdaTaSPM-TBR__live.csv

@@ -1,0 +1,21 @@
+command=StreamBench --config=stream_bms1.txt --arm=RemineTaSPM --mode=time --tag=sigma0.002 --out=results-probe/stepb-smoke-2026-11-18 --reps=1 --warmup=0 --min_sup_rate=0.002
+started=2026-11-18T06:36:39+07:00
+build.source_tree_id=4963e9037e049962d2db7868d13e9edcda566fde
+build.source_commit=7e713463fbc3a8ab6f72683d414de9511e4cfc78
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-17T23:33:40Z
+build.release=8
+jar_sha256=8afa91f326bfa2091dffa0e2e5fd9b43f1fd60811e8b9b0ede96c5af4308d1db
+config_file=stream_bms1.txt
+config_sha256=b7a1338ea4ebf1bfe8c98cc766a9719c2fe47c1442aebee711afca87f94f985d
+dataset=BMS1_spmf.txt
+dataset_sha256=e797a4be0cd0fd8dc3cd55aad9c842092eacaa649478f693cc71e344552bd887
+sequences=59601 target_sequences=13935
+init_size=39601 batch_count=100 increment_sizes=200
+min_sup_rate=0.002 max_per=3000 targets=[10307, 33449, 10315, 33469, 12895]
+arm=RemineTaSPM params: buffer_ratio=0.1
+load_ms=128 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=4096 jvm_args=[-Xms4g, -Xmx4g]
+warmup_streams=0 reps=1
+finished=2026-11-18T06:36:52+07:00 exit=0

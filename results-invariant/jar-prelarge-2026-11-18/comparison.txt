@@ -1,0 +1,12 @@
+old entries 48, new entries 52
+only in new: ['com/adaptive/itr/spm/PreLargeSeqTaSPM$EndList.class', 'com/adaptive/itr/spm/PreLargeSeqTaSPM$PSeq.class', 'com/adaptive/itr/spm/PreLargeSeqTaSPM.class', 'com/adaptive/itr/spm/StreamBench$PreLargeSeqArm.class']
+only in old: []
+  com/adaptive/itr/spm/StreamBench.class: same instructions up to ldc / ldc_w and offsets (static com.adaptive.itr.spm.StreamBench$Data load(java.lang.String) throws java.io.IOException;)
+  com/adaptive/itr/spm/StreamBench.class: same instructions up to ldc / ldc_w and offsets (static java.lang.String sha256(java.io.File);)
+CODE DIFFERS: com/adaptive/itr/spm/StreamBench.class (methods: old 24, new 26, identical 19)
+  added   static double preLargeLower();
+  added   static boolean preLargeRegPrune();
+  changed static com.adaptive.itr.spm.StreamBench$Arm newArm(java.lang.String, java.util.List<int[][]>, java.util.List<java.lang.Integer>);: 349 lines differ
+  changed static java.lang.String armParams(java.lang.String);: 142 lines differ
+  changed static {};: 10 lines differ
+class files of the old jar: 44; identical bytes: 30; identical code (offsets and ldc / ldc_w masked): 43

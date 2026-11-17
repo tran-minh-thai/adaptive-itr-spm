@@ -1,0 +1,17 @@
+command=StreamBench --config=stream_D48K.txt --arm=PreLargeSeqTaSPM --mode=verify --timeout-min=60 --out=results-invariant/verify-prelarge-regprune-2026-11-17/fault-injection/swumax-zero
+started=2026-11-17T22:08:42+07:00
+build.status=missing (not built by tools/build_bench_jar.sh)
+jar_sha256=d004e1f2d432513f14867aa78c848f83f84cfd507bd1abe5f14900c93126f6d1
+config_file=stream_D48K.txt
+config_sha256=f5e1a93c3aa7bdd1b31b6c2e5fff57d0f9b532975b3938e7a6ab31b06cb3a799
+dataset=D48K-C10-T1-N5K.txt
+dataset_sha256=22b9fe80dfa5744c4fb09036b4580ae72aa96220990b1fc32eb9cd2a2168c598
+sequences=48467 target_sequences=2289
+init_size=28467 batch_count=100 increment_sizes=200
+min_sup_rate=0.0009 max_per=6000 targets=[4999999, 3312329, 4411672, 2508874, 3667146]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax regularity_pruning=true
+load_ms=144 (reading and parsing the file, outside every clock)
+java=25.0.4.1+1-LTS vendor=Eclipse Adoptium max_heap_mb=8192 jvm_args=[-Xms8g, -Xmx8g]
+verify: reference arm RemineTaSPM, exact comparison of pattern sets and supports after every batch
+verify_batches_compared=101 batches_with_difference=0 reference_patterns_summed_over_batches=3488924
+finished=2026-11-17T22:08:54+07:00 exit=0

@@ -5,50 +5,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
- * <b>Ada-IncTaSPM</b> - Adaptive Incremental Target Regular Sequential
- * Pattern Mining (V9.0, pattern-growth vertical hybrid).
+ * <b>RemineTaSPM</b> - re-mine baseline for targeted regular sequential pattern mining.
  *
- * <h2>Problem addressed</h2>
- * Given a growing database of transactional sequences and a
- * user-supplied set of <em>target items</em>, this algorithm mines the
- * complete set of sequential patterns that:
+ * <p>Mines the whole current database after every batch and keeps nothing between batches. The
+ * output is the complete set of patterns that contain a target item, have support at least
+ * {@code min_sup} ({@link AppConfig#MIN_SUP_RATE} times the number of sequences received so far)
+ * and are regular (no gap between consecutive containing sequences, including the leading gap and
+ * the open gap, larger than {@link AppConfig#MAX_PER}).
+ *
+ * <p>Search: a depth-first pattern growth over vertical item bitmaps and per-item occurrence
+ * lists, with PrefixSpan-style local support counting on each projection. At the root an item is
+ * dropped when its support is below {@code min_sup * (1 - eta * score)}, where the per-item score
+ * ({@code AdaptScore}) lies in [0, 1]; this threshold never exceeds {@code min_sup}, so only
+ * infrequent items are dropped and the output stays exact. The class was the project's earlier
+ * miner; it is not an implementation of a published algorithm.
+ *
+ * <p>Entry points:
  * <ul>
- *   <li>contain at least one target item ("target-based"),</li>
- *   <li>occur with support &ge; {@link AppConfig#MIN_SUP_RATE} times the
- *       running transaction count,</li>
- *   <li>appear "regularly" over time, i.e. the maximum gap between
- *       consecutive occurrences never exceeds {@link AppConfig#MAX_PER}.</li>
+ *   <li>{@link #mineSnapshot} - used by {@link StreamBench} for every measured run: mines the
+ *       snapshot it is given; the per-sequence item cache is rebuilt for every sequence, and the
+ *       file is read by the caller outside the clock.</li>
+ *   <li>{@link #run} - the legacy harness: reads the dataset file batch by batch and writes the
+ *       patterns, timings and counters to {@code result_AdaIncTaSPM.txt} for
+ *       {@link ResultAggregator}.</li>
  * </ul>
- * The database arrives in batches (fractions declared in
- * {@link AppConfig#DATA_CHUNKS}); after each batch the algorithm updates
- * its pattern set incrementally instead of rescanning the whole
- * database.
- *
- * <h2>What makes Ada-IncTaSPM adaptive</h2>
- * The core idea is a per-item <em>adaptive score</em>
- * ({@code AdaptScore}) that combines four signals - Volume,
- * Target-Proximity (TBR), Recency and Stability - into a single number.
- * High-scoring items get a relaxed effective support threshold
- * {@code min_sup * (1 - eta * score)} so that promising-but-borderline
- * items are not pruned prematurely; low-scoring items keep the strict
- * threshold and are cut aggressively.
- *
- * <h2>Key V9.0 techniques</h2>
- * <ul>
- *   <li><b>Local support counting</b> borrowed from PrefixSpan is fused
- *       into the vertical projection, so we never iterate a global
- *       candidate list.</li>
- *   <li><b>Search-space auto-contraction</b> - the DFS discards ~99.9 %
- *       of dead branches before recursion by counting suffixes locally.</li>
- *   <li><b>No S/I matrices, no redundant BitSet intersections</b> -
- *       memory footprint is dominated by the projected database itself.</li>
- * </ul>
- *
- * <h2>Output</h2>
- * The final mined patterns and their supports are dumped to
- * {@code result_AdaIncTaSPM.txt}; per-batch timings, RAM peaks, pruning
- * ratios and pattern counts are appended to the same file so that
- * {@link ResultAggregator} can produce a unified Summary_Report.
  */
 public class RemineTaSPM {
 
