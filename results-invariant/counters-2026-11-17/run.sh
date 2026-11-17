@@ -17,7 +17,8 @@ javac -nowarn -d "$B/classes" -cp target/classes "$B/src/IncAdaTaSPMCounted.java
 : > $OUT/summary.txt
 for x in bms1:BMS1_spmf D48K:D48K-C10-T1-N5K bible:BIBLE kosarak:kosarak sign:SIGN leviathan:LEVIATHAN fifa:FIFA; do
   c=${x%%:*}; f=${x##*:}
-  r=$(java -Xmx8g -cp "$B/classes:target/classes" com.adaptive.itr.spm.CountersRun stream_$c.txt $OUT/$f.csv results/stream-bench/PC-THAI/${f}__IncAdaTaSPM-StaticPreLarge__live.csv | tail -1)
-  echo "$f exit=$? $r" | tee -a $OUT/summary.txt
+  java -Xmx8g -cp "$B/classes:target/classes" com.adaptive.itr.spm.CountersRun stream_$c.txt $OUT/$f.csv results/stream-bench/PC-THAI/${f}__IncAdaTaSPM-StaticPreLarge__live.csv > "$B/log.txt"
+  code=$?
+  echo "$f exit=$code $(tail -1 "$B/log.txt")" | tee -a $OUT/summary.txt
 done
 rm -rf "$B"
