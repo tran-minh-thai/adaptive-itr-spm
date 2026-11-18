@@ -1,0 +1,21 @@
+command=StreamBench --config=stream_leviathan.txt --arm=PreLargeSeqTaSPM --mode=live --tag=- --out=results\stream-bench\PC-THAI --lock=results\stream-bench\PC-THAI\runtime.lock --reps=auto
+started=2026-11-19T03:32:06+07:00
+build.source_tree_id=4963e9037e049962d2db7868d13e9edcda566fde
+build.source_commit=7e713463fbc3a8ab6f72683d414de9511e4cfc78
+build.javac=javac 25.0.4.1
+build.source_tree=clean
+build.built_utc=2026-11-17T23:33:40Z
+build.release=8
+jar_sha256=8afa91f326bfa2091dffa0e2e5fd9b43f1fd60811e8b9b0ede96c5af4308d1db
+config_file=stream_leviathan.txt
+config_sha256=bd7451c2991662b9ac0c59b5722e442a942ee224c9a284b6fea5e4133808ecb7
+dataset=LEVIATHAN.txt
+dataset_sha256=af0ee47c574e2b5e93b67bc7b10b2d297c930ffc4a24ca804c85cb60b67dd906
+sequences=5834 target_sequences=5662
+init_size=2834 batch_count=100 increment_sizes=30
+min_sup_rate=0.005 max_per=1000 targets=[1, 18, 71, 8, 14]
+arm=PreLargeSeqTaSPM params: lower_ratio=0.5 rescan_test=SWUmax regularity_pruning=true
+load_ms=44 (reading and parsing the file, outside every clock)
+java=25.0.5+8-LTS vendor=Eclipse Adoptium max_heap_mb=32768 jvm_args=[-Xms32g, -Xmx32g]
+live: sampler forces a full collection and reads the used heap; waits max(20 ms, 4 x collection time); baseline = used heap after loading; runtimes void
+finished=2026-11-19T05:09:03+07:00 exit=0
