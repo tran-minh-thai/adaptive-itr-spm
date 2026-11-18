@@ -1,4 +1,4 @@
-written=2026-11-18T06:58:44+07:00
+written=2026-11-18T07:01:31+07:00
 hostname=PC-THAI
 os=Windows 11 10.0 arch=amd64
 cpu=AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD logical_processors=32
