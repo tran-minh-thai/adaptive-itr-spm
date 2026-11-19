@@ -203,3 +203,26 @@ that the runs contradict is reported as a result.
 Expected cost (extrapolated from the development-machine probe, not measured): `PreLargeSeqTaSPM`
 at the configured value about 70 minutes per LEVIATHAN stream, near the limit; at half the value on
 LEVIATHAN it mines at a quarter of it at each rescan and is expected to hit the limit.
+
+Outcome (runs of 2026-11-18 and 2026-11-19; `tools/check_campaign.py results/stream-bench/PC-THAI`: 390 of
+390 plan lines matched, 0 problems; no run of the two phases hit the limit). Numbers are those of
+`results/stream-bench-analysis/PC-THAI` (`tools/extract_campaign.py`, `tools/stats_campaign.py`, which now ranks
+`PreLargeSeqTaSPM` from phase `prelarge` with the other arms).
+
+1. Holds: the proposed method is faster on 7 of 7 datasets; `PreLargeSeqTaSPM` takes 32.6 to 493 times its update time.
+2. Holds: `PreLargeSeqTaSPM` is slower than Re-mine on LEVIATHAN, BIBLE and KOSARAK (7.72, 2.49 and 4.78 times), and
+   also on the four other datasets (1.91 to 8.77 times over all seven).
+3. Contradicted on 3 of 3 datasets: the ratio Re-mine / proposed method falls as min_sup_rate decreases (BMS1 33.8,
+   26.4, 23.6; D48K 68.3, 35.7, 24.1; LEVIATHAN 27.1, 20.5, 14.5 at twice, the configured and half the value). Twice
+   and half come from one session, so the fall does not depend on the configured value of the main campaign. The
+   proposed method stays the fastest of the three arms in 9 of 9 cells. Work counters of the same runs: the
+   projections of Re-mine divided by those of the proposed method rise as min_sup_rate decreases (BMS1 2.01, 6.68,
+   23.8; D48K 2.15, 5.58, 7.84; LEVIATHAN 1.29, 1.88, 3.90), and so do the increments in which the proposed method
+   rescans (BMS1 16, 47, 61; D48K 4, 14, 32; LEVIATHAN 98, 99, 99). The time ratio therefore falls although the
+   projection ratio rises; which cost of the proposed method grows faster than its projections is not measured here.
+4. Holds: on SIGN the peak live set of `PreLargeSeqTaSPM` is 3.41 times that of the proposed method (1,011 against
+   296 MB); it is higher on 6 of 7 datasets, lower only on D48K.
+
+Expected cost, against the runs: a LEVIATHAN stream of `PreLargeSeqTaSPM` took about 76 minutes at the configured
+value and 97 minutes (first measured stream, 5,848 s) at half of it; neither hit the limit. The development-machine
+estimate came from the stream verification, which ran three runs at a time with an 8 GB heap.

@@ -1,0 +1,8 @@
+dataset	arm	batches_compared	batches_differing	stopped	ref_patterns_summed	ref_patterns_last_batch	rescans	rescans_inserting	promotions	backscans	init_live_nodes	init_stubs	init_min_sup	status	file
+BIBLE	PreLargeSeqTaSPM	101	0		494693	4020	100	-1	-1	-1	7103	-1	22	OK	BIBLE__PreLargeSeqTaSPM__verify.csv
+BMS1_spmf	PreLargeSeqTaSPM	101	0		17765	126	45	-1	-1	-1	450	-1	40	OK	BMS1_spmf__PreLargeSeqTaSPM__verify.csv
+D48K-C10-T1-N5K	PreLargeSeqTaSPM	101	0		3488924	34943	38	-1	-1	-1	271137	-1	26	OK	D48K-C10-T1-N5K__PreLargeSeqTaSPM__verify.csv
+FIFA	PreLargeSeqTaSPM	101	0		954506	7675	82	-1	-1	-1	28330	-1	53	OK	FIFA__PreLargeSeqTaSPM__verify.csv
+LEVIATHAN	PreLargeSeqTaSPM	101	0		75204924	708537	100	-1	-1	-1	3102325	-1	15	OK	LEVIATHAN__PreLargeSeqTaSPM__verify.csv
+SIGN	PreLargeSeqTaSPM	101	0		11177498	55627	33	-1	-1	-1	21915644	-1	12	OK	SIGN__PreLargeSeqTaSPM__verify.csv
+kosarak	PreLargeSeqTaSPM	101	0		256388	1815	100	-1	-1	-1	5928	-1	181	OK	kosarak__PreLargeSeqTaSPM__verify.csv

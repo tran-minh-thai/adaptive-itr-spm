@@ -25,6 +25,8 @@ Rules (fixed before looking at the outcome):
     projection, docs/stream-benchmark.md section 6) instead of the main phases. Both sessions run
     on the same machine, Java runtime and heap, so it is compared with the reference arm of the
     main phases like every other arm (author's decision, 2026-11-17).
+  * the pattern-level pre-large baseline PreLargeSeqTaSPM is taken from phase prelarge
+    (docs/stream-benchmark.md section 7), on the same terms as the batch baseline.
 
 Usage: tools/stats_campaign.py <analysis dir> [--reference=<arm>]   |   tools/stats_campaign.py --self-test
 
@@ -43,10 +45,10 @@ from scipy import stats
 
 PROPOSED = 'IncAdaTaSPM-StaticPreLarge'
 ARMS = ['IncAdaTaSPM', 'IncAdaTaSPM-NoBuffer', 'IncAdaTaSPM-StaticPreLarge', 'IncAdaTaSPM-Original',
-        'RemineTaSPM', 'BatchTaSPM', 'ItemPreLargeTaSPM']
+        'RemineTaSPM', 'BatchTaSPM', 'ItemPreLargeTaSPM', 'PreLargeSeqTaSPM']
 LIMIT_MS = 120 * 60 * 1000.0
 # arm -> (phase of its time runs, phase of its live runs, its tag); compared with the reference arm of the main phases
-SESSION = {'BatchTaSPM': ('fix-batch', 'fix-batch', 'fullproj')}
+SESSION = {'BatchTaSPM': ('fix-batch', 'fix-batch', 'fullproj'), 'PreLargeSeqTaSPM': ('prelarge', 'prelarge', '-')}
 # Studentized range statistic q_alpha / sqrt(2) for alpha = 0.05 (Demsar, 2006, Table 5a).
 Q05 = {2: 1.960, 3: 2.343, 4: 2.569, 5: 2.728, 6: 2.850, 7: 2.949, 8: 3.031, 9: 3.102, 10: 3.164}
 
